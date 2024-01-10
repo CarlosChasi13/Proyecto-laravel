@@ -18,6 +18,8 @@ class ApiTokenPermissionsTest extends TestCase
     {
         if (! Features::hasApiFeatures()) {
             $this->markTestSkipped('API support is not enabled.');
+
+            return;
         }
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
@@ -29,14 +31,14 @@ class ApiTokenPermissionsTest extends TestCase
         ]);
 
         Livewire::test(ApiTokenManager::class)
-            ->set(['managingPermissionsFor' => $token])
-            ->set(['updateApiTokenForm' => [
-                'permissions' => [
-                    'delete',
-                    'missing-permission',
-                ],
-            ]])
-            ->call('updateApiToken');
+                    ->set(['managingPermissionsFor' => $token])
+                    ->set(['updateApiTokenForm' => [
+                        'permissions' => [
+                            'delete',
+                            'missing-permission',
+                        ],
+                    ]])
+                    ->call('updateApiToken');
 
         $this->assertTrue($user->fresh()->tokens->first()->can('delete'));
         $this->assertFalse($user->fresh()->tokens->first()->can('read'));

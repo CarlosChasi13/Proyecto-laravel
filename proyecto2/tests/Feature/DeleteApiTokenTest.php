@@ -18,6 +18,8 @@ class DeleteApiTokenTest extends TestCase
     {
         if (! Features::hasApiFeatures()) {
             $this->markTestSkipped('API support is not enabled.');
+
+            return;
         }
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
@@ -29,8 +31,8 @@ class DeleteApiTokenTest extends TestCase
         ]);
 
         Livewire::test(ApiTokenManager::class)
-            ->set(['apiTokenIdBeingDeleted' => $token->id])
-            ->call('deleteApiToken');
+                    ->set(['apiTokenIdBeingDeleted' => $token->id])
+                    ->call('deleteApiToken');
 
         $this->assertCount(0, $user->fresh()->tokens);
     }

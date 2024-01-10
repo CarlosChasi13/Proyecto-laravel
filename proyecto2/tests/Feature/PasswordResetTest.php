@@ -17,6 +17,8 @@ class PasswordResetTest extends TestCase
     {
         if (! Features::enabled(Features::resetPasswords())) {
             $this->markTestSkipped('Password updates are not enabled.');
+
+            return;
         }
 
         $response = $this->get('/forgot-password');
@@ -28,6 +30,8 @@ class PasswordResetTest extends TestCase
     {
         if (! Features::enabled(Features::resetPasswords())) {
             $this->markTestSkipped('Password updates are not enabled.');
+
+            return;
         }
 
         Notification::fake();
@@ -45,6 +49,8 @@ class PasswordResetTest extends TestCase
     {
         if (! Features::enabled(Features::resetPasswords())) {
             $this->markTestSkipped('Password updates are not enabled.');
+
+            return;
         }
 
         Notification::fake();
@@ -68,6 +74,8 @@ class PasswordResetTest extends TestCase
     {
         if (! Features::enabled(Features::resetPasswords())) {
             $this->markTestSkipped('Password updates are not enabled.');
+
+            return;
         }
 
         Notification::fake();

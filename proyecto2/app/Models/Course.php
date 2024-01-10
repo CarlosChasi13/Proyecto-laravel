@@ -1,36 +1,18 @@
-<?php
+<?php 
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class Course
- *
- * @property $id
- * @property $name
- * @property $created_at
- * @property $updated_at
- *
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
- */
 class Course extends Model
 {
-    
-    static $rules = [
-		'name' => 'required',
-    ];
+	use HasFactory;
+	
+    public $timestamps = true;
 
-    protected $perPage = 20;
+    protected $table = 'courses';
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['name'];
-
-
-
+	
 }

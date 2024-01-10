@@ -19,6 +19,8 @@ class EmailVerificationTest extends TestCase
     {
         if (! Features::enabled(Features::emailVerification())) {
             $this->markTestSkipped('Email verification not enabled.');
+
+            return;
         }
 
         $user = User::factory()->withPersonalTeam()->unverified()->create();
@@ -32,6 +34,8 @@ class EmailVerificationTest extends TestCase
     {
         if (! Features::enabled(Features::emailVerification())) {
             $this->markTestSkipped('Email verification not enabled.');
+
+            return;
         }
 
         Event::fake();
@@ -56,6 +60,8 @@ class EmailVerificationTest extends TestCase
     {
         if (! Features::enabled(Features::emailVerification())) {
             $this->markTestSkipped('Email verification not enabled.');
+
+            return;
         }
 
         $user = User::factory()->unverified()->create();
