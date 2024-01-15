@@ -14,14 +14,13 @@ class MateriaFactory extends Factory
     {
         return [
 			'codigo' => $this->faker->name,
-			'curso' => $this->faker->name,
+			'id_curso' => $this->faker->name,
 			'nombre' => $this->faker->name,
 			'descripcion' => $this->faker->name,
 			'horas_creditos' => $this->faker->name,
 			'horas_teoria' => $this->faker->name,
 			'horas_laboratorio' => $this->faker->name,
 			'horas_otros' => $this->faker->name,
-			'id_cursos' => $this->faker->name,
         ];
     }
 }

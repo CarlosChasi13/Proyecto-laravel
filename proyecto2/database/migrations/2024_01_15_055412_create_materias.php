@@ -14,18 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('materias', function (Blueprint $table) {
-            $table->string('codigo', 10)->primary();
-            $table->unsignedBigInteger('curso');
+            $table->id();
+            $table->string('codigo', 10);
+            $table->unsignedBigInteger('id_curso');
+            $table->foreign('id_curso')->references('id')->on('cursos');
             $table->string('nombre', 100);
             $table->text('descripcion');
             $table->integer('horas_creditos');
             $table->integer('horas_teoria');
             $table->integer('horas_laboratorio');
             $table->integer('horas_otros');
-
-            $table->unsignedBigInteger('id_cursos');
-            $table->foreign('id_cursos')->references('id')->on('cursos');
-
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class Rol extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'rols';
+    protected $table = 'rol';
 
     protected $fillable = ['descripcion','id_docente','id_rol'];
 	

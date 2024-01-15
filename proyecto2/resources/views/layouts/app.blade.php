@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +18,7 @@
     @vite(['','resources/js/app.js'])
     @livewireStyles
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -30,91 +32,74 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-					@auth()
+                    @auth()
                     <ul class="navbar-nav mr-auto">
-						<!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/areasconocimientos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientos</a> 
-                            <a href="{{ url('/responsabilidad') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidad</a> 
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                CRUDs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('/nrc') }}">Nrc</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/areasconocimientos') }}">Áreas Conocimiento</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/materias') }}">Materias</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/rol') }}">Rol</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/responsabilidad') }}">Responsabilidad</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/areainteres') }}">Áreas de Interés</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/publicacioncientificas') }}">Publicaciones Científicas</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/capacitacions') }}">Capacitaciones</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/experiencialaborals') }}">Experiencia Laboral</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/titulos') }}">Títulos</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/docente') }}">Docentes</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/periodosacademicos') }}">Periodos Académicos</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/cursos') }}">Cursos</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/departamentos') }}">Departamentos</a></li>
+                            </ul>
                         </li>
-						<li class="nav-item">
-                            <a href="{{ url('/responsabilidadopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidadopciones</a> 
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Opciones
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url('/responsabilidadopciones') }}">Responsabilidades</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/areasconocimientosopciones') }}">Áreas Conocimiento</a></li>
+                            </ul>
                         </li>
-						<li class="nav-item">
-                            <a href="{{ url('/rol') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rol</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/areasconocimientosopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientosopciones</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/materias') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Materias</a> 
-                            <a href="{{ url('/areainteres') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areainteres</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/publicacioncientificas') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Publicacioncientificas</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/capacitacions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Capacitacions</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/experiencialaborals') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Experiencialaborals</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/titulos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Titulos</a> 
-                        </li>
-						
-						<li class="nav-item">
-                            <a href="{{ url('/docente') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Docente</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/courses') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Courses</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/periodosacademicos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Periodosacademicos</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/cursos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Cursos</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/departamentos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Departamentos</a> 
-                        </li>
-						
+                        <!--Nav Bar Hooks - Do not delete!!-->
                     </ul>
-					@endauth()
+                    @endauth()
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -130,9 +115,10 @@
         const addModal = new bootstrap.Modal('#createDataModal');
         const editModal = new bootstrap.Modal('#updateDataModal');
         window.addEventListener('closeModal', () => {
-           addModal.hide();
-           editModal.hide();
+            addModal.hide();
+            editModal.hide();
         })
     </script>
 </body>
+
 </html>

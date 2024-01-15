@@ -11,7 +11,7 @@ class Responsabilidad extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'responsabilidads';
+    protected $table = 'responsabilidad';
 
     protected $fillable = ['id_docente','id_responsabilidad'];
 	

@@ -13,8 +13,8 @@
                         <input wire:model="codigo" type="text" class="form-control" id="codigo" placeholder="Codigo">@error('codigo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="curso"></label>
-                        <input wire:model="curso" type="text" class="form-control" id="curso" placeholder="Curso">@error('curso') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_curso"></label>
+                        <input wire:model="id_curso" type="text" class="form-control" id="id_curso" placeholder="Id Curso">@error('id_curso') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="nombre"></label>
@@ -39,10 +39,6 @@
                     <div class="form-group">
                         <label for="horas_otros"></label>
                         <input wire:model="horas_otros" type="text" class="form-control" id="horas_otros" placeholder="Horas Otros">@error('horas_otros') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="id_cursos"></label>
-                        <input wire:model="id_cursos" type="text" class="form-control" id="id_cursos" placeholder="Id Cursos">@error('id_cursos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
@@ -71,8 +67,8 @@
                         <input wire:model="codigo" type="text" class="form-control" id="codigo" placeholder="Codigo">@error('codigo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="curso"></label>
-                        <input wire:model="curso" type="text" class="form-control" id="curso" placeholder="Curso">@error('curso') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_curso"></label>
+                        <input wire:model="id_curso" type="text" class="form-control" id="id_curso" placeholder="Id Curso">@error('id_curso') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="nombre"></label>
@@ -97,10 +93,6 @@
                     <div class="form-group">
                         <label for="horas_otros"></label>
                         <input wire:model="horas_otros" type="text" class="form-control" id="horas_otros" placeholder="Horas Otros">@error('horas_otros') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="id_cursos"></label>
-                        <input wire:model="id_cursos" type="text" class="form-control" id="id_cursos" placeholder="Id Cursos">@error('id_cursos') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
