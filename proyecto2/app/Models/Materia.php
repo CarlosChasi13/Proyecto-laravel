@@ -13,14 +13,22 @@ class Materia extends Model
 
     protected $table = 'materias';
 
-    protected $fillable = ['codigo','curso','nombre','descripcion','horas_creditos','horas_teoria','horas_laboratorio','horas_otros','id_cursos'];
+    protected $fillable = ['codigo','id_curso','nombre','descripcion','horas_creditos','horas_teoria','horas_laboratorio','horas_otros'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function curso()
     {
-        return $this->hasOne('App\Models\Curso', 'id', 'id_cursos');
+        return $this->hasOne('App\Models\Curso', 'id', 'id_curso');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function nrcs()
+    {
+        return $this->hasMany('App\Models\Nrc', 'id_materia', 'id');
     }
     
 }

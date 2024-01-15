@@ -29,14 +29,13 @@
 							<tr> 
 								<td>#</td> 
 								<th>Codigo</th>
-								<th>Curso</th>
+								<th>Id Curso</th>
 								<th>Nombre</th>
 								<th>Descripcion</th>
 								<th>Horas Creditos</th>
 								<th>Horas Teoria</th>
 								<th>Horas Laboratorio</th>
 								<th>Horas Otros</th>
-								<th>Id Cursos</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -45,14 +44,13 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->codigo }}</td>
-								<td>{{ $row->curso }}</td>
+								<td>{{ $row->id_curso }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->descripcion }}</td>
 								<td>{{ $row->horas_creditos }}</td>
 								<td>{{ $row->horas_teoria }}</td>
 								<td>{{ $row->horas_laboratorio }}</td>
 								<td>{{ $row->horas_otros }}</td>
-								<td>{{ $row->id_cursos }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -2,11 +2,13 @@ CREATE DATABASE universidad;
 
 USE universidad;
 
+/*LISTO*/
 CREATE TABLE campus (
     id INT PRIMARY KEY,
     nombre VARCHAR(100)
 );
 
+/*LISTO*/
 CREATE TABLE departamento (
     id INT PRIMARY KEY,
     nombre VARCHAR(100)
@@ -18,6 +20,7 @@ CREATE TABLE curso (
     nombre VARCHAR(100)
 );
 
+/*LISTO*/
 CREATE TABLE periodo_academico (
     id INT PRIMARY KEY,
     nivel VARCHAR(10),
@@ -28,6 +31,7 @@ CREATE TABLE periodo_academico (
     año_fin YEAR
 );
 
+/*LISTO*/
 CREATE TABLE materia (
     codigo VARCHAR(10) PRIMARY KEY,
     curso INT,
@@ -40,6 +44,7 @@ CREATE TABLE materia (
     CONSTRAINT curso_materia_fk FOREIGN KEY (curso) REFERENCES curso(id)
 );
 
+/*LISTO*/
 CREATE TABLE nrc (
     nrc VARCHAR(10) PRIMARY KEY,
     campus INT,
@@ -68,6 +73,7 @@ CREATE TABLE docente (
     observaciones TEXT
 );
 
+/*LISTO*/
 CREATE TABLE titulo (
     id VARCHAR(9),
     fecha DATE,  
@@ -99,12 +105,14 @@ CREATE TABLE capacitacion (
     CONSTRAINT docente_capacitacion_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE responsabilidad_opciones (
     id INT PRIMARY KEY, 
     cargo VARCHAR(100),
     descripcion TEXT
 );
 
+/*LISTO*/
 CREATE TABLE responsabilidad (
     id VARCHAR(9), 
     responsabilidad INT,
@@ -112,6 +120,7 @@ CREATE TABLE responsabilidad (
     CONSTRAINT responsabilidad_responsabilidad_fk FOREIGN KEY (responsabilidad) REFERENCES responsabilidad_opciones(id) 
 );
 
+/*LISTO*/
 CREATE TABLE publicacion_cientifica (
     id VARCHAR(9),
     doi VARCHAR(100),
@@ -145,12 +154,14 @@ CREATE TABLE areas_interes (
     CONSTRAINT docente_area_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE areas_conocimiento_opciones (
     id INT PRIMARY KEY,
     codigo VARCHAR(10),
     nombre VARCHAR(100)
 );
 
+/*LISTO*/
 CREATE TABLE areas_conocimiento (
     id VARCHAR(9),
     conocimiento INT,

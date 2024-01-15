@@ -13,7 +13,6 @@ class AreasconocimientoFactory extends Factory
     public function definition()
     {
         return [
-			'conocimiento' => $this->faker->name,
 			'id_docentes' => $this->faker->name,
 			'id_area_con' => $this->faker->name,
         ];

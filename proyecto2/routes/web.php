@@ -32,7 +32,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route Hooks - Do not delete//
-  Route::view('areasconocimientos', 'livewire.areasconocimientos.index')->middleware('auth');
+	Route::view('nrc', 'livewire.nrcs.index')->middleware('auth');
+	Route::view('areasconocimientos', 'livewire.areasconocimientos.index')->middleware('auth');
 	Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index')->middleware('auth');
 	Route::view('materias', 'livewire.materias.index')->middleware('auth');
 	Route::view('periodosacademicos', 'livewire.periodosacademicos.index')->middleware('auth');
@@ -40,14 +41,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::view('departamentos', 'livewire.departamentos.index')->middleware('auth');
 	Route::view('campus', 'livewire.campus.index')->middleware('auth');
 	Route::view('docente', 'livewire.docentes.index')->middleware('auth');
-	Route::view('responsabilidad', 'livewire.responsabilidad.index')->middleware('auth');
+	Route::view('responsabilidad', 'livewire.responsabilidads.index')->middleware('auth');
 	Route::view('responsabilidadopciones', 'livewire.responsabilidadopciones.index')->middleware('auth');
-	Route::view('rol', 'livewire.rol.index')->middleware('auth');
+	Route::view('rol', 'livewire.rols.index')->middleware('auth');
 	Route::view('rolopciones', 'livewire.rolopciones.index')->middleware('auth');
 	Route::view('areainteres', 'livewire.areainteres.index')->middleware('auth');
 	Route::view('publicacioncientificas', 'livewire.publicacioncientificas.index')->middleware('auth');
 	Route::view('capacitacions', 'livewire.capacitacions.index')->middleware('auth');
 	Route::view('experiencialaborals', 'livewire.experiencialaborals.index')->middleware('auth');
 	Route::view('titulos', 'livewire.titulos.index')->middleware('auth');
-	Route::view('docente', 'livewire.docentes.index')->middleware('auth');
-	Route::view('courses', 'livewire.courses.index')->middleware('auth');

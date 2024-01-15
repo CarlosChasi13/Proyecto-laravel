@@ -28,7 +28,6 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Conocimiento</th>
 								<th>Id Docentes</th>
 								<th>Id Area Con</th>
 								<td>ACTIONS</td>
@@ -38,7 +37,6 @@
 							@forelse($areasconocimientos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->conocimiento }}</td>
 								<td>{{ $row->id_docentes }}</td>
 								<td>{{ $row->id_area_con }}</td>
 								<td width="90">

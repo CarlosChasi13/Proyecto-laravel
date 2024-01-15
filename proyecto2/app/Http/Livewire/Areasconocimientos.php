@@ -11,14 +11,13 @@ class Areasconocimientos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $conocimiento, $id_docentes, $id_area_con;
+    public $selected_id, $keyWord, $id_docentes, $id_area_con;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.areasconocimientos.view', [
             'areasconocimientos' => Areasconocimiento::latest()
-						->orWhere('conocimiento', 'LIKE', $keyWord)
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_area_con', 'LIKE', $keyWord)
 						->paginate(10),
@@ -32,7 +31,6 @@ class Areasconocimientos extends Component
 	
     private function resetInput()
     {		
-		$this->conocimiento = null;
 		$this->id_docentes = null;
 		$this->id_area_con = null;
     }
@@ -40,13 +38,11 @@ class Areasconocimientos extends Component
     public function store()
     {
         $this->validate([
-		'conocimiento' => 'required',
 		'id_docentes' => 'required',
 		'id_area_con' => 'required',
         ]);
 
         Areasconocimiento::create([ 
-			'conocimiento' => $this-> conocimiento,
 			'id_docentes' => $this-> id_docentes,
 			'id_area_con' => $this-> id_area_con
         ]);
@@ -60,7 +56,6 @@ class Areasconocimientos extends Component
     {
         $record = Areasconocimiento::findOrFail($id);
         $this->selected_id = $id; 
-		$this->conocimiento = $record-> conocimiento;
 		$this->id_docentes = $record-> id_docentes;
 		$this->id_area_con = $record-> id_area_con;
     }
@@ -68,7 +63,6 @@ class Areasconocimientos extends Component
     public function update()
     {
         $this->validate([
-		'conocimiento' => 'required',
 		'id_docentes' => 'required',
 		'id_area_con' => 'required',
         ]);
@@ -76,7 +70,6 @@ class Areasconocimientos extends Component
         if ($this->selected_id) {
 			$record = Areasconocimiento::find($this->selected_id);
             $record->update([ 
-			'conocimiento' => $this-> conocimiento,
 			'id_docentes' => $this-> id_docentes,
 			'id_area_con' => $this-> id_area_con
             ]);

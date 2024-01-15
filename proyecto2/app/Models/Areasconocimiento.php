@@ -13,7 +13,7 @@ class Areasconocimiento extends Model
 
     protected $table = 'areasconocimientos';
 
-    protected $fillable = ['conocimiento','id_docentes','id_area_con'];
+    protected $fillable = ['id_docentes','id_area_con'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
