@@ -34,6 +34,22 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/areainteres') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areainteres</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/publicacioncientificas') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Publicacioncientificas</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/capacitacions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Capacitacions</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/experiencialaborals') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Experiencialaborals</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/titulos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Titulos</a> 
+                        </li>
+						
+						<li class="nav-item">
                             <a href="{{ url('/docente') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Docente</a> 
                         </li>
 						<li class="nav-item">
