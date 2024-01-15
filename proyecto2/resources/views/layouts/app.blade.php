@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/js/app.js'])
+    @vite(['','resources/js/app.js'])
     @livewireStyles
 </head>
 <body>
@@ -34,6 +34,7 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/areasconocimientos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientos</a> 
                             <a href="{{ url('/responsabilidad') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidad</a> 
                         </li>
 						<li class="nav-item">
@@ -43,9 +44,10 @@
                             <a href="{{ url('/rol') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rol</a> 
                         </li>
 						<li class="nav-item">
-                            <a href="{{ url('/rolopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rolopciones</a> 
+                            <a href="{{ url('/areasconocimientosopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientosopciones</a> 
                         </li>
 						<li class="nav-item">
+                            <a href="{{ url('/materias') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Materias</a> 
                             <a href="{{ url('/areainteres') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areainteres</a> 
                         </li>
 						<li class="nav-item">
@@ -67,6 +69,16 @@
 						<li class="nav-item">
                             <a href="{{ url('/courses') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Courses</a> 
                         </li>
+						<li class="nav-item">
+                            <a href="{{ url('/periodosacademicos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Periodosacademicos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/cursos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Cursos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/departamentos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Departamentos</a> 
+                        </li>
+						
                     </ul>
 					@endauth()
 
