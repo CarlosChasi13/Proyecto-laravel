@@ -35,12 +35,39 @@
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
                             <a href="{{ url('/areasconocimientos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientos</a> 
+                            <a href="{{ url('/responsabilidad') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidad</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/responsabilidadopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidadopciones</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/rol') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rol</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/areasconocimientosopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientosopciones</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/materias') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Materias</a> 
+                            <a href="{{ url('/areainteres') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areainteres</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/publicacioncientificas') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Publicacioncientificas</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/capacitacions') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Capacitacions</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/experiencialaborals') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Experiencialaborals</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/titulos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Titulos</a> 
+                        </li>
+						
+						<li class="nav-item">
+                            <a href="{{ url('/docente') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Docente</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/courses') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Courses</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/periodosacademicos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Periodosacademicos</a> 
