@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rolopcione extends Model
+class Responsabilidadopcione extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'rolopciones';
+    protected $table = 'responsabilidadopciones';
 
-    protected $fillable = ['nombre','descripcion'];
+    protected $fillable = ['cargo','descripcion'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function rols()
+    public function responsabilidads()
     {
-        return $this->hasMany('App\Models\Rol', 'id_rol', 'id');
+        return $this->hasMany('App\Models\Responsabilidad', 'id_responsabilidad', 'id');
     }
     
 }

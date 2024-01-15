@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rol', function (Blueprint $table) {
+        Schema::create('responsabilidad', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_docente');
+            $table->foreign('id_docente')->references('id')->on('docente');
+            $table->unsignedBigInteger('id_responsabilidad');
+            $table->foreign('id_responsabilidad')->references('id')->on('responsabilidadopciones');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rol');
+        Schema::dropIfExists('responsabilidad');
     }
 };

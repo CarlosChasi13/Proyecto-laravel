@@ -12,6 +12,7 @@ CREATE TABLE departamento (
     nombre VARCHAR(100)
 );
 
+/*LISTO*/
 CREATE TABLE curso (
     id INT PRIMARY KEY,
     nombre VARCHAR(100)
@@ -53,6 +54,7 @@ CREATE TABLE nrc (
     CONSTRAINT periodo_nrc_fk FOREIGN KEY (periodo) REFERENCES periodo(id)
 );
 
+/*LISTO*/
 CREATE TABLE docente (
     id VARCHAR(9) PRIMARY KEY,
     cedula VARCHAR(10),
@@ -75,6 +77,7 @@ CREATE TABLE titulo (
     CONSTRAINT docente_titulo_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE experiencia_laboral (
     id VARCHAR(9),
     entidad VARCHAR(100),
@@ -85,6 +88,7 @@ CREATE TABLE experiencia_laboral (
     CONSTRAINT docente_exp_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE capacitacion (
     id VARCHAR(9),
     titulo VARCHAR(100),
@@ -118,12 +122,14 @@ CREATE TABLE publicacion_cientifica (
     CONSTRAINT docente_publi_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE rol_opciones (
     id INT PRIMARY KEY,
     nombre VARCHAR(20),
     descripcion TEXT
 );
 
+/*LISTO*/
 CREATE TABLE rol (
     id VARCHAR(9),
     rol INT,
@@ -131,6 +137,7 @@ CREATE TABLE rol (
     CONSTRAINT rol_rol_fk FOREIGN KEY (rol) REFERENCES rol_opciones(id)
 );
 
+/*LISTO*/
 CREATE TABLE areas_interes (
     id VARCHAR(9),
     tema VARCHAR(100),
