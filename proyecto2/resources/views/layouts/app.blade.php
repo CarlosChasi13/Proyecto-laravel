@@ -34,6 +34,18 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/responsabilidad') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidad</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/responsabilidadopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Responsabilidadopciones</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/rol') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rol</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/rolopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rolopciones</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/areainteres') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areainteres</a> 
                         </li>
 						<li class="nav-item">
@@ -51,9 +63,6 @@
 						
 						<li class="nav-item">
                             <a href="{{ url('/docente') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Docente</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/rolopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rolopciones</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/courses') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Courses</a> 
