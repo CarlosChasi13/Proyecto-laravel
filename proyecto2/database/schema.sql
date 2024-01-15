@@ -99,12 +99,14 @@ CREATE TABLE capacitacion (
     CONSTRAINT docente_capacitacion_fk FOREIGN KEY (id) REFERENCES docente(id)
 );
 
+/*LISTO*/
 CREATE TABLE responsabilidad_opciones (
     id INT PRIMARY KEY, 
     cargo VARCHAR(100),
     descripcion TEXT
 );
 
+/*LISTO*/
 CREATE TABLE responsabilidad (
     id VARCHAR(9), 
     responsabilidad INT,
@@ -112,6 +114,7 @@ CREATE TABLE responsabilidad (
     CONSTRAINT responsabilidad_responsabilidad_fk FOREIGN KEY (responsabilidad) REFERENCES responsabilidad_opciones(id) 
 );
 
+/*LISTO*/
 CREATE TABLE publicacion_cientifica (
     id VARCHAR(9),
     doi VARCHAR(100),
