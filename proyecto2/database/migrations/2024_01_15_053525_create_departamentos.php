@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areaConocimientoOpcion', function (Blueprint $table) {
+        Schema::create('departamentos', function (Blueprint $table) {
             $table->id();
-            $table->string('Codigo', 10);
-            $table->string('Nombre', 100);
+            $table->string('Nombre');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areaConocimientoOpcion');
+        Schema::dropIfExists('departamentos');
     }
 };

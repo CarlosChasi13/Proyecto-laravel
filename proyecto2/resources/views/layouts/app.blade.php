@@ -34,8 +34,24 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/departamento') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Departamento</a> 
+                            <a href="{{ url('/areasconocimientos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientos</a> 
                         </li>
+						<li class="nav-item">
+                            <a href="{{ url('/areasconocimientosopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Areasconocimientosopciones</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/materias') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Materias</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/periodosacademicos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Periodosacademicos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/cursos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Cursos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/departamentos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Departamentos</a> 
+                        </li>
+						
                     </ul>
 					@endauth()
 

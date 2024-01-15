@@ -13,19 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('periodoAcademico', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nivel', 10);
-            $table->string('Siglas', 4);
-            $table->date('Mes_inicio');
-            $table->year('Año_inicio');
-            $table->date('Mes_fin');
-            $table->year('Año_fin');
+            $table->string('Nombre');
             $table->timestamps();
         });
     }
-   
-    
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('periodoAcademico');
+        Schema::dropIfExists('cursos');
     }
 };

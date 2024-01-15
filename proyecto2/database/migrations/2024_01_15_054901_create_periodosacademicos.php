@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departamento', function (Blueprint $table) {
+        Schema::create('periodosacademicos', function (Blueprint $table) {
             $table->id();
-            $table->String('Nombre');
+            $table->string('nivel', 10);
+            $table->string('siglas', 4);
+            $table->date('mes_inicio');
+            $table->year('año_inicio');
+            $table->date('mes_fin');
+            $table->year('año_fin');
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamento');
+        Schema::dropIfExists('periodosacademicos');
     }
 };
