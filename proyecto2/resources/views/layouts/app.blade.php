@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/js/app.js'])
+    @vite(['','resources/js/app.js'])
     @livewireStyles
 </head>
 <body>
@@ -34,13 +34,7 @@
                     <ul class="navbar-nav mr-auto">
 						<!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/docente') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Docente</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/rolopciones') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Rolopciones</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/courses') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Courses</a> 
+                            <a href="{{ url('/departamento') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Departamento</a> 
                         </li>
                     </ul>
 					@endauth()
