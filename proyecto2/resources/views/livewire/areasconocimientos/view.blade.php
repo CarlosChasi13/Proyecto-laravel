@@ -28,7 +28,7 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Docentes</th>
+								<th>Docentes</th>
 								<th>Id Area Con</th>
 								<td>ACTIONS</td>
 							</tr>

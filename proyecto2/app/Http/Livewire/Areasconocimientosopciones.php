@@ -15,12 +15,14 @@ class Areasconocimientosopciones extends Component
 
     public function render()
     {
+        $areacon = \App\Models\Areasconocimientosopciones::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.areasconocimientosopciones.view', [
             'areasconocimientosopciones' => Areasconocimientosopcione::latest()
 						->orWhere('codigo', 'LIKE', $keyWord)
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->paginate(10),
+                        'reacon' => $areacon,
         ]);
     }
 	

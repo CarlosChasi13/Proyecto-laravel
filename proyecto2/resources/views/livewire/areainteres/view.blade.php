@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Areainteres">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Areainteres
+						<i class="fa fa-plus"></i>  Añadir Área de interes
 						</div>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 								<td>#</td> 
 								<th>Tema</th>
 								<th>Descripcion</th>
-								<th>Id Docente</th>
+								<th>Docente</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -40,7 +40,7 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->tema }}</td>
 								<td>{{ $row->descripcion }}</td>
-								<td>{{ $row->id_docente }}</td>
+								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
