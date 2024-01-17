@@ -29,8 +29,14 @@
                         <input wire:model="observacion" type="text" class="form-control" id="observacion" placeholder="Observacion">@error('observacion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="descricion"></label>
+                        <select wire:model="id_docente" class="form-control" id="docente">
+                        <option value="">Seleccione un Docente</option>
+                        @foreach($docentes as $docente)
+                        <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
+                        @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

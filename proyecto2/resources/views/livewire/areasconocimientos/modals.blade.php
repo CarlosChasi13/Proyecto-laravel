@@ -8,14 +8,33 @@
             </div>
            <div class="modal-body">
 				<form>
-                    <div class="form-group">
-                        <label for="id_docentes"></label>
-                        <input wire:model="id_docentes" type="text" class="form-control" id="id_docentes" placeholder="Id Docentes">@error('id_docentes') <span class="error text-danger">{{ $message }}</span> @enderror
+                <div class="form-group">
+                        <label for="docente">Seleccione un Docente</label>
+                        <select wire:model="id_docentes" class="form-control" id="docente">
+                        <option value="">Seleccione un Docente</option>
+                        @foreach($docentes as $docente)
+                        <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
+                        @endforeach
+                        </select>
+                        @error('id_docentes') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    
                     <div class="form-group">
-                        <label for="id_area_con"></label>
-                        <input wire:model="id_area_con" type="text" class="form-control" id="id_area_con" placeholder="Id Area Con">@error('id_area_con') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+    <label for="id_area_con">Seleccione una Área de Conocimiento</label>
+    <select wire:model="id_area_con" class="form-control" id="id_area_con">
+        <option value="">Seleccione una Área de Conocimiento</option>
+        @foreach($areas as $areasconocimientosopciones)
+            <option value="{{ $areasconocimientosopciones->id_area_cons }}">{{ $areasconocimientosopciones->nombre }}</option>
+        @endforeach
+    </select>
+
+    @if ($errors->has('id_area_con'))
+        <span class="error text-danger">{{ $errors->first('id_area_con') }}</span>
+    @else
+        <span class="help-block">Mensaje informativo antes del error (si es necesario)</span>
+    @endif
+</div>
+
 
                 </form>
             </div>

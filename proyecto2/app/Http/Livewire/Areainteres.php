@@ -12,9 +12,11 @@ class Areainteres extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $tema, $descripcion, $id_docente;
+    
 
     public function render()
     {
+        $docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.areainteres.view', [
             'areainteres' => Areaintere::latest()
@@ -22,6 +24,9 @@ class Areainteres extends Component
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+                        'docentes' => $docentes,
+                                    
+                        
         ]);
     }
 	

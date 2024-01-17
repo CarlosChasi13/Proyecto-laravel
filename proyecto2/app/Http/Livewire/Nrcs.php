@@ -15,6 +15,13 @@ class Nrcs extends Component
 
     public function render()
     {
+		$docentes = \App\Models\Docente::all();
+		$materias = \App\Models\Materia::all();
+		$campus = \App\Models\Campu::all();
+		$departamentos = \App\Models\Departamento::all();
+		$periodos = \App\Models\Periodosacademico::all();
+
+
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.nrcs.view', [
             'nrcs' => Nrc::latest()
@@ -25,6 +32,11 @@ class Nrcs extends Component
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
 						->paginate(10),
+						'docentes' => $docentes,
+						'materias' => $materias,
+						'campus' => $campus,
+						'departamentos' => $departamentos,
+						'periodos' => $periodos,
         ]);
     }
 	

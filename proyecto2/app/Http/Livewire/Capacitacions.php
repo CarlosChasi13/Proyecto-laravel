@@ -15,6 +15,7 @@ class Capacitacions extends Component
 
     public function render()
     {
+		$docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.capacitacions.view', [
             'capacitacions' => Capacitacion::latest()
@@ -25,6 +26,7 @@ class Capacitacions extends Component
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+						'docentes' => $docentes,
         ]);
     }
 	

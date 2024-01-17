@@ -15,6 +15,7 @@ class Materias extends Component
 
     public function render()
     {
+		$curso=\App\Models\Curso::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.materias.view', [
             'materias' => Materia::latest()
@@ -27,6 +28,8 @@ class Materias extends Component
 						->orWhere('horas_laboratorio', 'LIKE', $keyWord)
 						->orWhere('horas_otros', 'LIKE', $keyWord)
 						->paginate(10),
+			'curso'=>$curso,
+				
         ]);
     }
 	

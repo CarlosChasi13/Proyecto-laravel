@@ -15,12 +15,17 @@ class Areasconocimientos extends Component
 
     public function render()
     {
+        $docentes = \App\Models\Docente::all();
+        $areas=\App\Models\Areasconocimientosopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.areasconocimientos.view', [
             'areasconocimientos' => Areasconocimiento::latest()
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_area_con', 'LIKE', $keyWord)
 						->paginate(10),
+                    'docentes'=>$docentes,
+                    'areas'=>$areas,
+
         ]);
     }
 	
