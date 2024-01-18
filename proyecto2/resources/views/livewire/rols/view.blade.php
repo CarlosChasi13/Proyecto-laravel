@@ -7,16 +7,16 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Rol Listing </h4>
+							Roles </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Rols">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Roles">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Rols
+						<i class="fa fa-plus"></i>  Añadir Rol a Docente
 						</div>
 					</div>
 				</div>
@@ -29,8 +29,8 @@
 							<tr> 
 								<td>#</td> 
 								<th>Descripcion</th>
-								<th>Id Docente</th>
-								<th>Id Rol</th>
+								<th>Docente</th>
+								<th>Rol</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -39,8 +39,8 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->descripcion }}</td>
-								<td>{{ $row->id_docente }}</td>
-								<td>{{ $row->id_rol }}</td>
+								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
+								<td>{{ $row->rolopcione->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -15,7 +15,7 @@ class Areasconocimientosopciones extends Component
 
     public function render()
     {
-        $areacon = \App\Models\Areasconocimientosopciones::all();
+        $areacon = \App\Models\Areasconocimientosopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.areasconocimientosopciones.view', [
             'areasconocimientosopciones' => Areasconocimientosopcione::latest()

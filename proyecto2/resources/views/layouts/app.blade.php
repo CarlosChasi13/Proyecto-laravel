@@ -43,6 +43,7 @@
                                 <li><a class="dropdown-item" href="{{ url('/areasconocimientos') }}">Áreas Conocimiento</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/materias') }}">Materias</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/rol') }}">Rol</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/campus') }}">Campus</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/responsabilidad') }}">Responsabilidad</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/areainteres') }}">Áreas de Interés</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/publicacioncientificas') }}">Publicaciones Científicas</a></li>
@@ -62,6 +63,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('/responsabilidadopciones') }}">Responsabilidades</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/areasconocimientosopciones') }}">Áreas Conocimiento</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/rolopciones') }}">Roles</a></li>
                             </ul>
                         </li>
                         <!--Nav Bar Hooks - Do not delete!!-->

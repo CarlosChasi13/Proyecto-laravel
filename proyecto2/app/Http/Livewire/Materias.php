@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Materia;
+use App\Models\Curso;
 
 class Materias extends Component
 {
@@ -15,6 +16,7 @@ class Materias extends Component
 
     public function render()
     {
+		$cursos = Curso::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.materias.view', [
             'materias' => Materia::latest()
@@ -27,6 +29,7 @@ class Materias extends Component
 						->orWhere('horas_laboratorio', 'LIKE', $keyWord)
 						->orWhere('horas_otros', 'LIKE', $keyWord)
 						->paginate(10),
+			'cursos' => $cursos,
         ]);
     }
 	
