@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'GDOC Admin',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>GDOC</b> Admin',
+    'logo_img' => 'img/logo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3 bg-primary',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'GDOC Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'img/logo.png',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'img/logo.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'width' => 240,
+            'height' => 240,
         ],
     ],
 
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -311,61 +311,131 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        ['header' => 'Inicio'],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Página Principal',
+            'url'  => '/',
+            'icon'    => 'fas fa-file text-primary',
+        ],
+        ['header' => 'CRUDS'],
+        [
+            'text' => 'Docencia',
+            'icon'    => 'far fa-user text-primary',
+            'submenu' => [
+                [
+                    'text' => 'Docente',
+                    'url'  => '/docente',
+                    'icon'    => 'fas fa-user text-primary',
+                ],
+                [
+                    'text' => 'Experiencia laboral',
+                    'url'  => '/experiencialaborals',
+                    'icon'    => 'fas fa-briefcase text-success',
+                ],
+                [
+                    'text' => 'Títulos',
+                    'url'  => '/titulos',
+                    'icon'    => 'fas fa-star text-primary',
+                ],
+                [
+                    'text' => 'Area de conocimiento',
+                    'url'  => '/areasconocimientos',
+                    'icon'    => 'fas fa-graduation-cap text-success',
+                ],
+                [
+                    'text' => 'Capacitación',
+                    'url'  => '/capacitacions',
+                    'icon'    => 'fas fa-chalkboard-teacher text-warning',
+                ],
+                [
+                    'text' => 'Área de interés',
+                    'url'  => '/areainteres',
+                    'icon' => 'fas fa-book text-primary',
+                ],
+                [
+                    'text' => 'Publicaciones científicas',
+                    'url'  => '/publicacioncientificas',
+                    'icon'    => 'fas fa-microscope text-success',
+                ],
+                [
+                    'text' => 'Responsabilidad',
+                    'url'  => '/responsabilidad',
+                    'icon'    => 'fas fa-user-tie text-warning',
+                ],
+                [
+                    'text' => 'Rol',
+                    'url'  => '/rol',
+                    'icon'    => 'fas fa-user-shield text-success',
+                ],
+            ]
+        ],
+        [
+            'text'    => 'Académico',
+            'icon'    => 'fas fa-book text-info',
+            'submenu' => [
+                [
+                    'text' => 'NRC',
+                    'url'  => '/nrc',
+                    'icon'    => 'fas fa-hashtag text-primary',
+                ],
+                [
+                    'text' => 'Periodo académicos',
+                    'url'  => '/periodosacademicos',
+                    'icon'    => 'far fa-calendar-alt text-secondary',
+                ],
+                [
+                    'text' => 'Cursos',
+                    'url'  => '/cursos',
+                    'icon'    => 'fas fa-pencil-alt text-info',
+                ],
+                [
+                    'text' => 'Departamentos',
+                    'url'  => '/departamentos',
+                    'icon'    => 'fas fa-laptop-code text-warning',
+                ],
+                [
+                    'text' => 'Campus',
+                    'url'  => '/campus',
+                    'icon'    => 'fas fa-building text-primary',
+                ],
+                [
+                    'text' => 'Materias',
+                    'url'  => '/materias',
+                    'icon'    => 'fas fa-book text-primary',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Configuración',
+            'icon'    => 'fas fa-cog text-info',
+            'submenu' => [
+                [
+                    'text' => 'Areas de conocimiento',
+                    'url'  => '/areasconocimientosopciones',
+                    'icon'    => 'fas fa-atom text-warning',
+                ],
+                [
+                    'text' => 'Rol',
+                    'url'  => '/rolopciones',
+                    'icon'    => 'fas fa-users text-secondary',
+                ],
+                [
+                    'text' => 'Responsabilidad',
+                    'url'  => '/responsabilidadopciones',
+                    'icon'    => 'fas fa-sitemap text-secondary',
+                ],  
+            ],
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => '#',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => 'password/reset',
             'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
         ],
         ['header' => 'labels'],
         [
@@ -490,6 +560,16 @@ return [
                 ],
             ],
         ],
+        'ShowModals' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//resources/js/show-modals.js',
+                ],
+            ],
+        ],
     ],
 
     /*
@@ -537,5 +617,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

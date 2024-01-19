@@ -5,7 +5,7 @@
 | **Componente** | **Versión** |  |
 | ---- | ---- | ---- |
 | php | 8.2 | [Docs](https://www.php.net/) |
-| Laravel | 10 | [Docs](https://laravel.com/) |
+| Laravel | 9.52 | [Docs](https://laravel.com/) |
 | Livewire | 3.x | [Docs](https://livewire.laravel.com/docs) |
 | Jetstream | 4.x | [Docs](https://jetstream.laravel.com/installation.html) |
 | AdminLTE | 3.x | [Docs](https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Installation) |
