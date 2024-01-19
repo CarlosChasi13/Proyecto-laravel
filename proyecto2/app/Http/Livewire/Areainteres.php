@@ -17,13 +17,14 @@ class Areainteres extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $docentes = \App\Models\Docente::all();
         return view('livewire.areainteres.view', [
             'areainteres' => Areaintere::latest()
 						->orWhere('tema', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
-                        'id_docente' => Docente::all(),
+            'docentes' => $docentes,
         ]);
     }
 	

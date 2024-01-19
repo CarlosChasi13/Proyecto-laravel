@@ -20,7 +20,6 @@
 </head>
 
 <body>
-
     @livewireScripts
     <script type="module">
         const addModal = new bootstrap.Modal('#createDataModal');

@@ -5,6 +5,11 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Nrc;
+use App\Models\Docente;
+use App\Models\Campu;
+use App\Models\Periodosacademico;
+use App\Models\Departamento;
+use App\Models\Materia;
 
 class Nrcs extends Component
 {
@@ -16,6 +21,11 @@ class Nrcs extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$campus = Campu::all();
+		$departamentos = Departamento::all();
+		$materias = Materia::all();
+		$docentes = Docente::all();
+		$periodo = Periodosacademico::all();
         return view('livewire.nrcs.view', [
             'nrcs' => Nrc::latest()
 						->orWhere('nrc', 'LIKE', $keyWord)
@@ -25,6 +35,11 @@ class Nrcs extends Component
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
 						->paginate(10),
+			'campus' => $campus,
+			'departamentos' => $departamentos,
+			'materias' => $materias,
+			'docentes' => $docentes,
+			'periodosacademicos' => $periodo,
         ]);
     }
 	
