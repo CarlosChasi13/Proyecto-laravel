@@ -6,8 +6,15 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
+<<<<<<< HEAD:proyecto2/resources/views/livewire/areadeconocimientos/view.blade.php
 							<h4><i class="fab fa-laravel text-info"></i>
 							Areadeconocimiento Listing </h4>
+=======
+							<h4>
+							<i class="fas fa-graduation-cap text-success" aria-hidden="true"></i>
+
+							Áreas de conocimiento </h4>
+>>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d:proyecto2/resources/views/livewire/areasconocimientos/view.blade.php
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -16,7 +23,11 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Areadeconocimientos">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
+<<<<<<< HEAD:proyecto2/resources/views/livewire/areadeconocimientos/view.blade.php
 						<i class="fa fa-plus"></i>  Add Areadeconocimientos
+=======
+						<i class="fa fa-plus"></i>  Add Areas de conocimiento
+>>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d:proyecto2/resources/views/livewire/areasconocimientos/view.blade.php
 						</div>
 					</div>
 				</div>

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Areaintere;
+use App\Models\Docente;
 
 class Areainteres extends Component
 {
@@ -24,9 +25,13 @@ class Areainteres extends Component
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
                         'docentes' => $docentes,
                                     
                         
+=======
+                        'id_docente' => Docente::all(),
+>>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d
         ]);
     }
 	

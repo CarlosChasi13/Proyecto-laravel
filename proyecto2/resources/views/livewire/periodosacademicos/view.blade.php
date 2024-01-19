@@ -6,8 +6,8 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Periodosacademico Listing </h4>
+							<h4><i class="far fa-calendar-alt text-secondary"></i>
+							Periodos académicos</h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Periodosacademicos">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Periodosacademicos
+						<i class="fa fa-plus"></i>  Add Periodos académicos
 						</div>
 					</div>
 				</div>
