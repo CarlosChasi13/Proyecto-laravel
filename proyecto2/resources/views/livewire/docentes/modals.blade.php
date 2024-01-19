@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_nacimiento"></label>
-                        <input wire:model="fecha_nacimiento" type="text" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="genero"></label>
