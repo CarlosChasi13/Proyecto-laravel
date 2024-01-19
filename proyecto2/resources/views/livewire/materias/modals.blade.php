@@ -13,9 +13,9 @@
                         <input wire:model="codigo" type="text" class="form-control" id="codigo" placeholder="Codigo">@error('codigo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="curso">Seleccione un Curso</label>
+                        <label for="curso"></label>
                         <select wire:model="id_curso" class="form-control" id="curso">
-                        <option value="">Seleccione un Docente</option>
+                        <option value="">Seleccione un Curso</option>
                         @foreach($curso as $curso)
                         <option value="{{ $curso->id }}">{{ $curso->Nombre }}</option>
                         @endforeach

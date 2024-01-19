@@ -40,7 +40,6 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('/nrc') }}">Nrc</a></li>
-                                <li><a class="dropdown-item" href="{{ url('/areasconocimientos') }}">Áreas Conocimiento</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/materias') }}">Materias</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/rol') }}">Rol</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/responsabilidad') }}">Responsabilidad</a></li>
@@ -53,6 +52,11 @@
                                 <li><a class="dropdown-item" href="{{ url('/periodosacademicos') }}">Periodos Académicos</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/cursos') }}">Cursos</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/departamentos') }}">Departamentos</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/campus') }}">Campus</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/rolopciones') }}">RolOpciones</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/areadeconocimiento') }}">Area de Conocimientos</a></li>
+                                
+                            </ul>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -65,6 +69,9 @@
                             </ul>
                         </li>
                         <!--Nav Bar Hooks - Do not delete!!-->
+						
+						
+						
                     </ul>
                     @endauth()
 

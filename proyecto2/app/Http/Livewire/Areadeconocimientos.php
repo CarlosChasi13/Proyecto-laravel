@@ -4,28 +4,27 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Rol;
+use App\Models\Areadeconocimiento;
 
-class Rols extends Component
+class Areadeconocimientos extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $descripcion, $id_docente, $id_rol;
+    public $selected_id, $keyWord, $id_docente, $id_area;
 
     public function render()
     {
         $docentes = \App\Models\Docente::all();
-        $roles = \App\Models\Rolopcione::all();
+        $areas = \App\Models\areasconocimientosopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.rols.view', [
-            'rols' => Rol::latest()
-						->orWhere('descripcion', 'LIKE', $keyWord)
+        return view('livewire.areadeconocimientos.view', [
+            'areadeconocimientos' => Areadeconocimiento::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
-						->orWhere('id_rol', 'LIKE', $keyWord)
+						->orWhere('id_area', 'LIKE', $keyWord)
 						->paginate(10),
-                        'docentes'=>$docentes,
-                        'roles'=>$roles,
+                        'docentes' => $docentes,
+                        'areas' => $areas,
         ]);
     }
 	
@@ -36,65 +35,59 @@ class Rols extends Component
 	
     private function resetInput()
     {		
-		$this->descripcion = null;
 		$this->id_docente = null;
-		$this->id_rol = null;
+		$this->id_area = null;
     }
 
     public function store()
     {
         $this->validate([
-		'descripcion' => 'required',
 		'id_docente' => 'required',
-		'id_rol' => 'required',
+		'id_area' => 'required',
         ]);
 
-        Rol::create([ 
-			'descripcion' => $this-> descripcion,
+        Areadeconocimiento::create([ 
 			'id_docente' => $this-> id_docente,
-			'id_rol' => $this-> id_rol
+			'id_area' => $this-> id_area
         ]);
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Rol Successfully created.');
+		session()->flash('message', 'Areadeconocimiento Successfully created.');
     }
 
     public function edit($id)
     {
-        $record = Rol::findOrFail($id);
+        $record = Areadeconocimiento::findOrFail($id);
         $this->selected_id = $id; 
-		$this->descripcion = $record-> descripcion;
 		$this->id_docente = $record-> id_docente;
-		$this->id_rol = $record-> id_rol;
+		$this->id_area = $record-> id_area;
     }
 
     public function update()
     {
         $this->validate([
-		'descripcion' => 'required',
 		'id_docente' => 'required',
-		'id_rol' => 'required',
+		'id_area' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Rol::find($this->selected_id);
+			$record = Areadeconocimiento::find($this->selected_id);
             $record->update([ 
-			'descripcion' => $this-> descripcion,
 			'id_docente' => $this-> id_docente,
-			'id_rol' => $this-> id_rol
+			'id_area' => $this-> id_area
             ]);
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Rol Successfully updated.');
+			session()->flash('message', 'Areadeconocimiento Successfully updated.');
         }
     }
 
     public function destroy($id)
     {
         if ($id) {
-            Rol::where('id', $id)->delete();
+            Areadeconocimiento::where('id', $id)->delete();
         }
     }
 }

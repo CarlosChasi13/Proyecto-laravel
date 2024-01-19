@@ -14,7 +14,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="docente">Seleccione un Docente</label>
+                        <label for="docente"></label>
                         <select wire:model="id_docentes" class="form-control" id="docente">
                         <option value="">Seleccione un Docente</option>
                         @foreach($docentes as $docente)
@@ -34,11 +34,11 @@
                         @error('id_materias') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="campus"></label>
-                        <select wire:model="id_campus" class="form-control" id="docente">
+                        <label for="id_campus"></label>
+                        <select wire:model="id_campus" class="form-control" id="id_campus">
                         <option value="">Seleccione un campus</option>
                         @foreach($campus as $campus)
-                        <option value="{{ $campus->id }}">{{ $campus->nombre }}</option>
+                        <option value="{{ $campus->id }}">{{ $campus->Nombre }}</option>
                         @endforeach
                         </select>
                         @error('id_campus') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -48,7 +48,7 @@
                         <select wire:model="id_departamento" class="form-control" id="departamentos">
                         <option value="">Seleccione un Departamento</option>
                         @foreach($departamentos as $departamentos)
-                        <option value="{{ $departamentos->id }}">{{ $departamentos->nombre }}</option>
+                        <option value="{{ $departamentos->id }}">{{ $departamentos->Nombre }}</option>
                         @endforeach
                         </select>
                         @error('id_departamento') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -58,7 +58,7 @@
                         <select wire:model="id_periodoacademico" class="form-control" id="periodos">
                         <option value="">Seleccione el Periodo</option>
                         @foreach($periodos as $periodos)
-                        <option value="{{ $periodos->id }}">{{ $periodos->nombre }}</option>
+                        <option value="{{ $periodos->id }}">{{ $periodos->nivel }}</option>
                         @endforeach
                         </select>
                         @error('id_periodos') <span class="error text-danger">{{ $message }}</span> @enderror
