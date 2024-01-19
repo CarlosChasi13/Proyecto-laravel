@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div id="app">
+<div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -41,9 +41,14 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ url('/nrc') }}">Nrc</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/areasconocimientos') }}">Áreas Conocimiento</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/areasconocimientosopciones') }}">Áreas Conocimiento-opciones</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/campus') }}">Campus</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/materias') }}">Materias</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/rol') }}">Rol</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/rolopciones') }}">Rol-opciones</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/responsabilidad') }}">Responsabilidad</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/responsabilidadopciones') }}">Responsabilidad opciones</a></li>
+                                <li><a class="dropdown-item" href="{{ url('/nrcs') }}">NRCs</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/areainteres') }}">Áreas de Interés</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/publicacioncientificas') }}">Publicaciones Científicas</a></li>
                                 <li><a class="dropdown-item" href="{{ url('/capacitacions') }}">Capacitaciones</a></li>
@@ -122,3 +127,4 @@
 </body>
 
 </html>
+
