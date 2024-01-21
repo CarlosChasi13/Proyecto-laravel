@@ -20,7 +20,7 @@ class Areaintere extends Model
      */
     public function docente()
     {
-        return $this->hasOne('App\Models\Docente', 'id', 'id_docente');
+        return $this->belongsTo(Docente::class);
     }
     
 }

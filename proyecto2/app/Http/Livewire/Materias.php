@@ -16,7 +16,11 @@ class Materias extends Component
 
     public function render()
     {
+<<<<<<< HEAD
+		$curso=\App\Models\Curso::all();
+=======
 		$cursos = Curso::all();
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.materias.view', [
             'materias' => Materia::latest()
@@ -29,7 +33,12 @@ class Materias extends Component
 						->orWhere('horas_laboratorio', 'LIKE', $keyWord)
 						->orWhere('horas_otros', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
+			'curso'=>$curso,
+				
+=======
 			'cursos' => $cursos,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

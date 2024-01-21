@@ -13,9 +13,11 @@ class Areainteres extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $tema, $descripcion, $id_docente;
+    
 
     public function render()
     {
+        $docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         $docentes = \App\Models\Docente::all();
         return view('livewire.areainteres.view', [
@@ -24,7 +26,17 @@ class Areainteres extends Component
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        'docentes' => $docentes,
+                                    
+                        
+=======
+                        'id_docente' => Docente::all(),
+>>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d
+=======
             'docentes' => $docentes,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

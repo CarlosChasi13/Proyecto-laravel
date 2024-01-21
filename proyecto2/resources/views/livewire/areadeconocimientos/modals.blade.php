@@ -3,18 +3,18 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Areasconocimiento</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Create New Areadeconocimiento</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="id_docentes"></label>
-                        <input wire:model="id_docentes" type="text" class="form-control" id="id_docentes" placeholder="Id Docentes">@error('id_docentes') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente"></label>
+                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_area_con"></label>
-                        <input wire:model="id_area_con" type="text" class="form-control" id="id_area_con" placeholder="Id Area Con">@error('id_area_con') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_area"></label>
+                        <input wire:model="id_area" type="text" class="form-control" id="id_area" placeholder="Id Area">@error('id_area') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
@@ -32,19 +32,19 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Areasconocimiento</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Areadeconocimiento</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="id_docentes"></label>
-                        <input wire:model="id_docentes" type="text" class="form-control" id="id_docentes" placeholder="Id Docentes">@error('id_docentes') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente"></label>
+                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_area_con"></label>
-                        <input wire:model="id_area_con" type="text" class="form-control" id="id_area_con" placeholder="Id Area Con">@error('id_area_con') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_area"></label>
+                        <input wire:model="id_area" type="text" class="form-control" id="id_area" placeholder="Id Area">@error('id_area') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

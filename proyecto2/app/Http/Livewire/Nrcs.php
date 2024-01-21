@@ -20,6 +20,13 @@ class Nrcs extends Component
 
     public function render()
     {
+		$docentes = \App\Models\Docente::all();
+		$materias = \App\Models\Materia::all();
+		$campus = \App\Models\Campu::all();
+		$departamentos = \App\Models\Departamento::all();
+		$periodos = \App\Models\Periodosacademico::all();
+
+
 		$keyWord = '%'.$this->keyWord .'%';
 		$campus = Campu::all();
 		$departamentos = Departamento::all();
@@ -35,11 +42,19 @@ class Nrcs extends Component
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
+						'docentes' => $docentes,
+						'materias' => $materias,
+						'campus' => $campus,
+						'departamentos' => $departamentos,
+						'periodos' => $periodos,
+=======
 			'campus' => $campus,
 			'departamentos' => $departamentos,
 			'materias' => $materias,
 			'docentes' => $docentes,
 			'periodosacademicos' => $periodo,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

@@ -15,6 +15,7 @@ class Publicacioncientificas extends Component
 
     public function render()
     {
+		$docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.publicacioncientificas.view', [
             'publicacioncientificas' => Publicacioncientifica::latest()
@@ -25,6 +26,7 @@ class Publicacioncientificas extends Component
 						->orWhere('autor', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+						'docentes'=>$docentes,
         ]);
     }
 	

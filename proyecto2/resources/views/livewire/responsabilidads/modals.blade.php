@@ -8,13 +8,25 @@
             </div>
            <div class="modal-body">
 				<form>
-                    <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                <div class="form-group">
+                        <label for="docente"></label>
+                        <select wire:model="id_docente" class="form-control" id="docente">
+                        <option value="">Seleccione un Docente</option>
+                        @foreach($docentes as $docente)
+                        <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
+                        @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="id_responsabilidad"></label>
-                        <input wire:model="id_responsabilidad" type="text" class="form-control" id="id_responsabilidad" placeholder="Id Responsabilidad">@error('id_responsabilidad') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <select wire:model="id_responsabilidad" class="form-control" id="docente">
+                        <option value="">Seleccione una Responsabilidad</option>
+                        @foreach($responsabilidades as $responsabilidad)
+                        <option value="{{ $responsabilidad->id }}">{{ $responsabilidad->cargo }}</option>
+                        @endforeach
+                        </select>
+                        @error('id_responsabilidad') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

@@ -15,6 +15,7 @@ class Experiencialaborals extends Component
 
     public function render()
     {
+		$docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.experiencialaborals.view', [
             'experiencialaborals' => Experiencialaboral::latest()
@@ -25,6 +26,7 @@ class Experiencialaborals extends Component
 						->orWhere('observacion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+						'docentes' => $docentes,
         ]);
     }
 	

@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            @livewire('areasconocimientos')
+            @livewire('areadeconocimientos')
         </div>     
     </div>   
 </div>
