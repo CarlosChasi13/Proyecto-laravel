@@ -26,17 +26,8 @@ class Areainteres extends Component
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
-<<<<<<< HEAD
-<<<<<<< HEAD
                         'docentes' => $docentes,
-                                    
-                        
-=======
-                        'id_docente' => Docente::all(),
->>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d
-=======
-            'docentes' => $docentes,
->>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
+
         ]);
     }
 	

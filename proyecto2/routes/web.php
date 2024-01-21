@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route Hooks - Do not delete//
 Route::view('nrc', 'livewire.nrcs.index')->middleware('auth');
-Route::view('areasconocimientos', 'livewire.areasconocimientos.index')->middleware('auth');
+Route::view('areasconocimientos', 'livewire.areadeconocimientos.index')->middleware('auth');
 Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index')->middleware('auth');
 Route::view('materias', 'livewire.materias.index')->middleware('auth');
 Route::view('periodosacademicos', 'livewire.periodosacademicos.index')->middleware('auth');

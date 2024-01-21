@@ -11,7 +11,7 @@ class Areadeconocimiento extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'areadeconocimientos';
+    protected $table = 'areadeconocimiento';
 
     protected $fillable = ['id_docente','id_area'];
 	
