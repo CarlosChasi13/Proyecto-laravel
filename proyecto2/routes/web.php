@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+Route::view('/docentes', 'home.docentes');
+Route::view('/materias', 'home.materias');
+Route::view('/contactanos', 'home.contactanos');
 
 Route::middleware([
     'auth:sanctum',
@@ -32,21 +33,23 @@ Auth::routes();
 /*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
 
 //Route Hooks - Do not delete//
-Route::view('nrc', 'livewire.nrcs.index')->middleware('auth');
-Route::view('areasconocimientos', 'livewire.areadeconocimientos.index')->middleware('auth');
-Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index')->middleware('auth');
-Route::view('materias', 'livewire.materias.index')->middleware('auth');
-Route::view('periodosacademicos', 'livewire.periodosacademicos.index')->middleware('auth');
-Route::view('cursos', 'livewire.cursos.index')->middleware('auth');
-Route::view('departamentos', 'livewire.departamentos.index')->middleware('auth');
-Route::view('campus', 'livewire.campus.index')->middleware('auth');
-Route::view('docente', 'livewire.docentes.index')->middleware('auth');
-Route::view('responsabilidad', 'livewire.responsabilidads.index')->middleware('auth');
-Route::view('responsabilidadopciones', 'livewire.responsabilidadopciones.index')->middleware('auth');
-Route::view('rol', 'livewire.rols.index')->middleware('auth');
-Route::view('rolopciones', 'livewire.rolopciones.index')->middleware('auth');
-Route::view('areainteres', 'livewire.areainteres.index')->middleware('auth');
-Route::view('publicacioncientificas', 'livewire.publicacioncientificas.index')->middleware('auth');
-Route::view('capacitacions', 'livewire.capacitacions.index')->middleware('auth');
-Route::view('experiencialaborals', 'livewire.experiencialaborals.index')->middleware('auth');
-Route::view('titulos', 'livewire.titulos.index')->middleware('auth');
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::view('nrc', 'livewire.nrcs.index');
+    Route::view('areasconocimientos', 'livewire.areadeconocimientos.index');
+    Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index');
+    Route::view('materias', 'livewire.materias.index');
+    Route::view('periodosacademicos', 'livewire.periodosacademicos.index');
+    Route::view('cursos', 'livewire.cursos.index');
+    Route::view('departamentos', 'livewire.departamentos.index');
+    Route::view('campus', 'livewire.campus.index');
+    Route::view('docente', 'livewire.docentes.index');
+    Route::view('responsabilidad', 'livewire.responsabilidads.index');
+    Route::view('responsabilidadopciones', 'livewire.responsabilidadopciones.index');
+    Route::view('rol', 'livewire.rols.index');
+    Route::view('rolopciones', 'livewire.rolopciones.index');
+    Route::view('areainteres', 'livewire.areainteres.index');
+    Route::view('publicacioncientificas', 'livewire.publicacioncientificas.index');
+    Route::view('capacitacions', 'livewire.capacitacions.index');
+    Route::view('experiencialaborals', 'livewire.experiencialaborals.index');
+    Route::view('titulos', 'livewire.titulos.index');
+});

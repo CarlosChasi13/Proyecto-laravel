@@ -316,6 +316,7 @@ return [
             'text' => 'Página Principal',
             'url'  => '/',
             'icon'    => 'fas fa-file text-primary',
+            'target' => '_blank'
         ],
         ['header' => 'CRUDS'],
         [
@@ -324,47 +325,47 @@ return [
             'submenu' => [
                 [
                     'text' => 'Docente',
-                    'url'  => '/docente',
+                    'url'  => '/admin/docente',
                     'icon'    => 'fas fa-user text-primary',
                 ],
                 [
                     'text' => 'Experiencia laboral',
-                    'url'  => '/experiencialaborals',
+                    'url'  => '/admin/experiencialaborals',
                     'icon'    => 'fas fa-briefcase text-success',
                 ],
                 [
                     'text' => 'Títulos',
-                    'url'  => '/titulos',
+                    'url'  => '/admin/titulos',
                     'icon'    => 'fas fa-star text-primary',
                 ],
                 [
                     'text' => 'Area de conocimiento',
-                    'url'  => '/areasconocimientos',
+                    'url'  => '/admin/areasconocimientos',
                     'icon'    => 'fas fa-graduation-cap text-success',
                 ],
                 [
                     'text' => 'Capacitación',
-                    'url'  => '/capacitacions',
+                    'url'  => '/admin/capacitacions',
                     'icon'    => 'fas fa-chalkboard-teacher text-warning',
                 ],
                 [
                     'text' => 'Área de interés',
-                    'url'  => '/areainteres',
+                    'url'  => '/admin/areainteres',
                     'icon' => 'fas fa-book text-primary',
                 ],
                 [
                     'text' => 'Publicaciones científicas',
-                    'url'  => '/publicacioncientificas',
+                    'url'  => '/admin/publicacioncientificas',
                     'icon'    => 'fas fa-microscope text-success',
                 ],
                 [
                     'text' => 'Responsabilidad',
-                    'url'  => '/responsabilidad',
+                    'url'  => '/admin/responsabilidad',
                     'icon'    => 'fas fa-user-tie text-warning',
                 ],
                 [
                     'text' => 'Rol',
-                    'url'  => '/rol',
+                    'url'  => '/admin/rol',
                     'icon'    => 'fas fa-user-shield text-success',
                 ],
             ]
@@ -375,32 +376,32 @@ return [
             'submenu' => [
                 [
                     'text' => 'NRC',
-                    'url'  => '/nrc',
+                    'url'  => '/admin/nrc',
                     'icon'    => 'fas fa-hashtag text-primary',
                 ],
                 [
                     'text' => 'Periodo académicos',
-                    'url'  => '/periodosacademicos',
+                    'url'  => '/admin/periodosacademicos',
                     'icon'    => 'far fa-calendar-alt text-secondary',
                 ],
                 [
                     'text' => 'Cursos',
-                    'url'  => '/cursos',
+                    'url'  => '/admin/cursos',
                     'icon'    => 'fas fa-pencil-alt text-info',
                 ],
                 [
                     'text' => 'Departamentos',
-                    'url'  => '/departamentos',
+                    'url'  => '/admin/departamentos',
                     'icon'    => 'fas fa-laptop-code text-warning',
                 ],
                 [
                     'text' => 'Campus',
-                    'url'  => '/campus',
+                    'url'  => '/admin/campus',
                     'icon'    => 'fas fa-building text-primary',
                 ],
                 [
                     'text' => 'Materias',
-                    'url'  => '/materias',
+                    'url'  => '/admin/materias',
                     'icon'    => 'fas fa-book text-primary',
                 ],
             ],
@@ -411,17 +412,17 @@ return [
             'submenu' => [
                 [
                     'text' => 'Areas de conocimiento',
-                    'url'  => '/areasconocimientosopciones',
+                    'url'  => '/admin/areasconocimientosopciones',
                     'icon'    => 'fas fa-atom text-warning',
                 ],
                 [
                     'text' => 'Rol',
-                    'url'  => '/rolopciones',
+                    'url'  => '/admin/rolopciones',
                     'icon'    => 'fas fa-users text-secondary',
                 ],
                 [
                     'text' => 'Responsabilidad',
-                    'url'  => '/responsabilidadopciones',
+                    'url'  => '/admin/responsabilidadopciones',
                     'icon'    => 'fas fa-sitemap text-secondary',
                 ],  
             ],
@@ -561,16 +562,6 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
-                ],
-            ],
-        ],
-        'ShowModals' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => '//resources/js/show-modals.js',
                 ],
             ],
         ],
