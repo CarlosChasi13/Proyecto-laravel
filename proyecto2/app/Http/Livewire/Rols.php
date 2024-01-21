@@ -16,7 +16,8 @@ class Rols extends Component
 
     public function render()
     {
-        $rolopcion = Rolopcione::all();
+        $docentes = \App\Models\Docente::all();
+        $roles = \App\Models\Rolopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.rols.view', [
             'rols' => Rol::latest()
@@ -24,7 +25,8 @@ class Rols extends Component
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('id_rol', 'LIKE', $keyWord)
 						->paginate(10),
-            'rolopcione' => $rolopcion,
+                        'docentes'=>$docentes,
+                        'roles'=>$roles,
         ]);
     }
 	

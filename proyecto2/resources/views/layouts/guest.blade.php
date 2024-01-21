@@ -44,8 +44,8 @@
                     <a class="font-medium text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/" aria-current="page">
                         Inicio
                     </a>
-                    <a class="font-medium text-gray-800 dark:text-gray-400 dark:hover:text-gray-300" href="/" aria-current="page">
-                        Quienes Somos
+                    <a class="font-medium text-gray-800 dark:text-gray-400 dark:hover:text-gray-300" href="{{ url('/nosotros') }}" aria-current="page">
+                        Nosotros
                     </a>
                     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
                         <button id="hs-mega-menu-basic-dr" type="button" class="flex items-center w-full text-gray-600 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-300">
@@ -63,7 +63,7 @@
                             </a>
                         </div>
                     </div>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ url('/contactanos') }}">
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ url('/contactanos') }}">
                         Contáctanos
                     </a>
                     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">

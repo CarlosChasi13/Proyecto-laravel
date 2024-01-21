@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
+Route::view('/nosotros', 'home.nosotros');
 Route::view('/docentes', 'home.docentes');
 Route::view('/materias', 'home.materias');
 Route::view('/contactanos', 'home.contactanos');

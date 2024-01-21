@@ -16,14 +16,16 @@ class Responsabilidads extends Component
 
     public function render()
     {
-        $responsabilidadopcion = Responsabilidadopcione::all();
+        $docentes = \App\Models\Docente::all();
+        $responsabilidades = \App\Models\Responsabilidadopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.responsabilidads.view', [
             'responsabilidads' => Responsabilidad::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('id_responsabilidad', 'LIKE', $keyWord)
 						->paginate(10),
-            'responsabilidadopcion' => $responsabilidadopcion,
+                    'docentes'=>$docentes,
+                    'responsabilidades'=>$responsabilidades,
         ]);
     }
 	

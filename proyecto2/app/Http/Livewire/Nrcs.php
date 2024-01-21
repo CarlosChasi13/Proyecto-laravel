@@ -42,11 +42,11 @@ class Nrcs extends Component
 						->orWhere('id_docentes', 'LIKE', $keyWord)
 						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
 						->paginate(10),
-			'campus' => $campus,
-			'departamentos' => $departamentos,
-			'materias' => $materias,
-			'docentes' => $docentes,
-			'periodosacademicos' => $periodo,
+						'docentes' => $docentes,
+						'materias' => $materias,
+						'campus' => $campus,
+						'departamentos' => $departamentos,
+						'periodos' => $periodos,
         ]);
     }
 	
