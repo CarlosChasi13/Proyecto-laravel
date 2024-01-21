@@ -17,19 +17,11 @@
                         <input wire:model="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">@error('descripcion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-<<<<<<< HEAD
-                        <label for="docente">Seleccione un Docente</label>
-                        <select wire:model="id_docente" class="form-control" id="docente">
-                        <option value="">Seleccione un Docente</option>
-                        @foreach($docentes as $docente)
-                        <option value="{{ $docente->id }}">{{ $docente->nombre }}</option>
-=======
                         <label for="descripcion"></label>
                         <select wire:model="id_docente" class="form-control" id="docente">
                         <option value="">Seleccione un Docente</option>
                         @foreach($docentes as $docente)
                         <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
->>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
                         @endforeach
                         </select>
                         @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror

@@ -23,7 +23,6 @@
                         @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-<<<<<<< HEAD
                         <label for="roles"></label>
                         <select wire:model="id_rol" class="form-control" id="roles">
                         <option value="">Seleccione un roles</option>
@@ -32,12 +31,6 @@
                         @endforeach
                         </select>
                         @error('id_rol') <span class="error text-danger">{{ $message }}</span> @enderror
-=======
-                        <label for="id_rol"></label>
-                        <input wire:model="id_rol" type="text" class="form-control" id="id_rol" 
-                        placeholder="Id Rol">@error('id_rol') <span class="error text-danger">{{ $message }}</span> 
-                        @enderror
->>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d
                     </div>
 
                 </form>
