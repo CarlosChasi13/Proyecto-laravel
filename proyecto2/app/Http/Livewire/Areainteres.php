@@ -19,6 +19,7 @@ class Areainteres extends Component
     {
         $docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
+        $docentes = \App\Models\Docente::all();
         return view('livewire.areainteres.view', [
             'areainteres' => Areaintere::latest()
 						->orWhere('tema', 'LIKE', $keyWord)
@@ -26,12 +27,16 @@ class Areainteres extends Component
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
 <<<<<<< HEAD
+<<<<<<< HEAD
                         'docentes' => $docentes,
                                     
                         
 =======
                         'id_docente' => Docente::all(),
 >>>>>>> 69430cfd37a34485ab36f754f3e2e22d3235094d
+=======
+            'docentes' => $docentes,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

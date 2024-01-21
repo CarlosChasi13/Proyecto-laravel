@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Rol;
+use App\Models\Rolopcione;
 
 class Rols extends Component
 {
@@ -15,8 +16,12 @@ class Rols extends Component
 
     public function render()
     {
+<<<<<<< HEAD
         $docentes = \App\Models\Docente::all();
         $roles = \App\Models\Rolopcione::all();
+=======
+        $rolopcion = Rolopcione::all();
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.rols.view', [
             'rols' => Rol::latest()
@@ -24,8 +29,12 @@ class Rols extends Component
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('id_rol', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
                         'docentes'=>$docentes,
                         'roles'=>$roles,
+=======
+            'rolopcione' => $rolopcion,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

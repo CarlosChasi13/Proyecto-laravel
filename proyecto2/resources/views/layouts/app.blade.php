@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -126,6 +127,8 @@
             @yield('content')
         </main>
     </div>
+=======
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
     @livewireScripts
     <script type="module">
         const addModal = new bootstrap.Modal('#createDataModal');

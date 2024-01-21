@@ -437,121 +437,6 @@ return [
             'url'  => 'password/reset',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        /* [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'NRC',
-                    'url'  => '/nrc',
-                    'icon'    => 'fas fa-hashtag text-primary',
-                ],
-
-               
-                [
-                    'text' => 'Area de conocimiento',
-                    'url'  => '/areasconocimientos',
-                    'icon'    => 'fas fa-graduation-cap text-success',
-                    
-                ],
-                [
-                    'text' => 'Area de conocimiento-opciones',
-                    'url'  => '/areasconocimientosopciones',
-                    'icon'    => 'fas fa-atom text-warning',
-                ],
-        
-                [
-                    'text' => 'Campus',
-                    'url'  => '/campus',
-                    'icon'    => 'fas fa-building text-primary',
-                ],
-
-                [
-                    'text' => 'Materias',
-                    'url'  => '/materias',
-                    'icon'    => 'fas fa-book text-primary',
-                ],
-
-                [
-                    'text' => 'Rol',
-                    'url'  => '/rol',
-                    'icon'    => 'fas fa-user-shield text-success',
-                ],
-                [
-                    'text' => 'Rol-opciones',
-                    'url'  => '/rolopciones',
-                    'icon'    => 'fas fa-users text-secondary',
-                ],
-                
-                [
-                    'text' => 'Responsabilidad',
-                    'url'  => '/responsabilidad',
-                    'icon'    => 'fas fa-user-tie text-warning',
-                ],
-                [
-                    'text' => 'Responsabilidad-opciones',
-                    'url'  => '/responsabilidadopciones',
-                    'icon'    => 'fas fa-sitemap text-secondary',
-                ],
-                
-                [
-                    'text' => 'Área de interés',
-                    'url'  => '/areainteres',
-                    'icon' => 'fas fa-book text-primary',
-                ],
-
-                [
-                    'text' => 'Publicaciones científicas',
-                    'url'  => '/publicacioncientificas',
-                    'icon'    => 'fas fa-microscope text-success',
-                ],
-
-                [
-                    'text' => 'Capacitación',
-                    'url'  => '/capacitacions',
-                    'icon'    => 'fas fa-chalkboard-teacher text-warning',
-                ],
-
-                [
-                    'text' => 'Experiencia laboral',
-                    'url'  => '/experiencialaborals',
-                    'icon'    => 'fas fa-briefcase text-success',
-                ],
-
-                [
-                    'text' => 'Títulos',
-                    'url'  => '/titulos',
-                    'icon'    => 'fas fa-star text-primary',
-                ],
-
-                [
-                    'text' => 'Docente',
-                    'url'  => '/docente',
-                    'icon'    => 'fas fa-user text-primary',
-                ],
-
-                [
-                    'text' => 'Periodo académicos',
-                    'url'  => '/periodosacademicos',
-                    'icon'    => 'far fa-calendar-alt text-secondary',
-                ],
-
-                [
-                    'text' => 'Cursos',
-                    'url'  => '/cursos',
-                    'icon'    => 'fas fa-pencil-alt text-info',
-                ],
-
-
-                [
-                    'text' => 'Departamentos',
-                    'url'  => '/departamentos',
-                    'icon'    => 'fas fa-laptop-code text-warning',
-                ],
-
-
-            ],
-        ], */
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -567,8 +452,12 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
+
         ], 
-    ],
+
+        ],
+
+    
 
     /*
     |--------------------------------------------------------------------------

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Responsabilidad;
+use App\Models\Responsabilidadopcione;
 
 class Responsabilidads extends Component
 {
@@ -15,16 +16,24 @@ class Responsabilidads extends Component
 
     public function render()
     {
+<<<<<<< HEAD
         $docentes = \App\Models\Docente::all();
         $responsabilidades = \App\Models\Responsabilidadopcione::all();
+=======
+        $responsabilidadopcion = Responsabilidadopcione::all();
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.responsabilidads.view', [
             'responsabilidads' => Responsabilidad::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('id_responsabilidad', 'LIKE', $keyWord)
 						->paginate(10),
+<<<<<<< HEAD
                     'docentes'=>$docentes,
                     'responsabilidades'=>$responsabilidades,
+=======
+            'responsabilidadopcion' => $responsabilidadopcion,
+>>>>>>> 5c9de0ab08d1111aa4f472e80291b0aa210fd56c
         ]);
     }
 	

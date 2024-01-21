@@ -1,4 +1,4 @@
-@section('title', __('Publicacioncientificas'))
+@section('title', __('Publicaciones cientificas'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
@@ -7,16 +7,16 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fas fa-microscope text-success"></i>
-							Publicación científica</h4>
+							Publicaciones científica</h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Publicacioncientificas">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Publicaciones">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Publicación científica
+						<i class="fa fa-plus"></i>  Añadir Publicaciones
 						</div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 								<th>Anio</th>
 								<th>Ies</th>
 								<th>Autor</th>
-								<th>Id Docente</th>
+								<th>Docente</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -46,7 +46,7 @@
 								<td>{{ $row->anio }}</td>
 								<td>{{ $row->ies }}</td>
 								<td>{{ $row->autor }}</td>
-								<td>{{ $row->id_docente }}</td>
+								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
