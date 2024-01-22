@@ -17,6 +17,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/apptw.js'])
 </head>
+
 <body>
     <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white text-sm py-4 dark:bg-gray-800">
         <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
@@ -58,9 +59,9 @@
                             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ url('/docentes') }}">
                                 Personal Docente
                             </a>
-                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ url('/materias') }}">
+                            <!-- <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ url('/materias') }}">
                                 Materias
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                     <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ url('/contactanos') }}">
@@ -69,9 +70,9 @@
                     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
                         <button id="hs-mega-menu-basic-dr" type="button" class="flex items-center w-full text-gray-600 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-500 ">
                             @auth()
-                                <label class="text-slate-300">Bienvenido, <b>{{ Auth::user()->name }}</b>!</label>
+                            <label class="text-slate-300">Bienvenido, <b>{{ Auth::user()->name }}</b>!</label>
                             @else
-                                <span class="text-slate-300">Cuenta</span>
+                            <span class="text-slate-300">Cuenta</span>
                             @endauth
                             <svg class="ms-1 flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m6 9 6 6 6-6" />
@@ -95,8 +96,7 @@
                                 Administración
                             </a>
                             <hr>
-                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('logout') }}" 
-                                onclick="event.preventDefault();
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 Cerrar Sesión
                             </a>
@@ -111,8 +111,32 @@
         </nav>
     </header>
     <div class="font-sans text-gray-900 antialiased">
+        <img src="img\Logo_ESPE.png" alt="background" class="select-none pointer-events-none absolute inset-0 -z-10 m-auto w-1/2 opacity-10 object-center"/>
         @yield('content')
     </div>
+    <footer class="bg-white dark:bg-gray-900">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <div class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse pointer-events-none select-none">
+                    <img src="img\logo.png" class="rounded-md bg-blue-500 w-16" alt="Logo"/>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.full_name', 'Laravel') }}</span>
+                </div>
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                    <li>
+                        <a href="{{ url('/nosotros') }}" class="hover:underline me-4 md:me-6">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline me-4 md:me-6">Términos y Condiciones</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/contactanos') }}" class="hover:underline">Contáctanos</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <label class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <span>{{ config('app.name', 'Laravel') }}</span>. Todos los derechos reservados.</label>
+        </div>
+    </footer>
 </body>
 
 </html>
