@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -45,9 +45,6 @@
                     <a class="font-medium text-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/" aria-current="page">
                         Inicio
                     </a>
-                    <a class="font-medium text-gray-800 dark:text-gray-400 dark:hover:text-gray-300" href="{{ url('/nosotros') }}" aria-current="page">
-                        Nosotros
-                    </a>
                     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
                         <button id="hs-mega-menu-basic-dr" type="button" class="flex items-center w-full text-gray-600 hover:text-gray-400 font-medium dark:text-gray-400 dark:hover:text-gray-300">
                             Académico
@@ -64,7 +61,7 @@
                             </a> -->
                         </div>
                     </div>
-                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ url('/contactanos') }}">
+                    <a class="font-medium text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ url('contactanos') }}">
                         Contáctanos
                     </a>
                     <div class="hs-dropdown [--strategy:static] sm:[--strategy:fixed] [--adaptive:none]">
@@ -80,15 +77,15 @@
                         </button>
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 z-10 bg-white sm:shadow-md rounded-lg p-2 dark:bg-gray-800 sm:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full sm:border before:-top-5 before:start-0 before:w-full before:h-5 hidden">
                             @guest
-                            @if (Route::has('register'))
-                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('register') }}">
-                                Registrarse
-                            </a>
-                            <hr>
-                            @endif
                             @if (Route::has('login'))
                             <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('login') }}">
                                 Iniciar Sesión
+                            </a>
+                            <hr>
+                            @endif
+                            @if (Route::has('register'))
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="{{ route('register') }}">
+                                Registrarse
                             </a>
                             @endif
                             @else
@@ -111,7 +108,7 @@
         </nav>
     </header>
     <div class="font-sans text-gray-900 antialiased">
-        <img src="img\Logo_ESPE.png" alt="background" class="select-none pointer-events-none absolute inset-0 -z-10 m-auto w-1/2 opacity-10 object-center"/>
+        <img src="img\Logo_ESPE.png" alt="background" class="select-none pointer-events-none fixed inset-0 -z-10 m-auto w-1/2 opacity-5"/>
         @yield('content')
     </div>
     <footer class="bg-white dark:bg-gray-900">
@@ -122,9 +119,6 @@
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.full_name', 'Laravel') }}</span>
                 </div>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                    <li>
-                        <a href="{{ url('/nosotros') }}" class="hover:underline me-4 md:me-6">Nosotros</a>
-                    </li>
                     <li>
                         <a href="#" class="hover:underline me-4 md:me-6">Términos y Condiciones</a>
                     </li>

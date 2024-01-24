@@ -329,24 +329,24 @@ return [
                     'icon'    => 'fas fa-user text-primary',
                 ],
                 [
-                    'text' => 'Experiencia laboral',
-                    'url'  => 'admin/experiencialaborals',
-                    'icon'    => 'fas fa-briefcase text-success',
-                ],
-                [
                     'text' => 'Títulos',
                     'url'  => 'admin/titulos',
                     'icon'    => 'fas fa-star text-primary',
                 ],
                 [
-                    'text' => 'Area de conocimiento',
-                    'url'  => 'admin/areasconocimientos',
-                    'icon'    => 'fas fa-graduation-cap text-success',
+                    'text' => 'Experiencia laboral',
+                    'url'  => 'admin/experiencialaborals',
+                    'icon'    => 'fas fa-briefcase text-success',
                 ],
                 [
-                    'text' => 'Capacitación',
+                    'text' => 'Capacitaciones',
                     'url'  => 'admin/capacitacions',
                     'icon'    => 'fas fa-chalkboard-teacher text-warning',
+                ],
+                [
+                    'text' => 'Área de conocimiento',
+                    'url'  => 'admin/areasconocimientos',
+                    'icon'    => 'fas fa-graduation-cap text-success',
                 ],
                 [
                     'text' => 'Área de interés',
@@ -423,6 +423,11 @@ return [
                 [
                     'text' => 'Responsabilidad',
                     'url'  => 'admin/responsabilidadopciones',
+                    'icon'    => 'fas fa-sitemap text-secondary',
+                ],  
+                [
+                    'text' => 'Géneros',
+                    'url'  => 'admin/generosopciones',
                     'icon'    => 'fas fa-sitemap text-secondary',
                 ],  
             ],

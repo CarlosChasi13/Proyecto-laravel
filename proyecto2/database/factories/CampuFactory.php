@@ -14,6 +14,12 @@ class CampuFactory extends Factory
     {
         return [
 			'Nombre' => $this->faker->name,
+			'telefono' => $this->faker->name,
+			'email' => $this->faker->name,
+			'direccion' => $this->faker->name,
+			'provincia' => $this->faker->name,
+			'pais' => $this->faker->name,
+			'maps_url' => $this->faker->name,
         ];
     }
 }

@@ -11,7 +11,7 @@ class Campus extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $Nombre;
+    public $selected_id, $keyWord, $Nombre, $telefono, $email, $direccion, $provincia, $pais, $maps_url;
 
     public function render()
     {
@@ -19,6 +19,12 @@ class Campus extends Component
         return view('livewire.campus.view', [
             'campus' => Campu::latest()
 						->orWhere('Nombre', 'LIKE', $keyWord)
+						->orWhere('telefono', 'LIKE', $keyWord)
+						->orWhere('email', 'LIKE', $keyWord)
+						->orWhere('direccion', 'LIKE', $keyWord)
+						->orWhere('provincia', 'LIKE', $keyWord)
+						->orWhere('pais', 'LIKE', $keyWord)
+						->orWhere('maps_url', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -31,16 +37,34 @@ class Campus extends Component
     private function resetInput()
     {		
 		$this->Nombre = null;
+		$this->telefono = null;
+		$this->email = null;
+		$this->direccion = null;
+		$this->provincia = null;
+		$this->pais = null;
+		$this->maps_url = null;
     }
 
     public function store()
     {
         $this->validate([
 		'Nombre' => 'required',
+		'telefono' => 'required',
+		'email' => 'required',
+		'direccion' => 'required',
+		'provincia' => 'required',
+		'pais' => 'required',
+		'maps_url' => 'required',
         ]);
 
         Campu::create([ 
-			'Nombre' => $this-> Nombre
+			'Nombre' => $this-> Nombre,
+			'telefono' => $this-> telefono,
+			'email' => $this-> email,
+			'direccion' => $this-> direccion,
+			'provincia' => $this-> provincia,
+			'pais' => $this-> pais,
+			'maps_url' => $this-> maps_url
         ]);
         
         $this->resetInput();
@@ -53,18 +77,36 @@ class Campus extends Component
         $record = Campu::findOrFail($id);
         $this->selected_id = $id; 
 		$this->Nombre = $record-> Nombre;
+		$this->telefono = $record-> telefono;
+		$this->email = $record-> email;
+		$this->direccion = $record-> direccion;
+		$this->provincia = $record-> provincia;
+		$this->pais = $record-> pais;
+		$this->maps_url = $record-> maps_url;
     }
 
     public function update()
     {
         $this->validate([
 		'Nombre' => 'required',
+		'telefono' => 'required',
+		'email' => 'required',
+		'direccion' => 'required',
+		'provincia' => 'required',
+		'pais' => 'required',
+		'maps_url' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Campu::find($this->selected_id);
             $record->update([ 
-			'Nombre' => $this-> Nombre
+			'Nombre' => $this-> Nombre,
+			'telefono' => $this-> telefono,
+			'email' => $this-> email,
+			'direccion' => $this-> direccion,
+			'provincia' => $this-> provincia,
+			'pais' => $this-> pais,
+			'maps_url' => $this-> maps_url
             ]);
 
             $this->resetInput();

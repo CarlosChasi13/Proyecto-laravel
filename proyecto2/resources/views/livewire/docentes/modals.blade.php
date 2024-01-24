@@ -22,7 +22,15 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_nacimiento"></label>
-                        <input wire:model="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_nacimiento" type="text" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="id_genero"></label>
+                        <input wire:model="id_genero" type="text" class="form-control" id="id_genero" placeholder="Id Genero">@error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="foto_personal"></label>
+                        <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="genero"></label>
@@ -39,6 +47,10 @@
                     <div class="form-group">
                         <label for="direccion"></label>
                         <input wire:model="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">@error('direccion') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="acercade"></label>
+                        <input wire:model="acercade" type="text" class="form-control" id="acercade" placeholder="Acercade">@error('acercade') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="observaciones"></label>
@@ -83,6 +95,14 @@
                         <input wire:model="fecha_nacimiento" type="text" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="id_genero"></label>
+                        <input wire:model="id_genero" type="text" class="form-control" id="id_genero" placeholder="Id Genero">@error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="foto_personal"></label>
+                        <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="genero"></label>
                         <input wire:model="genero" type="text" class="form-control" id="genero" placeholder="Genero">@error('genero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -97,6 +117,10 @@
                     <div class="form-group">
                         <label for="direccion"></label>
                         <input wire:model="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">@error('direccion') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="acercade"></label>
+                        <input wire:model="acercade" type="text" class="form-control" id="acercade" placeholder="Acercade">@error('acercade') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="observaciones"></label>

@@ -5,7 +5,12 @@ USE universidad;
 /*LISTO*/
 CREATE TABLE campus (
     id INT PRIMARY KEY,
-    nombre VARCHAR(100)
+    nombre VARCHAR(100),
+    telefono VARCHAR(10),
+    email VARCHAR(100),
+    direccion VARCHAR(50),
+    provincia VARCHAR(50),
+    pais VARCHAR(50)
 );
 
 /*LISTO*/
@@ -60,6 +65,12 @@ CREATE TABLE nrc (
 );
 
 /*LISTO*/
+CREATE TABLE genero (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(20),
+);
+
+/*LISTO*/
 CREATE TABLE docente (
     id VARCHAR(9) PRIMARY KEY,
     cedula VARCHAR(10),
@@ -70,7 +81,9 @@ CREATE TABLE docente (
     telefono VARCHAR(10),
     email VARCHAR(100),
     direccion VARCHAR(100),
-    observaciones TEXT
+    acercade TEXT,
+    observaciones TEXT,
+    CONSTRAINT genero_docente_fk FOREIGN KEY (id) REFERENCES genero(id)
 );
 
 /*LISTO*/

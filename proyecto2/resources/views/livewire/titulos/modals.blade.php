@@ -10,7 +10,7 @@
 				<form>
                     <div class="form-group">
                         <label for="fecha"></label>
-                        <input wire:model="fecha" type="text" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha" type="date" class="form-control" id="fecha" placeholder="Fecha">@error('fecha') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="ies"></label>
@@ -34,7 +34,6 @@
                         </select>
                         @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">

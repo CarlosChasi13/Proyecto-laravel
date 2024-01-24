@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-Route::view('/nosotros', 'home.nosotros');
-Route::view('/docentes', 'home.docentes');
+Route::get('/docentes', [PagesController::class, 'getDocentesData']);
+Route::get('/contactanos', [PagesController::class, 'getContactoInfo']);
 Route::view('/materias', 'home.materias');
-Route::view('/contactanos', 'home.contactanos');
 
 Route::middleware([
     'auth:sanctum',
@@ -31,10 +31,10 @@ Route::middleware([
 
 Auth::routes();
 
-/*Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');*/
-
 //Route Hooks - Do not delete//
 Route::prefix('admin')->middleware('auth')->group(function () {
+	Route::view('docente', 'livewire.docentes.index');
+	Route::view('generosopciones', 'livewire.generos.index');
     Route::view('nrc', 'livewire.nrcs.index');
     Route::view('areasconocimientos', 'livewire.areadeconocimientos.index');
     Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index');
@@ -43,7 +43,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::view('cursos', 'livewire.cursos.index');
     Route::view('departamentos', 'livewire.departamentos.index');
     Route::view('campus', 'livewire.campus.index');
-    Route::view('docente', 'livewire.docentes.index');
     Route::view('responsabilidad', 'livewire.responsabilidads.index');
     Route::view('responsabilidadopciones', 'livewire.responsabilidadopciones.index');
     Route::view('rol', 'livewire.rols.index');

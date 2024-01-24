@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Campu extends Model
+class Genero extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'campu';
+    protected $table = 'genero';
 
-    protected $fillable = ['Nombre','telefono','email','direccion','provincia','pais','maps_url'];
+    protected $fillable = ['nombre'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function nrcs()
+    public function docentes()
     {
-        return $this->hasMany('App\Models\Nrc', 'id_campus', 'id');
+        return $this->hasMany('App\Models\Docente', 'id_genero', 'id');
     }
     
 }

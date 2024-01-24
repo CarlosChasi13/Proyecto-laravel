@@ -66,13 +66,15 @@
             </div>
         </form>
     </div>
-    <div class="mx-8">
-        <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Visítanos</h2>
-            <p class="mt-2 text-lg leading-8 text-gray-600">Campus General Guillermo Rodríguez Lara</p>
-            <p class="mt-2 text-lg leading-8 text-gray-600">Cotopaxi - Ecuador</p>
+    @if($campus)
+        <div class="mx-8">
+            <div class="mx-auto max-w-2xl text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Visítanos</h2>
+                <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->Nombre }}</p>
+                <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->provincia }} - {{ $campus->pais }}</p>
+            </div>
+            <iframe class="m-4" src="{{ $campus->maps_url }}" width="750" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <iframe class="m-4" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7978.432019314663!2d-78.5804119!3d-0.9955815!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d4639e7c398d3f%3A0xc4999bdc40abfc48!2sUniversidad%20De%20Las%20Fuerzas%20Armadas%20ESPE%20Extensi%C3%B3n%20Belisario%20Quevedo!5e0!3m2!1ses!2sec!4v1705865379839!5m2!1ses!2sec" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+    @endif
 </div>
 @endsection

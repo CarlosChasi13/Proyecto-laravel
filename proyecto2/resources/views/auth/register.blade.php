@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="container mx-auto">
+<div class="container mx-auto my-32">
     <div class="flex justify-center">
         <div class="w-full max-w-md">
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
