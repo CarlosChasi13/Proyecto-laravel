@@ -8,7 +8,7 @@
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ config('app.full_name', 'Laravel') }}</h1>
             <p class="mt-6 text-lg leading-8 text-gray-200">Plataforma diseñada para facilitar y optimizar la gestión de la enseñanza, centrada en la transmisión efectiva del conocimiento.</p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="{{ url('/docentes') }}" class="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+                <a href="#personaldocente" class="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
                     Conócenos
                 </a>
             </div>
@@ -83,7 +83,7 @@
                         </h1>
                         @if($data['titulo'])
                             <h6 class="font-medium text-gray-600 text-base md:text-xl uppercase mb-8">
-                                {{ $data['titulo']->nombre_titulo }}
+                                {{ $data['titulo']->nombre }}
                             </h6>
                         @else
                             <h6 class="font-medium text-gray-600 text-base md:text-xl uppercase mb-8">
@@ -103,7 +103,7 @@
                         @if($data['capacitaciones'] && $data['capacitaciones']->count() > 0)
                             @foreach($data['capacitaciones'] as $capacitacion)
                                 <div class="bg-gray-50 px-4 py-2 rounded-md">
-                                    <label for="experience" class="font-normal text-gray-500 text-md">{{ $capacitacion->titulo }}</label>
+                                    <label for="experience" class="font-normal text-gray-500 text-md">{{ $capacitacion->nombre }}</label>
                                 </div>
                             @endforeach
                         @else

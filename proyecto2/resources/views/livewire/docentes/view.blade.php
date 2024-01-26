@@ -31,14 +31,13 @@
 								<th>Cedula</th>
 								<th>Nombre</th>
 								<th>Apellido</th>
-								<th>Foto Personal</th>
 								<th>Fecha Nacimiento</th>
-								<th>Id Genero</th>
+								<th>Genero</th>
 								<th>Telefono</th>
 								<th>Email</th>
 								<th>Direccion</th>
-								<th>Id Rol</th>
-								<th>Acercade</th>
+								<th>Rol</th>
+								<th>Acerca de</th>
 								<th>Observaciones</th>
 								<td>ACTIONS</td>
 							</tr>
@@ -50,13 +49,12 @@
 								<td>{{ $row->cedula }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->apellido }}</td>
-								<td>{{ $row->foto_personal }}</td>
 								<td>{{ $row->fecha_nacimiento }}</td>
-								<td>{{ $row->id_genero }}</td>
+								<td>{{ $row->genero->nombre }}</td>
 								<td>{{ $row->telefono }}</td>
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->direccion }}</td>
-								<td>{{ $row->id_rol }}</td>
+								<td>{{ $row->rol->nombre }}</td>
 								<td>{{ $row->acercade }}</td>
 								<td>{{ $row->observaciones }}</td>
 								<td width="90">

@@ -28,6 +28,10 @@
                         <label for="observaciones"></label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="principal"></label>
+                        <input wire:model="principal" type="text" class="form-control" id="principal" placeholder="Principal">@error('principal') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
 
                 </form>
             </div>
@@ -69,6 +73,10 @@
                     <div class="form-group">
                         <label for="observaciones"></label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="principal"></label>
+                        <input wire:model="principal" type="text" class="form-control" id="principal" placeholder="Principal">@error('principal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

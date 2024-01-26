@@ -13,7 +13,7 @@ class Titulo extends Model
 
     protected $table = 'titulo';
 
-    protected $fillable = ['id_docente','fecha','ies','nombre','observaciones'];
+    protected $fillable = ['id_docente','fecha','ies','nombre','observaciones','principal'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

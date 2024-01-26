@@ -11,7 +11,7 @@ class Titulos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $id_docente, $fecha, $ies, $nombre, $observaciones;
+    public $selected_id, $keyWord, $id_docente, $fecha, $ies, $nombre, $observaciones, $principal;
 
     public function render()
     {
@@ -23,6 +23,7 @@ class Titulos extends Component
 						->orWhere('ies', 'LIKE', $keyWord)
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
+						->orWhere('principal', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -39,6 +40,7 @@ class Titulos extends Component
 		$this->ies = null;
 		$this->nombre = null;
 		$this->observaciones = null;
+		$this->principal = null;
     }
 
     public function store()
@@ -49,6 +51,7 @@ class Titulos extends Component
 		'ies' => 'required',
 		'nombre' => 'required',
 		'observaciones' => 'required',
+		'principal' => 'required',
         ]);
 
         Titulo::create([ 
@@ -56,7 +59,8 @@ class Titulos extends Component
 			'fecha' => $this-> fecha,
 			'ies' => $this-> ies,
 			'nombre' => $this-> nombre,
-			'observaciones' => $this-> observaciones
+			'observaciones' => $this-> observaciones,
+			'principal' => $this-> principal
         ]);
         
         $this->resetInput();
@@ -73,6 +77,7 @@ class Titulos extends Component
 		$this->ies = $record-> ies;
 		$this->nombre = $record-> nombre;
 		$this->observaciones = $record-> observaciones;
+		$this->principal = $record-> principal;
     }
 
     public function update()
@@ -83,6 +88,7 @@ class Titulos extends Component
 		'ies' => 'required',
 		'nombre' => 'required',
 		'observaciones' => 'required',
+		'principal' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -92,7 +98,8 @@ class Titulos extends Component
 			'fecha' => $this-> fecha,
 			'ies' => $this-> ies,
 			'nombre' => $this-> nombre,
-			'observaciones' => $this-> observaciones
+			'observaciones' => $this-> observaciones,
+			'principal' => $this-> principal
             ]);
 
             $this->resetInput();

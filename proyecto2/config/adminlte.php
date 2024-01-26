@@ -364,11 +364,6 @@ return [
                     'icon' => 'far fa-user text-primary',
                     'submenu' => [
                         [
-                            'text' => 'Rol',
-                            'url'  => 'admin/docencia/administracion/rol',
-                            'icon'    => 'fas fa-user text-primary',
-                        ],
-                        [
                             'text' => 'Areas de Conocimiento',
                             'url'  => 'admin/docencia/administracion/docenteareaconocimiento',
                             'icon'    => 'fas fa-user text-primary',
@@ -419,6 +414,11 @@ return [
                         [
                             'text' => 'Areas Conocimiento',
                             'url'  => 'admin/configuracion/docencia/codigoareaconocimiento',
+                            'icon'    => 'fas fa-user text-primary',
+                        ],
+                        [
+                            'text' => 'Rol',
+                            'url'  => 'admin/docencia/administracion/rol',
                             'icon'    => 'fas fa-user text-primary',
                         ],
                     ]

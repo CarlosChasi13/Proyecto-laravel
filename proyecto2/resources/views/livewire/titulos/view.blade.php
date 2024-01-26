@@ -33,6 +33,7 @@
 								<th>Ies</th>
 								<th>Nombre</th>
 								<th>Observaciones</th>
+								<th>Principal</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -45,6 +46,7 @@
 								<td>{{ $row->ies }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->observaciones }}</td>
+								<td>{{ $row->principal }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

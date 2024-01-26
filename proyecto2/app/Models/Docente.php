@@ -26,7 +26,7 @@ class Docente extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function capacitacions()
+    public function capacitaciones()
     {
         return $this->hasMany('App\Models\Capacitacion', 'id_docente', 'id');
     }

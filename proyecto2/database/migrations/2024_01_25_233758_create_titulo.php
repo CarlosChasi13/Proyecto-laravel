@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('ies', 100);
             $table->string('nombre', 100);
             $table->text('observaciones');
+            $table->boolean('principal');
             $table->timestamps();
         });
     }

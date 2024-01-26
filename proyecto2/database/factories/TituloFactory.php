@@ -18,6 +18,7 @@ class TituloFactory extends Factory
 			'ies' => $this->faker->name,
 			'nombre' => $this->faker->name,
 			'observaciones' => $this->faker->name,
+			'principal' => $this->faker->name,
         ];
     }
 }
