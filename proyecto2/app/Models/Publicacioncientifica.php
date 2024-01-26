@@ -11,9 +11,9 @@ class Publicacioncientifica extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'publicacioncientificas';
+    protected $table = 'publicacioncientifica';
 
-    protected $fillable = ['doi','titulo','anio','ies','autor','id_docente'];
+    protected $fillable = ['id_docente','nombre','año','ies','observaciones'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

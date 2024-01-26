@@ -13,9 +13,10 @@ class AreaintereFactory extends Factory
     public function definition()
     {
         return [
+			'id_docente' => $this->faker->name,
+			'id_areaconocimiento' => $this->faker->name,
 			'tema' => $this->faker->name,
 			'descripcion' => $this->faker->name,
-			'id_docente' => $this->faker->name,
         ];
     }
 }

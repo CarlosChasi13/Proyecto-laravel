@@ -6,17 +6,17 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fas fa-star text-primary"></i>
-							Títulos</h4>
+							<h4><i class="fab fa-laravel text-info"></i>
+							Titulo Listing </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Título">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Titulos">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Titulos a docente
+						<i class="fa fa-plus"></i>  Add Titulos
 						</div>
 					</div>
 				</div>
@@ -28,31 +28,31 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
+								<th>Id Docente</th>
 								<th>Fecha</th>
 								<th>Ies</th>
-								<th>Nombre Titulo</th>
+								<th>Nombre</th>
 								<th>Observaciones</th>
-								<th>Docente</th>
-								<td>ACCIONES</td>
+								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($titulos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->id_docente }}</td>
 								<td>{{ $row->fecha }}</td>
 								<td>{{ $row->ies }}</td>
-								<td>{{ $row->nombre_titulo }}</td>
+								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->observaciones }}</td>
-								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Acciones
+											Actions
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Titulo id {{$row->id}}? \nDeleted Titulos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Titulo id {{$row->id}}? \nDeleted Titulos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
 										</ul>
 									</div>								
 								</td>

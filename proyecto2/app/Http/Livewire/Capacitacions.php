@@ -11,22 +11,20 @@ class Capacitacions extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $titulo, $ies, $horas, $fecha, $descripcion, $id_docente;
+    public $selected_id, $keyWord, $id_docente, $ies, $nombre, $fecha, $horas, $descripcion;
 
     public function render()
     {
-		$docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.capacitacions.view', [
             'capacitacions' => Capacitacion::latest()
-						->orWhere('titulo', 'LIKE', $keyWord)
-						->orWhere('ies', 'LIKE', $keyWord)
-						->orWhere('horas', 'LIKE', $keyWord)
-						->orWhere('fecha', 'LIKE', $keyWord)
-						->orWhere('descripcion', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
+						->orWhere('ies', 'LIKE', $keyWord)
+						->orWhere('nombre', 'LIKE', $keyWord)
+						->orWhere('fecha', 'LIKE', $keyWord)
+						->orWhere('horas', 'LIKE', $keyWord)
+						->orWhere('descripcion', 'LIKE', $keyWord)
 						->paginate(10),
-						'docentes' => $docentes,
         ]);
     }
 	
@@ -37,32 +35,32 @@ class Capacitacions extends Component
 	
     private function resetInput()
     {		
-		$this->titulo = null;
-		$this->ies = null;
-		$this->horas = null;
-		$this->fecha = null;
-		$this->descripcion = null;
 		$this->id_docente = null;
+		$this->ies = null;
+		$this->nombre = null;
+		$this->fecha = null;
+		$this->horas = null;
+		$this->descripcion = null;
     }
 
     public function store()
     {
         $this->validate([
-		'titulo' => 'required',
-		'ies' => 'required',
-		'horas' => 'required',
-		'fecha' => 'required',
-		'descripcion' => 'required',
 		'id_docente' => 'required',
+		'ies' => 'required',
+		'nombre' => 'required',
+		'fecha' => 'required',
+		'horas' => 'required',
+		'descripcion' => 'required',
         ]);
 
         Capacitacion::create([ 
-			'titulo' => $this-> titulo,
+			'id_docente' => $this-> id_docente,
 			'ies' => $this-> ies,
-			'horas' => $this-> horas,
+			'nombre' => $this-> nombre,
 			'fecha' => $this-> fecha,
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente
+			'horas' => $this-> horas,
+			'descripcion' => $this-> descripcion
         ]);
         
         $this->resetInput();
@@ -74,34 +72,34 @@ class Capacitacions extends Component
     {
         $record = Capacitacion::findOrFail($id);
         $this->selected_id = $id; 
-		$this->titulo = $record-> titulo;
-		$this->ies = $record-> ies;
-		$this->horas = $record-> horas;
-		$this->fecha = $record-> fecha;
-		$this->descripcion = $record-> descripcion;
 		$this->id_docente = $record-> id_docente;
+		$this->ies = $record-> ies;
+		$this->nombre = $record-> nombre;
+		$this->fecha = $record-> fecha;
+		$this->horas = $record-> horas;
+		$this->descripcion = $record-> descripcion;
     }
 
     public function update()
     {
         $this->validate([
-		'titulo' => 'required',
-		'ies' => 'required',
-		'horas' => 'required',
-		'fecha' => 'required',
-		'descripcion' => 'required',
 		'id_docente' => 'required',
+		'ies' => 'required',
+		'nombre' => 'required',
+		'fecha' => 'required',
+		'horas' => 'required',
+		'descripcion' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Capacitacion::find($this->selected_id);
             $record->update([ 
-			'titulo' => $this-> titulo,
+			'id_docente' => $this-> id_docente,
 			'ies' => $this-> ies,
-			'horas' => $this-> horas,
+			'nombre' => $this-> nombre,
 			'fecha' => $this-> fecha,
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente
+			'horas' => $this-> horas,
+			'descripcion' => $this-> descripcion
             ]);
 
             $this->resetInput();

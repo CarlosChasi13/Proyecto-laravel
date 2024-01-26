@@ -5,28 +5,22 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Rol;
-use App\Models\Rolopcione;
 
 class Rols extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $descripcion, $id_docente, $id_rol;
+    public $selected_id, $keyWord, $nombre, $descripcion;
 
     public function render()
     {
-        $docentes = \App\Models\Docente::all();
-        $roles = \App\Models\Rolopcione::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.rols.view', [
             'rols' => Rol::latest()
+						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
-						->orWhere('id_docente', 'LIKE', $keyWord)
-						->orWhere('id_rol', 'LIKE', $keyWord)
 						->paginate(10),
-                        'docentes'=>$docentes,
-                        'roles'=>$roles,
         ]);
     }
 	
@@ -37,23 +31,20 @@ class Rols extends Component
 	
     private function resetInput()
     {		
+		$this->nombre = null;
 		$this->descripcion = null;
-		$this->id_docente = null;
-		$this->id_rol = null;
     }
 
     public function store()
     {
         $this->validate([
+		'nombre' => 'required',
 		'descripcion' => 'required',
-		'id_docente' => 'required',
-		'id_rol' => 'required',
         ]);
 
         Rol::create([ 
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente,
-			'id_rol' => $this-> id_rol
+			'nombre' => $this-> nombre,
+			'descripcion' => $this-> descripcion
         ]);
         
         $this->resetInput();
@@ -65,25 +56,22 @@ class Rols extends Component
     {
         $record = Rol::findOrFail($id);
         $this->selected_id = $id; 
+		$this->nombre = $record-> nombre;
 		$this->descripcion = $record-> descripcion;
-		$this->id_docente = $record-> id_docente;
-		$this->id_rol = $record-> id_rol;
     }
 
     public function update()
     {
         $this->validate([
+		'nombre' => 'required',
 		'descripcion' => 'required',
-		'id_docente' => 'required',
-		'id_rol' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Rol::find($this->selected_id);
             $record->update([ 
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente,
-			'id_rol' => $this-> id_rol
+			'nombre' => $this-> nombre,
+			'descripcion' => $this-> descripcion
             ]);
 
             $this->resetInput();

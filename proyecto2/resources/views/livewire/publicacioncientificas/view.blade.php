@@ -1,4 +1,4 @@
-@section('title', __('Publicaciones cientificas'))
+@section('title', __('Publicacioncientificas'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
@@ -6,17 +6,17 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fas fa-microscope text-success"></i>
-							Publicaciones científica</h4>
+							<h4><i class="fab fa-laravel text-info"></i>
+							Publicacioncientifica Listing </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Publicaciones">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Publicacioncientificas">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Publicaciones
+						<i class="fa fa-plus"></i>  Add Publicacioncientificas
 						</div>
 					</div>
 				</div>
@@ -28,12 +28,11 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Doi</th>
-								<th>Titulo</th>
-								<th>Anio</th>
+								<th>Id Docente</th>
+								<th>Nombre</th>
+								<th>Año</th>
 								<th>Ies</th>
-								<th>Autor</th>
-								<th>Docente</th>
+								<th>Observaciones</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -41,12 +40,11 @@
 							@forelse($publicacioncientificas as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->doi }}</td>
-								<td>{{ $row->titulo }}</td>
-								<td>{{ $row->anio }}</td>
+								<td>{{ $row->id_docente }}</td>
+								<td>{{ $row->nombre }}</td>
+								<td>{{ $row->año }}</td>
 								<td>{{ $row->ies }}</td>
-								<td>{{ $row->autor }}</td>
-								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
+								<td>{{ $row->observaciones }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

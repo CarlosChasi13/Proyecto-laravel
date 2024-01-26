@@ -5,48 +5,23 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Nrc;
-use App\Models\Docente;
-use App\Models\Campu;
-use App\Models\Periodosacademico;
-use App\Models\Departamento;
-use App\Models\Materia;
 
 class Nrcs extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $nrc, $id_campus, $id_departamento, $id_materia, $id_docentes, $id_periodoacademico;
+    public $selected_id, $keyWord, $id_sede, $id_asignatura, $id_docente;
 
     public function render()
     {
-		$docentes = \App\Models\Docente::all();
-		$materias = \App\Models\Materia::all();
-		$campus = \App\Models\Campu::all();
-		$departamentos = \App\Models\Departamento::all();
-		$periodos = \App\Models\Periodosacademico::all();
-
-
 		$keyWord = '%'.$this->keyWord .'%';
-		$campus = Campu::all();
-		$departamentos = Departamento::all();
-		$materias = Materia::all();
-		$docentes = Docente::all();
-		$periodo = Periodosacademico::all();
         return view('livewire.nrcs.view', [
             'nrcs' => Nrc::latest()
-						->orWhere('nrc', 'LIKE', $keyWord)
-						->orWhere('id_campus', 'LIKE', $keyWord)
-						->orWhere('id_departamento', 'LIKE', $keyWord)
-						->orWhere('id_materia', 'LIKE', $keyWord)
-						->orWhere('id_docentes', 'LIKE', $keyWord)
-						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
+						->orWhere('id_sede', 'LIKE', $keyWord)
+						->orWhere('id_asignatura', 'LIKE', $keyWord)
+						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
-						'docentes' => $docentes,
-						'materias' => $materias,
-						'campus' => $campus,
-						'departamentos' => $departamentos,
-						'periodos' => $periodos,
         ]);
     }
 	
@@ -57,32 +32,23 @@ class Nrcs extends Component
 	
     private function resetInput()
     {		
-		$this->nrc = null;
-		$this->id_campus = null;
-		$this->id_departamento = null;
-		$this->id_materia = null;
-		$this->id_docentes = null;
-		$this->id_periodoacademico = null;
+		$this->id_sede = null;
+		$this->id_asignatura = null;
+		$this->id_docente = null;
     }
 
     public function store()
     {
         $this->validate([
-		'nrc' => 'required',
-		'id_campus' => 'required',
-		'id_departamento' => 'required',
-		'id_materia' => 'required',
-		'id_docentes' => 'required',
-		'id_periodoacademico' => 'required',
+		'id_sede' => 'required',
+		'id_asignatura' => 'required',
+		'id_docente' => 'required',
         ]);
 
         Nrc::create([ 
-			'nrc' => $this-> nrc,
-			'id_campus' => $this-> id_campus,
-			'id_departamento' => $this-> id_departamento,
-			'id_materia' => $this-> id_materia,
-			'id_docentes' => $this-> id_docentes,
-			'id_periodoacademico' => $this-> id_periodoacademico
+			'id_sede' => $this-> id_sede,
+			'id_asignatura' => $this-> id_asignatura,
+			'id_docente' => $this-> id_docente
         ]);
         
         $this->resetInput();
@@ -94,34 +60,25 @@ class Nrcs extends Component
     {
         $record = Nrc::findOrFail($id);
         $this->selected_id = $id; 
-		$this->nrc = $record-> nrc;
-		$this->id_campus = $record-> id_campus;
-		$this->id_departamento = $record-> id_departamento;
-		$this->id_materia = $record-> id_materia;
-		$this->id_docentes = $record-> id_docentes;
-		$this->id_periodoacademico = $record-> id_periodoacademico;
+		$this->id_sede = $record-> id_sede;
+		$this->id_asignatura = $record-> id_asignatura;
+		$this->id_docente = $record-> id_docente;
     }
 
     public function update()
     {
         $this->validate([
-		'nrc' => 'required',
-		'id_campus' => 'required',
-		'id_departamento' => 'required',
-		'id_materia' => 'required',
-		'id_docentes' => 'required',
-		'id_periodoacademico' => 'required',
+		'id_sede' => 'required',
+		'id_asignatura' => 'required',
+		'id_docente' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Nrc::find($this->selected_id);
             $record->update([ 
-			'nrc' => $this-> nrc,
-			'id_campus' => $this-> id_campus,
-			'id_departamento' => $this-> id_departamento,
-			'id_materia' => $this-> id_materia,
-			'id_docentes' => $this-> id_docentes,
-			'id_periodoacademico' => $this-> id_periodoacademico
+			'id_sede' => $this-> id_sede,
+			'id_asignatura' => $this-> id_asignatura,
+			'id_docente' => $this-> id_docente
             ]);
 
             $this->resetInput();

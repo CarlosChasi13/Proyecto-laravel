@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,7 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::view('/', 'welcome');
-Route::get('/docentes', [PagesController::class, 'getDocentesData']);
-Route::get('/contactanos', [PagesController::class, 'getContactoInfo']);
-Route::view('/materias', 'home.materias');
+Route::get('/', [PageController::class, 'getData']);
 
 Route::middleware([
     'auth:sanctum',
@@ -33,23 +30,41 @@ Auth::routes();
 
 //Route Hooks - Do not delete//
 Route::prefix('admin')->middleware('auth')->group(function () {
-	Route::view('docente', 'livewire.docentes.index');
-	Route::view('generosopciones', 'livewire.generos.index');
-    Route::view('nrc', 'livewire.nrcs.index');
-    Route::view('areasconocimientos', 'livewire.areadeconocimientos.index');
-    Route::view('areasconocimientosopciones', 'livewire.areasconocimientosopciones.index');
-    Route::view('materias', 'livewire.materias.index');
-    Route::view('periodosacademicos', 'livewire.periodosacademicos.index');
-    Route::view('cursos', 'livewire.cursos.index');
-    Route::view('departamentos', 'livewire.departamentos.index');
-    Route::view('campus', 'livewire.campus.index');
-    Route::view('responsabilidad', 'livewire.responsabilidads.index');
-    Route::view('responsabilidadopciones', 'livewire.responsabilidadopciones.index');
-    Route::view('rol', 'livewire.rols.index');
-    Route::view('rolopciones', 'livewire.rolopciones.index');
-    Route::view('areainteres', 'livewire.areainteres.index');
-    Route::view('publicacioncientificas', 'livewire.publicacioncientificas.index');
-    Route::view('capacitacions', 'livewire.capacitacions.index');
-    Route::view('experiencialaborals', 'livewire.experiencialaborals.index');
-    Route::view('titulos', 'livewire.titulos.index');
+	Route::prefix('docencia')->group(function () {
+		Route::view('docente', 'livewire.docentes.index');
+		Route::view('titulo', 'livewire.titulos.index');
+		Route::view('experiencialaboral', 'livewire.experiencialaborals.index');
+		Route::view('capacitacion', 'livewire.capacitacions.index');
+		Route::view('publicacioncientifica', 'livewire.publicacioncientificas.index');
+		Route::view('areainteres', 'livewire.areainteres.index');
+		
+		Route::prefix('administracion')->group(function () {
+			Route::view('rol', 'livewire.rols.index');
+			Route::view('docenteareaconocimiento', 'livewire.docenteareaconocimientos.index');
+		});
+	});
+
+	Route::prefix('academico')->group(function () {
+		Route::view('nrc', 'livewire.nrcs.index');
+		Route::view('asignatura', 'livewire.asignaturas.index');
+	});
+	
+	Route::prefix('configuracion')->group(function () {
+		Route::view('provincia', 'livewire.provinciaops.index');
+		Route::view('pais', 'livewire.paisops.index');
+		Route::view('genero', 'livewire.generos.index');
+		
+		Route::prefix('docencia')->group(function () {
+			Route::view('codigoareaconocimiento', 'livewire.codigoareaconocimientos.index');
+		});
+		
+		Route::prefix('academico')->group(function () {
+			Route::view('grado', 'livewire.grados.index');
+			Route::view('sigla', 'livewire.siglas.index');
+			Route::view('periodoacademico', 'livewire.periodoacademicos.index');
+			Route::view('sede', 'livewire.sedes.index');
+			Route::view('areaconocimiento', 'livewire.areaconocimientos.index');
+		});
+	});
+
 });

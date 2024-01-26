@@ -11,22 +11,19 @@ class Publicacioncientificas extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $doi, $titulo, $anio, $ies, $autor, $id_docente;
+    public $selected_id, $keyWord, $id_docente, $nombre, $año, $ies, $observaciones;
 
     public function render()
     {
-		$docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.publicacioncientificas.view', [
             'publicacioncientificas' => Publicacioncientifica::latest()
-						->orWhere('doi', 'LIKE', $keyWord)
-						->orWhere('titulo', 'LIKE', $keyWord)
-						->orWhere('anio', 'LIKE', $keyWord)
-						->orWhere('ies', 'LIKE', $keyWord)
-						->orWhere('autor', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
+						->orWhere('nombre', 'LIKE', $keyWord)
+						->orWhere('año', 'LIKE', $keyWord)
+						->orWhere('ies', 'LIKE', $keyWord)
+						->orWhere('observaciones', 'LIKE', $keyWord)
 						->paginate(10),
-						'docentes'=>$docentes,
         ]);
     }
 	
@@ -37,32 +34,29 @@ class Publicacioncientificas extends Component
 	
     private function resetInput()
     {		
-		$this->doi = null;
-		$this->titulo = null;
-		$this->anio = null;
-		$this->ies = null;
-		$this->autor = null;
 		$this->id_docente = null;
+		$this->nombre = null;
+		$this->año = null;
+		$this->ies = null;
+		$this->observaciones = null;
     }
 
     public function store()
     {
         $this->validate([
-		'doi' => 'required',
-		'titulo' => 'required',
-		'anio' => 'required',
-		'ies' => 'required',
-		'autor' => 'required',
 		'id_docente' => 'required',
+		'nombre' => 'required',
+		'año' => 'required',
+		'ies' => 'required',
+		'observaciones' => 'required',
         ]);
 
         Publicacioncientifica::create([ 
-			'doi' => $this-> doi,
-			'titulo' => $this-> titulo,
-			'anio' => $this-> anio,
+			'id_docente' => $this-> id_docente,
+			'nombre' => $this-> nombre,
+			'año' => $this-> año,
 			'ies' => $this-> ies,
-			'autor' => $this-> autor,
-			'id_docente' => $this-> id_docente
+			'observaciones' => $this-> observaciones
         ]);
         
         $this->resetInput();
@@ -74,34 +68,31 @@ class Publicacioncientificas extends Component
     {
         $record = Publicacioncientifica::findOrFail($id);
         $this->selected_id = $id; 
-		$this->doi = $record-> doi;
-		$this->titulo = $record-> titulo;
-		$this->anio = $record-> anio;
-		$this->ies = $record-> ies;
-		$this->autor = $record-> autor;
 		$this->id_docente = $record-> id_docente;
+		$this->nombre = $record-> nombre;
+		$this->año = $record-> año;
+		$this->ies = $record-> ies;
+		$this->observaciones = $record-> observaciones;
     }
 
     public function update()
     {
         $this->validate([
-		'doi' => 'required',
-		'titulo' => 'required',
-		'anio' => 'required',
-		'ies' => 'required',
-		'autor' => 'required',
 		'id_docente' => 'required',
+		'nombre' => 'required',
+		'año' => 'required',
+		'ies' => 'required',
+		'observaciones' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Publicacioncientifica::find($this->selected_id);
             $record->update([ 
-			'doi' => $this-> doi,
-			'titulo' => $this-> titulo,
-			'anio' => $this-> anio,
+			'id_docente' => $this-> id_docente,
+			'nombre' => $this-> nombre,
+			'año' => $this-> año,
 			'ies' => $this-> ies,
-			'autor' => $this-> autor,
-			'id_docente' => $this-> id_docente
+			'observaciones' => $this-> observaciones
             ]);
 
             $this->resetInput();

@@ -13,12 +13,12 @@ class CapacitacionFactory extends Factory
     public function definition()
     {
         return [
-			'titulo' => $this->faker->name,
-			'ies' => $this->faker->name,
-			'horas' => $this->faker->name,
-			'fecha' => $this->faker->name,
-			'descripcion' => $this->faker->name,
 			'id_docente' => $this->faker->name,
+			'ies' => $this->faker->name,
+			'nombre' => $this->faker->name,
+			'fecha' => $this->faker->name,
+			'horas' => $this->faker->name,
+			'descripcion' => $this->faker->name,
         ];
     }
 }

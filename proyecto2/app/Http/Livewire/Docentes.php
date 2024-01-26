@@ -11,7 +11,7 @@ class Docentes extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $cedula, $nombre, $apellido, $fecha_nacimiento, $id_genero, $foto_personal, $genero, $telefono, $email, $direccion, $acercade, $observaciones;
+    public $selected_id, $keyWord, $cedula, $nombre, $apellido, $foto_personal, $fecha_nacimiento, $id_genero, $telefono, $email, $direccion, $id_rol, $acercade, $observaciones;
 
     public function render()
     {
@@ -21,13 +21,13 @@ class Docentes extends Component
 						->orWhere('cedula', 'LIKE', $keyWord)
 						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('apellido', 'LIKE', $keyWord)
+						->orWhere('foto_personal', 'LIKE', $keyWord)
 						->orWhere('fecha_nacimiento', 'LIKE', $keyWord)
 						->orWhere('id_genero', 'LIKE', $keyWord)
-						->orWhere('foto_personal', 'LIKE', $keyWord)
-						->orWhere('genero', 'LIKE', $keyWord)
 						->orWhere('telefono', 'LIKE', $keyWord)
 						->orWhere('email', 'LIKE', $keyWord)
 						->orWhere('direccion', 'LIKE', $keyWord)
+						->orWhere('id_rol', 'LIKE', $keyWord)
 						->orWhere('acercade', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
 						->paginate(10),
@@ -44,13 +44,13 @@ class Docentes extends Component
 		$this->cedula = null;
 		$this->nombre = null;
 		$this->apellido = null;
+		$this->foto_personal = null;
 		$this->fecha_nacimiento = null;
 		$this->id_genero = null;
-		$this->foto_personal = null;
-		$this->genero = null;
 		$this->telefono = null;
 		$this->email = null;
 		$this->direccion = null;
+		$this->id_rol = null;
 		$this->acercade = null;
 		$this->observaciones = null;
     }
@@ -63,10 +63,10 @@ class Docentes extends Component
 		'apellido' => 'required',
 		'fecha_nacimiento' => 'required',
 		'id_genero' => 'required',
-		'genero' => 'required',
 		'telefono' => 'required',
 		'email' => 'required',
 		'direccion' => 'required',
+		'id_rol' => 'required',
 		'acercade' => 'required',
 		'observaciones' => 'required',
         ]);
@@ -75,13 +75,13 @@ class Docentes extends Component
 			'cedula' => $this-> cedula,
 			'nombre' => $this-> nombre,
 			'apellido' => $this-> apellido,
+			'foto_personal' => $this-> foto_personal,
 			'fecha_nacimiento' => $this-> fecha_nacimiento,
 			'id_genero' => $this-> id_genero,
-			'foto_personal' => $this-> foto_personal,
-			'genero' => $this-> genero,
 			'telefono' => $this-> telefono,
 			'email' => $this-> email,
 			'direccion' => $this-> direccion,
+			'id_rol' => $this-> id_rol,
 			'acercade' => $this-> acercade,
 			'observaciones' => $this-> observaciones
         ]);
@@ -98,13 +98,13 @@ class Docentes extends Component
 		$this->cedula = $record-> cedula;
 		$this->nombre = $record-> nombre;
 		$this->apellido = $record-> apellido;
+		$this->foto_personal = $record-> foto_personal;
 		$this->fecha_nacimiento = $record-> fecha_nacimiento;
 		$this->id_genero = $record-> id_genero;
-		$this->foto_personal = $record-> foto_personal;
-		$this->genero = $record-> genero;
 		$this->telefono = $record-> telefono;
 		$this->email = $record-> email;
 		$this->direccion = $record-> direccion;
+		$this->id_rol = $record-> id_rol;
 		$this->acercade = $record-> acercade;
 		$this->observaciones = $record-> observaciones;
     }
@@ -117,10 +117,10 @@ class Docentes extends Component
 		'apellido' => 'required',
 		'fecha_nacimiento' => 'required',
 		'id_genero' => 'required',
-		'genero' => 'required',
 		'telefono' => 'required',
 		'email' => 'required',
 		'direccion' => 'required',
+		'id_rol' => 'required',
 		'acercade' => 'required',
 		'observaciones' => 'required',
         ]);
@@ -131,13 +131,13 @@ class Docentes extends Component
 			'cedula' => $this-> cedula,
 			'nombre' => $this-> nombre,
 			'apellido' => $this-> apellido,
+			'foto_personal' => $this-> foto_personal,
 			'fecha_nacimiento' => $this-> fecha_nacimiento,
 			'id_genero' => $this-> id_genero,
-			'foto_personal' => $this-> foto_personal,
-			'genero' => $this-> genero,
 			'telefono' => $this-> telefono,
 			'email' => $this-> email,
 			'direccion' => $this-> direccion,
+			'id_rol' => $this-> id_rol,
 			'acercade' => $this-> acercade,
 			'observaciones' => $this-> observaciones
             ]);

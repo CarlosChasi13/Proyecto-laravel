@@ -13,14 +13,22 @@ class Areaintere extends Model
 
     protected $table = 'areainteres';
 
-    protected $fillable = ['tema','descripcion','id_docente'];
+    protected $fillable = ['id_docente','id_areaconocimiento','tema','descripcion'];
 	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function areaconocimiento()
+    {
+        return $this->hasOne('App\Models\Areaconocimiento', 'id', 'id_areaconocimiento');
+    }
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function docente()
     {
-        return $this->belongsTo(Docente::class);
+        return $this->hasOne('App\Models\Docente', 'id', 'id_docente');
     }
     
 }

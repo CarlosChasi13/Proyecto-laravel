@@ -13,12 +13,11 @@ class PublicacioncientificaFactory extends Factory
     public function definition()
     {
         return [
-			'doi' => $this->faker->name,
-			'titulo' => $this->faker->name,
-			'anio' => $this->faker->name,
-			'ies' => $this->faker->name,
-			'autor' => $this->faker->name,
 			'id_docente' => $this->faker->name,
+			'nombre' => $this->faker->name,
+			'año' => $this->faker->name,
+			'ies' => $this->faker->name,
+			'observaciones' => $this->faker->name,
         ];
     }
 }

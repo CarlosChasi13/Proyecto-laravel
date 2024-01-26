@@ -11,9 +11,9 @@ class Titulo extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'titulos';
+    protected $table = 'titulo';
 
-    protected $fillable = ['fecha','ies','nombre_titulo','observaciones','id_docente'];
+    protected $fillable = ['id_docente','fecha','ies','nombre','observaciones'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

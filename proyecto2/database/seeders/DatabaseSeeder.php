@@ -14,8 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolSeeder::class);
-        $this->call(CampusSeeder::class);
         $this->call(GeneroSeeder::class);
+        $this->call(RolSeeder::class);
+        $this->call(ProvinciaSeeder::class);
+        $this->call(PaisSeeder::class);
+        $this->call(SedeSeeder::class);
+        $this->call(SiglaSeeder::class);
+        $this->call(GradoSeeder::class);
+        $this->call(PeriodoAcademicoSeeder::class);
+        $this->call(AreaConocimientoSeeder::class);
+        $this->call(CodigoAreaConocimientoSeeder::class);
+        $this->call(AsignaturaSeeder::class);
     }
 }

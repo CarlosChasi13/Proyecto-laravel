@@ -11,9 +11,9 @@ class Experiencialaboral extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'experiencialaborals';
+    protected $table = 'experiencialaboral';
 
-    protected $fillable = ['entidad','cargo','fecha_ingreso','fecha_salida','observacion','id_docente'];
+    protected $fillable = ['id_docente','entidad','cargo','fecha_ingreso','fecha_salida','observaciones'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

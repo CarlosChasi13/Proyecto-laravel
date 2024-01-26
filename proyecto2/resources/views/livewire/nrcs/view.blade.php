@@ -6,17 +6,17 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fas fa-hashtag text-primary"></i>
-							NRC</h4>
+							<h4><i class="fab fa-laravel text-info"></i>
+							Nrc Listing </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Nrc">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Nrcs">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Nrcs
+						<i class="fa fa-plus"></i>  Add Nrcs
 						</div>
 					</div>
 				</div>
@@ -28,33 +28,27 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Nrc</th>
-								<th>Campus</th>
-								<th>Departamento</th>
-								<th>Materia</th>
-								<th>Docente</th>
-								<th>Periodo Académico</th>
-								<td>ACCIONES</td>
+								<th>Id Sede</th>
+								<th>Id Asignatura</th>
+								<th>Id Docente</th>
+								<td>ACTIONS</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($nrcs as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->nrc }}</td>
-								<td>{{ $row->campu->Nombre }}</td>
-								<td>{{ $row->departamento->Nombre }}</td>
-								<td>{{ $row->materia->nombre }}</td>
-								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
-								<td>{{ $row->periodosacademico->año_inicio }} - {{ $row->periodosacademico->siglas }}</td>
+								<td>{{ $row->id_sede }}</td>
+								<td>{{ $row->id_asignatura }}</td>
+								<td>{{ $row->id_docente }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Acciones
+											Actions
 										</a>
 										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Nrc id {{$row->id}}? \nDeleted Nrcs cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
+											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Nrc id {{$row->id}}? \nDeleted Nrcs cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
 										</ul>
 									</div>								
 								</td>

@@ -5,29 +5,24 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Areaintere;
-use App\Models\Docente;
 
 class Areainteres extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $tema, $descripcion, $id_docente;
-    
+    public $selected_id, $keyWord, $id_docente, $id_areaconocimiento, $tema, $descripcion;
 
     public function render()
     {
-        $docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
-        $docentes = \App\Models\Docente::all();
         return view('livewire.areainteres.view', [
             'areainteres' => Areaintere::latest()
+						->orWhere('id_docente', 'LIKE', $keyWord)
+						->orWhere('id_areaconocimiento', 'LIKE', $keyWord)
 						->orWhere('tema', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
-						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
-                        'docentes' => $docentes,
-
         ]);
     }
 	
@@ -38,23 +33,26 @@ class Areainteres extends Component
 	
     private function resetInput()
     {		
+		$this->id_docente = null;
+		$this->id_areaconocimiento = null;
 		$this->tema = null;
 		$this->descripcion = null;
-		$this->id_docente = null;
     }
 
     public function store()
     {
         $this->validate([
+		'id_docente' => 'required',
+		'id_areaconocimiento' => 'required',
 		'tema' => 'required',
 		'descripcion' => 'required',
-		'id_docente' => 'required',
         ]);
 
         Areaintere::create([ 
+			'id_docente' => $this-> id_docente,
+			'id_areaconocimiento' => $this-> id_areaconocimiento,
 			'tema' => $this-> tema,
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente
+			'descripcion' => $this-> descripcion
         ]);
         
         $this->resetInput();
@@ -66,25 +64,28 @@ class Areainteres extends Component
     {
         $record = Areaintere::findOrFail($id);
         $this->selected_id = $id; 
+		$this->id_docente = $record-> id_docente;
+		$this->id_areaconocimiento = $record-> id_areaconocimiento;
 		$this->tema = $record-> tema;
 		$this->descripcion = $record-> descripcion;
-		$this->id_docente = $record-> id_docente;
     }
 
     public function update()
     {
         $this->validate([
+		'id_docente' => 'required',
+		'id_areaconocimiento' => 'required',
 		'tema' => 'required',
 		'descripcion' => 'required',
-		'id_docente' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Areaintere::find($this->selected_id);
             $record->update([ 
+			'id_docente' => $this-> id_docente,
+			'id_areaconocimiento' => $this-> id_areaconocimiento,
 			'tema' => $this-> tema,
-			'descripcion' => $this-> descripcion,
-			'id_docente' => $this-> id_docente
+			'descripcion' => $this-> descripcion
             ]);
 
             $this->resetInput();

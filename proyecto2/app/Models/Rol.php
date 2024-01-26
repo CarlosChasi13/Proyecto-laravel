@@ -13,22 +13,14 @@ class Rol extends Model
 
     protected $table = 'rol';
 
-    protected $fillable = ['descripcion','id_docente','id_rol'];
+    protected $fillable = ['nombre','descripcion'];
 	
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function docente()
+    public function docentes()
     {
-        return $this->hasOne('App\Models\Docente', 'id', 'id_docente');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function rolopcione()
-    {
-        return $this->hasOne('App\Models\Rolopcione', 'id', 'id_rol');
+        return $this->hasMany('App\Models\Docente', 'id_rol', 'id');
     }
     
 }

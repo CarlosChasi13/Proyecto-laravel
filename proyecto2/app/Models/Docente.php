@@ -13,16 +13,8 @@ class Docente extends Model
 
     protected $table = 'docente';
 
-    protected $fillable = ['cedula','nombre','apellido','fecha_nacimiento','id_genero','foto_personal','genero','telefono','email','direccion','acercade','observaciones'];
+    protected $fillable = ['cedula','nombre','apellido','foto_personal','fecha_nacimiento','id_genero','telefono','email','direccion','id_rol','acercade','observaciones'];
 	
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function areadeconocimientos()
-    {
-        return $this->hasMany('App\Models\Areadeconocimiento', 'id_docente', 'id');
-    }
-    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -37,6 +29,14 @@ class Docente extends Model
     public function capacitacions()
     {
         return $this->hasMany('App\Models\Capacitacion', 'id_docente', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function docenteareaconocimientos()
+    {
+        return $this->hasMany('App\Models\Docenteareaconocimiento', 'id_docente', 'id');
     }
     
     /**
@@ -60,7 +60,7 @@ class Docente extends Model
      */
     public function nrcs()
     {
-        return $this->hasMany('App\Models\Nrc', 'id_docentes', 'id');
+        return $this->hasMany('App\Models\Nrc', 'id_docente', 'id');
     }
     
     /**
@@ -72,19 +72,11 @@ class Docente extends Model
     }
     
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function responsabilidads()
+    public function rol()
     {
-        return $this->hasMany('App\Models\Responsabilidad', 'id_docente', 'id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function rols()
-    {
-        return $this->hasMany('App\Models\Rol', 'id_docente', 'id');
+        return $this->hasOne('App\Models\Rol', 'id', 'id_rol');
     }
     
     /**

@@ -13,11 +13,11 @@ class TituloFactory extends Factory
     public function definition()
     {
         return [
+			'id_docente' => $this->faker->name,
 			'fecha' => $this->faker->name,
 			'ies' => $this->faker->name,
-			'nombre_titulo' => $this->faker->name,
+			'nombre' => $this->faker->name,
 			'observaciones' => $this->faker->name,
-			'id_docente' => $this->faker->name,
         ];
     }
 }

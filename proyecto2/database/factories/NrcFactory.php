@@ -13,12 +13,9 @@ class NrcFactory extends Factory
     public function definition()
     {
         return [
-			'nrc' => $this->faker->name,
-			'id_campus' => $this->faker->name,
-			'id_departamento' => $this->faker->name,
-			'id_materia' => $this->faker->name,
-			'id_docentes' => $this->faker->name,
-			'id_periodoacademico' => $this->faker->name,
+			'id_sede' => $this->faker->name,
+			'id_asignatura' => $this->faker->name,
+			'id_docente' => $this->faker->name,
         ];
     }
 }

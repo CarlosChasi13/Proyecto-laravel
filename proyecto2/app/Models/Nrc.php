@@ -13,22 +13,14 @@ class Nrc extends Model
 
     protected $table = 'nrc';
 
-    protected $fillable = ['nrc','id_campus','id_departamento','id_materia','id_docentes','id_periodoacademico'];
+    protected $fillable = ['id_sede','id_asignatura','id_docente'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function campu()
+    public function asignatura()
     {
-        return $this->hasOne('App\Models\Campu', 'id', 'id_campus');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function departamento()
-    {
-        return $this->hasOne('App\Models\Departamento', 'id', 'id_departamento');
+        return $this->hasOne('App\Models\Asignatura', 'id', 'id_asignatura');
     }
     
     /**
@@ -36,23 +28,15 @@ class Nrc extends Model
      */
     public function docente()
     {
-        return $this->hasOne('App\Models\Docente', 'id', 'id_docentes');
+        return $this->hasOne('App\Models\Docente', 'id', 'id_docente');
     }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function materia()
+    public function sede()
     {
-        return $this->hasOne('App\Models\Materia', 'id', 'id_materia');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function periodosacademico()
-    {
-        return $this->hasOne('App\Models\Periodosacademico', 'id', 'id_periodoacademico');
+        return $this->hasOne('App\Models\Sede', 'id', 'id_sede');
     }
     
 }

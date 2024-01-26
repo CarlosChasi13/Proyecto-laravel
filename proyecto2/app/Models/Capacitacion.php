@@ -11,9 +11,9 @@ class Capacitacion extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'capacitacions';
+    protected $table = 'capacitacion';
 
-    protected $fillable = ['titulo','ies','horas','fecha','descripcion','id_docente'];
+    protected $fillable = ['id_docente','ies','nombre','fecha','horas','descripcion'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

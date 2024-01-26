@@ -6,17 +6,17 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fas fa-user-shield text-success"></i>
-							Rol</h4>
+							<h4><i class="fab fa-laravel text-info"></i>
+							Rol Listing </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Roles">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Rols">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Rol a Docente
+						<i class="fa fa-plus"></i>  Add Rols
 						</div>
 					</div>
 				</div>
@@ -28,9 +28,8 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
+								<th>Nombre</th>
 								<th>Descripcion</th>
-								<th>Docente</th>
-								<th>Rol</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -38,9 +37,8 @@
 							@forelse($rols as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->descripcion }}</td>
-								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
-								<td>{{ $row->rolopcione->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

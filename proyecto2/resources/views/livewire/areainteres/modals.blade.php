@@ -9,22 +9,20 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
+                        <label for="id_docente"></label>
+                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="id_areaconocimiento"></label>
+                        <input wire:model="id_areaconocimiento" type="text" class="form-control" id="id_areaconocimiento" placeholder="Id Areaconocimiento">@error('id_areaconocimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="tema"></label>
                         <input wire:model="tema" type="text" class="form-control" id="tema" placeholder="Tema">@error('tema') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="descripcion"></label>
                         <input wire:model="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">@error('descripcion') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="descripcion"></label>
-                        <select wire:model="id_docente" class="form-control" id="docente">
-                        <option value="">Seleccione un Docente</option>
-                        @foreach($docentes as $docente)
-                        <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
-                        @endforeach
-                        </select>
-                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
@@ -49,16 +47,20 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
+                        <label for="id_docente"></label>
+                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="id_areaconocimiento"></label>
+                        <input wire:model="id_areaconocimiento" type="text" class="form-control" id="id_areaconocimiento" placeholder="Id Areaconocimiento">@error('id_areaconocimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="tema"></label>
                         <input wire:model="tema" type="text" class="form-control" id="tema" placeholder="Tema">@error('tema') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="descripcion"></label>
                         <input wire:model="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">@error('descripcion') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

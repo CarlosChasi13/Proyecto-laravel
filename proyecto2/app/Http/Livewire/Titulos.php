@@ -11,21 +11,19 @@ class Titulos extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $fecha, $ies, $nombre_titulo, $observaciones, $id_docente;
+    public $selected_id, $keyWord, $id_docente, $fecha, $ies, $nombre, $observaciones;
 
     public function render()
     {
-        $docentes = \App\Models\Docente::all();
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.titulos.view', [
             'titulos' => Titulo::latest()
+						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('fecha', 'LIKE', $keyWord)
 						->orWhere('ies', 'LIKE', $keyWord)
-						->orWhere('nombre_titulo', 'LIKE', $keyWord)
+						->orWhere('nombre', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
-						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
-                        'docentes' => $docentes,
         ]);
     }
 	
@@ -36,29 +34,29 @@ class Titulos extends Component
 	
     private function resetInput()
     {		
+		$this->id_docente = null;
 		$this->fecha = null;
 		$this->ies = null;
-		$this->nombre_titulo = null;
+		$this->nombre = null;
 		$this->observaciones = null;
-		$this->id_docente = null;
     }
 
     public function store()
     {
         $this->validate([
+		'id_docente' => 'required',
 		'fecha' => 'required',
 		'ies' => 'required',
-		'nombre_titulo' => 'required',
+		'nombre' => 'required',
 		'observaciones' => 'required',
-		'id_docente' => 'required',
         ]);
 
         Titulo::create([ 
+			'id_docente' => $this-> id_docente,
 			'fecha' => $this-> fecha,
 			'ies' => $this-> ies,
-			'nombre_titulo' => $this-> nombre_titulo,
-			'observaciones' => $this-> observaciones,
-			'id_docente' => $this-> id_docente
+			'nombre' => $this-> nombre,
+			'observaciones' => $this-> observaciones
         ]);
         
         $this->resetInput();
@@ -70,31 +68,31 @@ class Titulos extends Component
     {
         $record = Titulo::findOrFail($id);
         $this->selected_id = $id; 
+		$this->id_docente = $record-> id_docente;
 		$this->fecha = $record-> fecha;
 		$this->ies = $record-> ies;
-		$this->nombre_titulo = $record-> nombre_titulo;
+		$this->nombre = $record-> nombre;
 		$this->observaciones = $record-> observaciones;
-		$this->id_docente = $record-> id_docente;
     }
 
     public function update()
     {
         $this->validate([
+		'id_docente' => 'required',
 		'fecha' => 'required',
 		'ies' => 'required',
-		'nombre_titulo' => 'required',
+		'nombre' => 'required',
 		'observaciones' => 'required',
-		'id_docente' => 'required',
         ]);
 
         if ($this->selected_id) {
 			$record = Titulo::find($this->selected_id);
             $record->update([ 
+			'id_docente' => $this-> id_docente,
 			'fecha' => $this-> fecha,
 			'ies' => $this-> ies,
-			'nombre_titulo' => $this-> nombre_titulo,
-			'observaciones' => $this-> observaciones,
-			'id_docente' => $this-> id_docente
+			'nombre' => $this-> nombre,
+			'observaciones' => $this-> observaciones
             ]);
 
             $this->resetInput();

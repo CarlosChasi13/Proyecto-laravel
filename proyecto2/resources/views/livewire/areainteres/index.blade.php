@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @extends('layouts.app')
 @section('content')
 <div class="container-fluid">
