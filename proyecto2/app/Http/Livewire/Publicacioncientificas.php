@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Publicacioncientifica;
+use App\Models\Docente;
 
 class Publicacioncientificas extends Component
 {
@@ -16,6 +17,7 @@ class Publicacioncientificas extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $docentes = Docente::all();
         return view('livewire.publicacioncientificas.view', [
             'publicacioncientificas' => Publicacioncientifica::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
@@ -24,6 +26,7 @@ class Publicacioncientificas extends Component
 						->orWhere('ies', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
 						->paginate(10),
+            'docentes' => $docentes,
         ]);
     }
 	
@@ -46,7 +49,7 @@ class Publicacioncientificas extends Component
         $this->validate([
 		'id_docente' => 'required',
 		'nombre' => 'required',
-		'año' => 'required',
+		'año' => 'required|regex:/^\d{4}$/',
 		'ies' => 'required',
 		'observaciones' => 'required',
         ]);
@@ -61,7 +64,7 @@ class Publicacioncientificas extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Publicacioncientifica Successfully created.');
+		session()->flash('message', 'Publicación científica agregada exitosamente.');
     }
 
     public function edit($id)
@@ -80,7 +83,7 @@ class Publicacioncientificas extends Component
         $this->validate([
 		'id_docente' => 'required',
 		'nombre' => 'required',
-		'año' => 'required',
+		'año' => 'required|regex:/^\d{4}$/',
 		'ies' => 'required',
 		'observaciones' => 'required',
         ]);
@@ -97,7 +100,7 @@ class Publicacioncientificas extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Publicacioncientifica Successfully updated.');
+			session()->flash('message', 'Publicación cientificaeditada exitosamente.');
         }
     }
 

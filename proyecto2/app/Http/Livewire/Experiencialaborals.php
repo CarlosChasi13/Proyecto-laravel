@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Experiencialaboral;
+use App\Models\Docente;
 
 class Experiencialaborals extends Component
 {
@@ -16,6 +17,7 @@ class Experiencialaborals extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$docentes = Docente::all();
         return view('livewire.experiencialaborals.view', [
             'experiencialaborals' => Experiencialaboral::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
@@ -25,6 +27,7 @@ class Experiencialaborals extends Component
 						->orWhere('fecha_salida', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
 						->paginate(10),
+			'docentes' => $docentes,
         ]);
     }
 	
@@ -65,7 +68,7 @@ class Experiencialaborals extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Experiencialaboral Successfully created.');
+		session()->flash('message', 'Experiencia laboral agregada exitosamente.');
     }
 
     public function edit($id)
@@ -104,7 +107,7 @@ class Experiencialaborals extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Experiencialaboral Successfully updated.');
+			session()->flash('message', 'Experiencia laboral editada exitosamente.');
         }
     }
 

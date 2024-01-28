@@ -3,14 +3,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Experiencialaboral</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Agregar Experiencia a Docente</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente">  Docente:</label>
+                        <select wire:model="id_docente" class="form-control" id="id_docente" placeholder="Seleccione un Docente">
+                            <option value="">Seleccione un Docente</option>
+                                @foreach($docentes as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="entidad"></label>
@@ -22,11 +28,11 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_ingreso"></label>
-                        <input wire:model="fecha_ingreso" type="text" class="form-control" id="fecha_ingreso" placeholder="Fecha Ingreso">@error('fecha_ingreso') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_ingreso" type="date" class="form-control" id="fecha_ingreso" placeholder="Fecha Ingreso">@error('fecha_ingreso') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="fecha_salida"></label>
-                        <input wire:model="fecha_salida" type="text" class="form-control" id="fecha_salida" placeholder="Fecha Salida">@error('fecha_salida') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model="fecha_salida" type="date" class="form-control" id="fecha_salida" placeholder="Fecha Salida">@error('fecha_salida') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="observaciones"></label>
@@ -48,14 +54,14 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Experiencialaboral</h5>
+                <h5 class="modal-title" id="updateModalLabel">Editar Experiencia laboral</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="id_docente"></label>
+                        <label for="id_docente">  Docente</label>
                         <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">

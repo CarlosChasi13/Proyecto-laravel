@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Capacitacion;
+use App\Models\Docente;
 
 class Capacitacions extends Component
 {
@@ -16,6 +17,7 @@ class Capacitacions extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$docentes = Docente::all();
         return view('livewire.capacitacions.view', [
             'capacitacions' => Capacitacion::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
@@ -25,6 +27,7 @@ class Capacitacions extends Component
 						->orWhere('horas', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->paginate(10),
+			'docentes' => $docentes,
         ]);
     }
 	
@@ -50,7 +53,7 @@ class Capacitacions extends Component
 		'ies' => 'required',
 		'nombre' => 'required',
 		'fecha' => 'required',
-		'horas' => 'required',
+		'horas' => 'required|integer',
 		'descripcion' => 'required',
         ]);
 
@@ -65,7 +68,7 @@ class Capacitacions extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Capacitacion Successfully created.');
+		session()->flash('message', 'Capacitación agregada exitosamente.');
     }
 
     public function edit($id)
@@ -87,7 +90,7 @@ class Capacitacions extends Component
 		'ies' => 'required',
 		'nombre' => 'required',
 		'fecha' => 'required',
-		'horas' => 'required',
+		'horas' => 'required|integer',
 		'descripcion' => 'required',
         ]);
 
@@ -104,7 +107,7 @@ class Capacitacions extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Capacitacion Successfully updated.');
+			session()->flash('message', 'Capacitación editada exitosamente.');
         }
     }
 
