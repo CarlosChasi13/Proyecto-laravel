@@ -321,19 +321,26 @@ return [
         ['header' => 'CRUDS'],
         [
             'text' => 'Docente',
+
             'icon' => 'fas fa-user text-primary',
+
+            'icon' => 'fas fa-user-graduate text-success',
+
+
             'submenu' => [
                 [
                     'text' => 'Ver registros',
                     'url'  => 'admin/docencia/docente',
-                    'icon'    => 'fas fa-user text-primary',
+                    'icon' => 'fas fa-list-alt text-info',
+
                 ],
                 [
                     'text' => 'Perfil',
-                    'icon' => 'far fa-user text-primary',
+                    'icon' => 'fas fa-user-circle text-info',
+
                     'submenu' => [
                         [
-                            'text' => 'Titulos',
+                            'text' => 'Títulos',
                             'url'  => 'admin/docencia/titulo',
                             'icon'    => 'fas fa-star text-primary',
                         ],
@@ -348,23 +355,24 @@ return [
                             'icon'    => 'fas fa-chalkboard-teacher text-warning',
                         ],
                         [
-                            'text' => 'Publicaciones Cientificas',
+                            'text' => 'Publicaciones Científicas',
                             'url'  => 'admin/docencia/publicacioncientifica',
                             'icon'    => 'fas fa-microscope text-success',
                         ],
                         [
-                            'text' => 'Areas Interes',
+                            'text' => 'Areas de interés',
                             'url'  => 'admin/docencia/areainteres',
                             'icon'    => 'fas fa-book text-primary',
                         ],
                     ]
                 ],
                 [
-                    'text' => 'Administracion',
-                    'icon' => 'far fa-user text-primary',
+                    'text' => 'Administración',
+                    'icon' => 'fas fa-cogs text-warning',
+
                     'submenu' => [
                         [
-                            'text' => 'Areas de Conocimiento',
+                            'text' => 'Áreas de Conocimiento',
                             'url'  => 'admin/docencia/administracion/docenteareaconocimiento',
                             'icon'    => 'fas fa-graduation-cap text-success',
                         ],
@@ -377,7 +385,7 @@ return [
             'icon'    => 'fas fa-book text-info',
             'submenu' => [
                 [
-                    'text' => 'NRC',
+                    'text' => 'NRCs',
                     'url'  => 'admin/academico/nrc',
                     'icon'    => 'fas fa-hashtag text-primary',
                 ],
@@ -386,6 +394,7 @@ return [
                     'url'  => 'admin/academico/asignatura',
                     'icon'    => 'fas fa-book text-primary',
                 ],
+
             ],
         ],
         [
@@ -393,31 +402,35 @@ return [
             'icon'    => 'fas fa-cog text-info',
             'submenu' => [
                 [
-                    'text' => 'Provincias',
+                    'text' => 'Provincia',
                     'url'  => 'admin/configuracion/provincia',
-                    'icon'    => 'fas fa-atom text-warning',
+                    'icon' => 'fas fa-map-marked-alt text-primary',
+
                 ],
                 [
-                    'text' => 'Pais',
+                    'text' => 'País',
                     'url'  => 'admin/configuracion/pais',
-                    'icon'    => 'fas fa-atom text-warning',
+                    'icon' => 'fas fa-flag text-info',
+
                 ],
                 [
-                    'text' => 'Generos',
+                    'text' => 'Géneros',
                     'url'  => 'admin/configuracion/genero',
-                    'icon'    => 'fas fa-atom text-warning',
+                    'icon' => 'fas fa-venus-mars text-warning',
+
                 ],
                 [
                     'text' => 'Docencia',
-                    'icon' => 'far fa-user text-primary',
+                    'icon' => 'fas fa-chalkboard-teacher text-primary',
+
                     'submenu' => [
                         [
-                            'text' => 'Areas Conocimiento',
+                            'text' => 'Áreas de Conocimiento',
                             'url'  => 'admin/configuracion/docencia/codigoareaconocimiento',
                             'icon'    => 'fas fa-graduation-cap text-success',
                         ],
                         [
-                            'text' => 'Rol',
+                            'text' => 'Roles',
                             'url'  => 'admin/docencia/administracion/rol',
                             'icon'    => 'fas fa-user-shield text-success',
                         ],
@@ -425,25 +438,33 @@ return [
                 ],
                 [
                     'text' => 'Académico',
-                    'icon' => 'far fa-user text-primary',
+                    'icon' => 'fas fa-book text-info',
                     'submenu' => [
                         [
                             'text' => 'Grados',
                             'url'  => 'admin/configuracion/academico/grado',
+
                             'icon' => 'fas fa-award text-warning',
+
+                            'icon'    => 'fas fa-award text-warning',
+
                         ],
                         [
                             'text' => 'Siglas',
                             'url'  => 'admin/configuracion/academico/sigla',
+
                             'icon' => 'fas fa-signature text-primary',
+
+                            'icon'    => 'fas fa-signature text-primary',
+
                         ],
                         [
-                            'text' => 'Periodo Academico',
+                            'text' => 'Periodo Académico',
                             'url'  => 'admin/configuracion/academico/periodoacademico',
                             'icon'    => 'far fa-calendar-alt text-secondary',
                         ],
                         [
-                            'text' => 'Areas Conocimiento',
+                            'text' => 'Áreas de Conocimiento',
                             'url'  => 'admin/configuracion/academico/areaconocimiento',
                             'icon'    => 'fas fa-graduation-cap text-success',
                         ],
@@ -458,34 +479,21 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
+            'text' => 'Mi perfil',
             'url'  => '#',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-id-badge text-info',
+
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Cambiar contraseña',
             'url'  => 'password/reset',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-
-        ], 
+            'icon' => 'fas fa-key text-warning',
 
         ],
+        
+      
+
+    ],
 
     
 
