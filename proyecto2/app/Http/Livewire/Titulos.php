@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Titulo;
+use App\Models\Docente;
 
 class Titulos extends Component
 {
@@ -16,6 +17,7 @@ class Titulos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$docentes = Docente::all();
         return view('livewire.titulos.view', [
             'titulos' => Titulo::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
@@ -25,6 +27,7 @@ class Titulos extends Component
 						->orWhere('observaciones', 'LIKE', $keyWord)
 						->orWhere('principal', 'LIKE', $keyWord)
 						->paginate(10),
+			'docentes' => $docentes,
         ]);
     }
 	
@@ -44,29 +47,35 @@ class Titulos extends Component
     }
 
     public function store()
-    {
-        $this->validate([
-		'id_docente' => 'required',
-		'fecha' => 'required',
-		'ies' => 'required',
-		'nombre' => 'required',
-		'observaciones' => 'required',
-		'principal' => 'required',
-        ]);
+	{
+    	$this->validate([
+        	'id_docente' => 'required',
+        	'fecha' => 'required',
+        	'ies' => 'required',
+        	'nombre' => 'required',
+        	'observaciones' => 'required',
+			//'principal' => 'required',
+   		]);
 
-        Titulo::create([ 
-			'id_docente' => $this-> id_docente,
-			'fecha' => $this-> fecha,
-			'ies' => $this-> ies,
-			'nombre' => $this-> nombre,
-			'observaciones' => $this-> observaciones,
-			'principal' => $this-> principal
-        ]);
-        
-        $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Titulo Successfully created.');
-    }
+    	$existingTitulo = Titulo::where('id_docente', $this->id_docente)->first();
+
+    	// Verificar si ya hay un título existente para el docente
+    	$principal = $existingTitulo ? 0 : 1;
+
+    	Titulo::create([
+        	'id_docente' => $this->id_docente,
+        	'fecha' => $this->fecha,
+        	'ies' => $this->ies,
+        	'nombre' => $this->nombre,
+        	'observaciones' => $this->observaciones,
+        	'principal' => $principal,
+    	]);
+
+    	$this->resetInput();
+    	$this->dispatchBrowserEvent('closeModal');
+    	session()->flash('message', 'Título agregado exitosamente.');
+	}
+
 
     public function edit($id)
     {
@@ -77,7 +86,7 @@ class Titulos extends Component
 		$this->ies = $record-> ies;
 		$this->nombre = $record-> nombre;
 		$this->observaciones = $record-> observaciones;
-		$this->principal = $record-> principal;
+		//$this->principal = $record-> principal;
     }
 
     public function update()
@@ -88,7 +97,7 @@ class Titulos extends Component
 		'ies' => 'required',
 		'nombre' => 'required',
 		'observaciones' => 'required',
-		'principal' => 'required',
+		//'principal' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -104,14 +113,31 @@ class Titulos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Titulo Successfully updated.');
+			session()->flash('message', 'Titulo editado exitosamente.');
         }
     }
 
     public function destroy($id)
-    {
-        if ($id) {
-            Titulo::where('id', $id)->delete();
-        }
-    }
+	{
+    	if ($id) {
+        	$record = Titulo::find($id);
+
+        	// Verificar si el título a eliminar tiene principal=1
+        	if ($record && $record->principal == 1) {
+            	// Encontrar el siguiente título del mismo docente y asignarle principal=1
+            	$nextTitulo = Titulo::where('id_docente', $record->id_docente)
+                	->where('id', '>', $id)
+                	->orderBy('id')
+                	->first();
+
+            	if ($nextTitulo) {
+                	$nextTitulo->update(['principal' => 1]);
+            	}
+        	}
+
+        	// Eliminar el título
+        	Titulo::where('id', $id)->delete();
+    	}
+	}
+
 }

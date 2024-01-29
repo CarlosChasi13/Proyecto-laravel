@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('adminlte::auth.register')
 
 @section('content')
 <div class="container mx-auto my-32">

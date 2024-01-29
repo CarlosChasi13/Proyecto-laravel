@@ -45,7 +45,7 @@ class Provinciaops extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Provinciaop Successfully created.');
+		session()->flash('message', 'Provincia creada exitosamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Provinciaops extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Provinciaop Successfully updated.');
+			session()->flash('message', 'Provincia editada exitosamente.');
         }
     }
 

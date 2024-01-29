@@ -5,6 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Docenteareaconocimiento;
+use App\Models\Docente;
+use App\Models\Codigoareaconocimiento;
+
+
 
 class Docenteareaconocimientos extends Component
 {
@@ -16,11 +20,15 @@ class Docenteareaconocimientos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $docentes = Docente::all();
+        $codigoAreaConocimientos=Codigoareaconocimiento::all();
         return view('livewire.docenteareaconocimientos.view', [
             'docenteareaconocimientos' => Docenteareaconocimiento::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->orWhere('id_codigoareaconocimiento', 'LIKE', $keyWord)
 						->paginate(10),
+            'docentes' => $docentes,
+            'codigoAreaConocimientos'=>$codigoAreaConocimientos,
         ]);
     }
 	
@@ -49,7 +57,7 @@ class Docenteareaconocimientos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Docenteareaconocimiento Successfully created.');
+		session()->flash('message', 'Área asignada a docente exitosamente.');
     }
 
     public function edit($id)
@@ -76,7 +84,7 @@ class Docenteareaconocimientos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Docenteareaconocimiento Successfully updated.');
+			session()->flash('message', 'Ásignación editada exitosamente.');
         }
     }
 

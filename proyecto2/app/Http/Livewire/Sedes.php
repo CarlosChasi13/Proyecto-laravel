@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Sede;
+use App\Models\Provinciaop;
+use App\Models\Paisop;
 
 class Sedes extends Component
 {
@@ -16,6 +18,8 @@ class Sedes extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$paises = Paisop::all();
+		$provincias = Provinciaop::all(); 
         return view('livewire.sedes.view', [
             'sedes' => Sede::latest()
 						->orWhere('nombre', 'LIKE', $keyWord)
@@ -27,6 +31,8 @@ class Sedes extends Component
 						->orWhere('id_pais', 'LIKE', $keyWord)
 						->orWhere('maps_url', 'LIKE', $keyWord)
 						->paginate(10),
+						'paises' => $paises,
+						'provincias' => $provincias,
         ]);
     }
 	
@@ -52,7 +58,7 @@ class Sedes extends Component
         $this->validate([
 		'nombre' => 'required',
 		'telefono' => 'required',
-		'email' => 'required',
+		'email' => 'required|email',
 		'direccion' => 'required',
 		'ciudad' => 'required',
 		'id_provincia' => 'required',
@@ -94,8 +100,8 @@ class Sedes extends Component
     {
         $this->validate([
 		'nombre' => 'required',
-		'telefono' => 'required',
-		'email' => 'required',
+		'telefono' => 'required|numeric|digits:15',
+		'email' => 'required|email',
 		'direccion' => 'required',
 		'ciudad' => 'required',
 		'id_provincia' => 'required',

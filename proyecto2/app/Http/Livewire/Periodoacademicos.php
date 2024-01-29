@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Periodoacademico;
+use App\Models\Grado;
+use App\Models\Sigla;
 
 class Periodoacademicos extends Component
 {
@@ -16,6 +18,8 @@ class Periodoacademicos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $grados = Grado::all();
+        $siglas = Sigla::all();
         return view('livewire.periodoacademicos.view', [
             'periodoacademicos' => Periodoacademico::latest()
 						->orWhere('id_grado', 'LIKE', $keyWord)
@@ -23,6 +27,8 @@ class Periodoacademicos extends Component
 						->orWhere('fecha_inicio', 'LIKE', $keyWord)
 						->orWhere('fecha_fin', 'LIKE', $keyWord)
 						->paginate(10),
+            'grados' => $grados,
+            'siglas' => $siglas
         ]);
     }
 	
@@ -57,7 +63,7 @@ class Periodoacademicos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Periodoacademico Successfully created.');
+		session()->flash('message', 'Periodo académico creado exitosamente.');
     }
 
     public function edit($id)
@@ -90,7 +96,7 @@ class Periodoacademicos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Periodoacademico Successfully updated.');
+			session()->flash('message', 'Periodo académico creado exitosamente.');
         }
     }
 

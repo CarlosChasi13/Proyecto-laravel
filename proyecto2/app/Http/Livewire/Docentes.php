@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Models\Docente;
+use App\Models\Genero;
+use App\Models\Rol;
 
 class Docentes extends Component
 {
@@ -18,6 +20,8 @@ class Docentes extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$generos = Genero::all();
+		$roles=Rol::all();
         return view('livewire.docentes.view', [
             'docentes' => Docente::latest()
 						->orWhere('cedula', 'LIKE', $keyWord)
@@ -33,6 +37,8 @@ class Docentes extends Component
 						->orWhere('acercade', 'LIKE', $keyWord)
 						->orWhere('observaciones', 'LIKE', $keyWord)
 						->paginate(10),
+			'generos' => $generos,
+			'roles' => $roles,
         ]);
     }
 	
@@ -65,8 +71,8 @@ class Docentes extends Component
 		'apellido' => 'required',
 		'fecha_nacimiento' => 'required',
 		'id_genero' => 'required',
-		'telefono' => 'required',
-		'email' => 'required',
+		'telefono' => 'required|digits:10',
+		'email' => 'required|email',
 		'direccion' => 'required',
 		'id_rol' => 'required',
 		'acercade' => 'required',
@@ -93,7 +99,7 @@ class Docentes extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Docente Successfully created.');
+		session()->flash('message', 'Docente creado exitosamente.');
     }
 
     public function edit($id)
@@ -115,20 +121,20 @@ class Docentes extends Component
     }
 
     public function update()
-{
-    $this->validate([
-        'cedula' => 'required',
-        'nombre' => 'required',
-        'apellido' => 'required',
-        'fecha_nacimiento' => 'required',
-        'id_genero' => 'required',
-        'telefono' => 'required',
-        'email' => 'required',
-        'direccion' => 'required',
-        'id_rol' => 'required',
-        'acercade' => 'required',
-        'observaciones' => 'required',
-    ]);
+    {
+        $this->validate([
+		'cedula' => 'required',
+		'nombre' => 'required',
+		'apellido' => 'required',
+		'fecha_nacimiento' => 'required',
+		'id_genero' => 'required',
+		'telefono' => 'required|digits:10',
+		'email' => 'required|email',
+		'direccion' => 'required',
+		'id_rol' => 'required',
+		'acercade' => 'required',
+		'observaciones' => 'required',
+        ]);
 
     if ($this->selected_id) {
         $record = Docente::find($this->selected_id);
@@ -147,7 +153,6 @@ class Docentes extends Component
             'observaciones' => $this->observaciones
         ];
 
-        // Si se proporciona una nueva imagen, actualiza la foto_personal
         if ($this->foto_personal) {
             $this->validate([
                 'foto_personal' => 'image|mimes:jpeg,png,jpg,gif|max:1024',

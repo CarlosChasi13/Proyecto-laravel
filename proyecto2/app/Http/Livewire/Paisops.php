@@ -45,7 +45,7 @@ class Paisops extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Paisop Successfully created.');
+		session()->flash('message', 'País agregado exitosamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Paisops extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Paisop Successfully updated.');
+			session()->flash('message', 'País editado exitosamente.');
         }
     }
 
