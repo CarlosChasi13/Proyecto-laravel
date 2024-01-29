@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Areaintere;
+use App\Models\Docente;
+use App\Models\Areaconocimiento;
 
 class Areainteres extends Component
 {
@@ -16,6 +18,8 @@ class Areainteres extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $docentes = Docente::all();
+        $areas= Areaconocimiento::all();
         return view('livewire.areainteres.view', [
             'areainteres' => Areaintere::latest()
 						->orWhere('id_docente', 'LIKE', $keyWord)
@@ -23,6 +27,8 @@ class Areainteres extends Component
 						->orWhere('tema', 'LIKE', $keyWord)
 						->orWhere('descripcion', 'LIKE', $keyWord)
 						->paginate(10),
+            'docentes' => $docentes,
+            'areas' => $areas,22
         ]);
     }
 	
@@ -57,7 +63,7 @@ class Areainteres extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Areaintere Successfully created.');
+		session()->flash('message', 'Área de interés2 agregada exitosamente.');
     }
 
     public function edit($id)
@@ -90,7 +96,7 @@ class Areainteres extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Areaintere Successfully updated.');
+			session()->flash('message', 'Área de interés editada exitosamente.');
         }
     }
 

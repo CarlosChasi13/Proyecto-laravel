@@ -7,16 +7,16 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
 							<h4><i class="fab fa-laravel text-info"></i>
-							Docente Listing </h4>
+							Docentes </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Docentes">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Docente">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Add Docentes
+						<i class="fa fa-plus"></i>  Añadir Docente
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 								<th>Rol</th>
 								<th>Acerca de</th>
 								<th>Observaciones</th>
-								<td>ACTIONS</td>
+								<td>Acciones</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,18 +60,18 @@
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Actions
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Docente id {{$row->id}}? \nDeleted Docentes cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
+											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
+											<li><a class="dropdown-item" onclick="confirm('¿Seguro que desa eliminar al Docente {{$row->nombre}} {{$row->apellido}} ? \n!Los Docentes eliminados no pueden ser recuperados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar</a></li>  
 										</ul>
 									</div>								
 								</td>
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No data Found </td>
+								<td class="text-center" colspan="100%">No se encontraron docentes </td>
 							</tr>
 							@endforelse
 						</tbody>

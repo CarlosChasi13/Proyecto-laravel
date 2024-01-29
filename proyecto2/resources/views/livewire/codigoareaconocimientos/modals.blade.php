@@ -3,29 +3,44 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel">Create New Codigoareaconocimiento</h5>
+                <h5 class="modal-title" id="createDataModalLabel">Crear Código de Área de Conocimiento</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="codigo"></label>
+                        <label for="codigo">  Código</label>
                         <input wire:model="codigo" type="text" class="form-control" id="codigo" placeholder="Codigo">@error('codigo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_grado"></label>
-                        <input wire:model="id_grado" type="text" class="form-control" id="id_grado" placeholder="Id Grado">@error('id_grado') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_grado">Grado:</label>
+                        <select wire:model="id_grado" class="form-control" id="id_grado">
+                            <option value="">Selecciona un grado</option>
+                                @foreach($grados as $grado)
+                            <option value="{{ $grado->id }}">{{ $grado->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_grado') 
+                        <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_areaconocimiento"></label>
-                        <input wire:model="id_areaconocimiento" type="text" class="form-control" id="id_areaconocimiento" placeholder="Id Areaconocimiento">@error('id_areaconocimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_areaconocimiento">Área de Conocimiento:</label>
+                        <select wire:model="id_areaconocimiento" class="form-control" id="id_areaconocimiento">
+                            <option value="">Selecciona un área de conocimiento</option>
+                                @foreach($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_areaconocimiento') 
+                        <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>
@@ -36,30 +51,45 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Codigoareaconocimiento</h5>
+                <h5 class="modal-title" id="updateModalLabel">Editar Código</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="codigo"></label>
+                        <label for="codigo">  Código:</label>
                         <input wire:model="codigo" type="text" class="form-control" id="codigo" placeholder="Codigo">@error('codigo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_grado"></label>
-                        <input wire:model="id_grado" type="text" class="form-control" id="id_grado" placeholder="Id Grado">@error('id_grado') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_grado">Grado:</label>
+                        <select wire:model="id_grado" class="form-control" id="id_grado">
+                            <option value="">Selecciona un grado</option>
+                                @foreach($grados as $grado)
+                            <option value="{{ $grado->id }}">{{ $grado->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_grado') 
+                        <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_areaconocimiento"></label>
-                        <input wire:model="id_areaconocimiento" type="text" class="form-control" id="id_areaconocimiento" placeholder="Id Areaconocimiento">@error('id_areaconocimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_areaconocimiento">Área de Conocimiento:</label>
+                        <select wire:model="id_areaconocimiento" class="form-control" id="id_areaconocimiento">
+                            <option value="">Selecciona un área de conocimiento</option>
+                                @foreach($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_areaconocimiento') 
+                        <span class="error text-danger">{{ $message }}</span> 
+                        @enderror
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Save</button>
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
             </div>
        </div>
     </div>

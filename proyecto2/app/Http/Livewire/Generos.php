@@ -45,7 +45,7 @@ class Generos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Genero Successfully created.');
+		session()->flash('message', 'Género creado exitosamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Generos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Genero Successfully updated.');
+			session()->flash('message', 'Género editado exitosamente.');
         }
     }
 

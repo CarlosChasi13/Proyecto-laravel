@@ -45,7 +45,7 @@ class Areaconocimientos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Areaconocimiento Successfully created.');
+		session()->flash('message', 'Área de conocimiento creada exitosamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Areaconocimientos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Areaconocimiento Successfully updated.');
+			session()->flash('message', 'Área de conocimiento editada exitosamente.');
         }
     }
 
