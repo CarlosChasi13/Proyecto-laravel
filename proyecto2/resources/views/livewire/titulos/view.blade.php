@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
+							<h4><i class="fas fa-star text-primary"></i>
 							Títulos</h4>
 						</div>
 						@if (session()->has('message'))
@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Título">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Ttulo
+						<i class="fa fa-plus"></i>  Agregar Títulos
 						</div>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No se encontraron títulos </td>
+								<td class="text-center" colspan="100%">Datos no encontrados </td>
 							</tr>
 							@endforelse
 						</tbody>

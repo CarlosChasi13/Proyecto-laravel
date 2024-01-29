@@ -6,8 +6,8 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Sedes </h4>
+							<h4><i class="fas fa-building text-primary"></i>
+							Sede</h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -16,7 +16,7 @@
 							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Sede">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Añadir Sede
+						<i class="fa fa-plus"></i>  Agregar Sede
 						</div>
 					</div>
 				</div>
@@ -65,7 +65,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No se encontraron Sedes </td>
+								<td class="text-center" colspan="100%">Datos no encontrados</td>
 							</tr>
 							@endforelse
 						</tbody>

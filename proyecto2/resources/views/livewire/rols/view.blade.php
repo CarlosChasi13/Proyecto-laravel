@@ -6,7 +6,7 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
+							<h4><i class="fas fa-user-shield text-success"></i>
 							Roles</h4>
 						</div>
 						@if (session()->has('message'))
@@ -53,7 +53,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No se encontraron roles </td>
+								<td class="text-center" colspan="100%">Datos no encontrados</td>
 							</tr>
 							@endforelse
 						</tbody>

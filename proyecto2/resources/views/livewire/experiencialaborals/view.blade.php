@@ -6,8 +6,8 @@
 				<div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 						<div class="float-left">
-							<h4><i class="fab fa-laravel text-info"></i>
-							Experiencia laboral </h4>
+							<h4><i class="fas fa-briefcase text-success"></i>
+							Experiencias laborales </h4>
 						</div>
 						@if (session()->has('message'))
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
@@ -51,6 +51,7 @@
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Acciones
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
@@ -61,7 +62,7 @@
 							</tr>
 							@empty
 							<tr>
-								<td class="text-center" colspan="100%">No hay datos para mostrar </td>
+								<td class="text-center" colspan="100%">Datos no encontrados</td>
 							</tr>
 							@endforelse
 						</tbody>
