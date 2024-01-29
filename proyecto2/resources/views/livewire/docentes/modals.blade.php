@@ -7,7 +7,7 @@
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
-				<form>
+				<form enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="cedula">  Cédula:</label>
                         <input wire:model="cedula" type="text" class="form-control" id="cedula" placeholder="Cedula">@error('cedula') <span class="error text-danger">{{ $message }}</span> @enderror
@@ -21,8 +21,8 @@
                         <input wire:model="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">@error('apellido') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_personal">  Foto personal:</label>
-                        <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="foto_personal">Foto Personal</label>
+                        <input wire:model="foto_personal" type="file" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="fecha_nacimiento">  Fecha de Nacimiento:</label>
@@ -114,8 +114,8 @@
                         <input wire:model="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">@error('apellido') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_personal">  Foto:</label>
-                        <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="foto_personal">Foto Personal</label>
+                        <input wire:model="foto_personal" type="file" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="fecha_nacimiento">  Fecha de nacimiento:</label>

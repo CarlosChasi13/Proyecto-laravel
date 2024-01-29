@@ -44,7 +44,7 @@
                 <div class="relative pl-16 w-1/2">
                     <dt class="text-base font-semibold leading-7 text-gray-900">
                         <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <img width="64" height="64" src="https://img.icons8.com/nolan/64/goal.png" alt="goal"/>
+                            <img width="64" height="64" src="https://img.icons8.com/nolan/64/goal.png" alt="goal" />
                         </div>
                         <span class="font-bold text-2xl">Misión</span>
                     </dt>
@@ -55,7 +55,7 @@
                 <div class="relative pl-16 w-1/2">
                     <dt class="text-base font-semibold leading-7 text-gray-900">
                         <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg">
-                            <img width="64" height="64" src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/64/external-vision-teamwork-wanicon-lineal-color-wanicon.png" alt="external-vision-teamwork-wanicon-lineal-color-wanicon"/>
+                            <img width="64" height="64" src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/64/external-vision-teamwork-wanicon-lineal-color-wanicon.png" alt="external-vision-teamwork-wanicon-lineal-color-wanicon" />
                         </div>
                         <span class="font-bold text-2xl">Visión</span>
                     </dt>
@@ -67,61 +67,59 @@
         </div>
     </div>
 </div>
-<div id="personaldocente" class="m-8">
-    <h1 class="font-bold text-gray-900 text-center text-2xl md:text-5xl leading-none mb-8">Personal Docente</h1>
-    <hr>
-    @if($docentes && $docentes->count() > 0)
+<div id="personaldocente" class="flex flex-col items-center">
+    <div class="flex flex-col items-center gap-4">
+        <h1 class="font-bold text-4xl">Personal Docente</h1>
+        <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Conoce a nuestro equipo de trabajo</p>
+    </div>
+    <section class="w-full flex flex-wrap mx-auto justify-center items-center gap-x-6 gap-y-4 p-4 m-12">
+        @if($docentes && $docentes->count() > 0)
         @foreach($docentes as $data)
-            <section class="py-4 md:py-8 flex mx-auto items-center container">
-                <div class="m-8 px-4 w-1/2">
-                    <div class="text-center">
-                        <div class="flex justify-center m-8">
-                            <img class="rounded-full w-32 h-32" src="https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1705795200&semt=sph" alt="Imagen Docente">
-                        </div>
-                        <h1 class="font-normal text-gray-900 text-xl md:text-4xl leading-none mb-8">
-                            {{ $data['docente']->nombre }} {{ $data['docente']->apellido }}
-                        </h1>
+        <div class="flex w-1/3">
+            @if($data['docente']->foto_personal != null)
+                <img src="{{ asset('storage/' . $data['docente']->foto_personal) }}" alt="{{ $data['docente']->nombre }}">
+            @else
+                <img class="w-1/2 rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="img/logo.png" alt="">
+            @endif
+            <div class="w-1/2 border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-4">
+                    <div class="text-gray-900 font-bold text-2xl mb-2">{{ $data['docente']->nombre }} {{ $data['docente']->apellido }}</div>
+                    <p class="text-sm text-gray-600 flex items-center">
+                        <img class="w-6" src="https://img.icons8.com/sf-regular/48/graduation-cap.png" alt="graduation-cap" />
                         @if($data['titulo'])
-                            <h6 class="font-medium text-gray-600 text-base md:text-xl uppercase mb-8">
-                                {{ $data['titulo']->nombre }}
-                            </h6>
+                        {{ $data['titulo']->nombre }}
                         @else
-                            <h6 class="font-medium text-gray-600 text-base md:text-xl uppercase mb-8">
-                                No tiene un titulo registrado
-                            </h6>
+                        No tiene un titulo registrado
                         @endif
-                        <p class="font-normal text-gray-600 text-md md:text-base my-8">
-                            {{ $data['docente']->acercade }}
-                        </p>
-                        <a href="#" class="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500">Obtén mi CV</a>
-                    </div>
-                </div>
-                <div class="m-8 px-4 w-1/2">
-                    <h1 class="font-bold text-gray-700 text-xl md:text-2xl mb-5">Formación Académica</h1>
-                    <hr>
-                    <div class="flex flex-col gap-4 m-4">
-                        @if($data['capacitaciones'] && $data['capacitaciones']->count() > 0)
+                    </p>
+                    <div class="py-2">
+                        <h3 class="font-bold">Formacion Academica</h3>
+                        <ul class="m-2">
+                            @if($data['capacitaciones'] && $data['capacitaciones']->count() > 0)
                             @foreach($data['capacitaciones'] as $capacitacion)
-                                <div class="bg-gray-50 px-4 py-2 rounded-md">
-                                    <label for="experience" class="font-normal text-gray-500 text-md">{{ $capacitacion->nombre }}</label>
-                                </div>
+                            <li>{{ $capacitacion->nombre }}</li>
                             @endforeach
-                        @else
-                            <div class="bg-gray-50 px-4 py-2 rounded-md">
-                                <label for="experience" class="font-normal text-gray-500 text-md">No tiene capacitaciones registradas</label>
-                            </div>
-                        @endif
+                            @else
+                            <li>No tiene capacitaciones registradas</li>
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="py-2">
+                        <h3 class="font-bold">Acerca de mi</h3>
+                        <p class="text-gray-700 text-base">{{ $data['docente']->acercade }}</p>
                     </div>
                 </div>
-            </section>
-            <hr>
+                <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Consigue mi CV</button>
+            </div>
+        </div>
         @endforeach
-    @else
+        @else
         <section class="py-4 md:py-8 flex mx-auto items-center container">
             <h1>No hay datos</h1>
         </section>
         <hr>
-    @endif
+        @endif
+    </section>
 </div>
 <div id="contactanos" class="flex flex-wrap justify-center items-center px-6 py-24 sm:py-16 lg:px-8">
     <div class="mx-8">
@@ -189,14 +187,14 @@
         </form>
     </div>
     @if($campus)
-        <div class="mx-8">
-            <div class="mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Visítanos</h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->nombre }}</p>
-                <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->provinciaop->nombre }} - {{ $campus->paisop->nombre }}</p>
-            </div>
-            <iframe class="m-4" src="{{ $campus->maps_url }}" width="750" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="mx-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Visítanos</h2>
+            <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->nombre }}</p>
+            <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->provinciaop->nombre }} - {{ $campus->paisop->nombre }}</p>
         </div>
+        <iframe class="m-4" src="{{ $campus->maps_url }}" width="750" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
     @endif
 </div>
 @endsection

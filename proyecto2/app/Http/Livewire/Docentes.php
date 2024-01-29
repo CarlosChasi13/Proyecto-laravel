@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Docente;
 use App\Models\Genero;
 use App\Models\Rol;
@@ -11,6 +12,7 @@ use App\Models\Rol;
 class Docentes extends Component
 {
     use WithPagination;
+	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $cedula, $nombre, $apellido, $foto_personal, $fecha_nacimiento, $id_genero, $telefono, $email, $direccion, $id_rol, $acercade, $observaciones;
@@ -75,13 +77,16 @@ class Docentes extends Component
 		'id_rol' => 'required',
 		'acercade' => 'required',
 		'observaciones' => 'required',
+		'foto_personal' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
+
+		$rutaFoto = $this->foto_personal->store('fotos', 'public');
 
         Docente::create([ 
 			'cedula' => $this-> cedula,
 			'nombre' => $this-> nombre,
 			'apellido' => $this-> apellido,
-			'foto_personal' => $this-> foto_personal,
+			'foto_personal' => $rutaFoto,
 			'fecha_nacimiento' => $this-> fecha_nacimiento,
 			'id_genero' => $this-> id_genero,
 			'telefono' => $this-> telefono,
@@ -131,28 +136,40 @@ class Docentes extends Component
 		'observaciones' => 'required',
         ]);
 
-        if ($this->selected_id) {
-			$record = Docente::find($this->selected_id);
-            $record->update([ 
-			'cedula' => $this-> cedula,
-			'nombre' => $this-> nombre,
-			'apellido' => $this-> apellido,
-			'foto_personal' => $this-> foto_personal,
-			'fecha_nacimiento' => $this-> fecha_nacimiento,
-			'id_genero' => $this-> id_genero,
-			'telefono' => $this-> telefono,
-			'email' => $this-> email,
-			'direccion' => $this-> direccion,
-			'id_rol' => $this-> id_rol,
-			'acercade' => $this-> acercade,
-			'observaciones' => $this-> observaciones
+    if ($this->selected_id) {
+        $record = Docente::find($this->selected_id);
+        
+        $data = [
+            'cedula' => $this->cedula,
+            'nombre' => $this->nombre,
+            'apellido' => $this->apellido,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'id_genero' => $this->id_genero,
+            'telefono' => $this->telefono,
+            'email' => $this->email,
+            'direccion' => $this->direccion,
+            'id_rol' => $this->id_rol,
+            'acercade' => $this->acercade,
+            'observaciones' => $this->observaciones
+        ];
+
+        if ($this->foto_personal) {
+            $this->validate([
+                'foto_personal' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
             ]);
 
-            $this->resetInput();
-            $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Docente editado exitosamente.');
+            $rutaFoto = $this->foto_personal->store('fotos', 'public');
+            $data['foto_personal'] = $rutaFoto;
         }
+
+        $record->update($data);
+
+        $this->resetInput();
+        $this->dispatchBrowserEvent('closeModal');
+        session()->flash('message', 'Docente Successfully updated.');
     }
+}
+
 
     public function destroy($id)
     {
