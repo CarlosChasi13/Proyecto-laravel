@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,7 @@ use App\Http\Controllers\PageController;
 |
 */
 
+
 Route::get('/', [PageController::class, 'getData']);
 
 Route::middleware([
@@ -21,10 +24,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+	Route::get('/dashboard', [DashboardController::class, 'mostrarDashboard'])->name('dashboard');
+	
 });
+
+
+Route::get('/admin/settings', 'App\Http\Controllers\UsuarioController@profile');
 
 Auth::routes();
 
@@ -38,6 +43,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 		Route::view('publicacioncientifica', 'livewire.publicacioncientificas.index');
 		Route::view('areainteres', 'livewire.areainteres.index');
 		
+		//Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
+	
+
 		Route::prefix('administracion')->group(function () {
 			Route::view('rol', 'livewire.rols.index');
 			Route::view('docenteareaconocimiento', 'livewire.docenteareaconocimientos.index');
@@ -65,6 +74,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 			Route::view('sede', 'livewire.sedes.index');
 			Route::view('areaconocimiento', 'livewire.areaconocimientos.index');
 		});
+
 	});
 
+
+	Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+
+
 });
+
+
+

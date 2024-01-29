@@ -478,12 +478,7 @@ return [
             ],
         ],
         ['header' => 'account_settings'],
-        [
-            'text' => 'Mi perfil',
-            'url'  => '#',
-            'icon' => 'fas fa-id-badge text-info',
-
-        ],
+        
         [
             'text' => 'Cambiar contraseña',
             'url'  => 'password/reset',
@@ -491,7 +486,12 @@ return [
 
         ],
         
-      
+        [
+            'text' => 'Mi perfil',
+            'url'  => 'profile/profile',
+            'icon' => 'fas fa-id-badge text-info',
+
+        ],
 
     ],
 

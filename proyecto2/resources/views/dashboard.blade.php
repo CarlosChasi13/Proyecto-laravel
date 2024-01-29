@@ -1,49 +1,81 @@
 @extends('adminlte::page')
-@section('title', __('Dashboard'))
+@section('title', 'Dashboard')
+
 @section('content')
-<div class="container-fluid">
-<div class="row justify-content-center">
-	<div class="col-md-12">
-		<div class="card">
-			<div class="card-header"><h5><span class="text-center fa fa-home"></span> @yield('title')</h5></div>
-			<div class="card-body">
-				<h5>Hi <strong>{{ Auth::user()->name }},</strong> {{ __('You are logged in to ') }}{{ config('app.name', 'Laravel') }}</h5>
-				</br> 
-				<hr>
-								
-			<div class="row w-100">
-					<div class="col-md-3">
-						<div class="card border-info mx-sm-1 p-3">
-							<div class="card border-info text-info p-3" ><span class="text-center fa fa-plane-departure" aria-hidden="true"></span></div>
-							<div class="text-info text-center mt-3"><h4>Flights</h4></div>
-							<div class="text-info text-center mt-2"><h1>234</h1></div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card border-success mx-sm-1 p-3">
-							<div class="card border-success text-success p-3 my-card"><span class="text-center fa fa-luggage-cart" aria-hidden="true"></span></div>
-							<div class="text-success text-center mt-3"><h4>Baggage</h4></div>
-							<div class="text-success text-center mt-2"><h1>9,332</h1></div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card border-danger mx-sm-1 p-3">
-							<div class="card border-danger text-danger p-3 my-card" ><span class="text-center fa fa-person-booth" aria-hidden="true"></span></div>
-							<div class="text-danger text-center mt-3"><h4>Passengers</h4></div>
-							<div class="text-danger text-center mt-2"><h1>12,762</h1></div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="card border-warning mx-sm-1 p-3">
-							<div class="card border-warning text-warning p-3 my-card" ><span class="text-center fa fa-users" aria-hidden="true"></span></div>
-							<div class="text-warning text-center mt-3"><h4>Users</h4></div>
-							<div class="text-warning text-center mt-2"><h1>{{ Auth::user()->count() }}</h1></div>
-						</div>
-					</div>
-				 </div>				
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <canvas id="bar-chart" class="w-100"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="bar-chart-horizontal" class="w-100"></canvas>
+        </div>
+        <div class="col-md-12">
+            <canvas id="doughnut-chart" class="w-100"></canvas>
+        </div>
+    </div>
 </div>
-</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script>
+    // Datos de los NRCs por materia
+    var nrcsPorMateria = @json($nrcsPorMateria);
+
+    // Obtener los nombres de las materias y los NRCs
+    var materias = nrcsPorMateria.map(item => item.nombre);
+    var nrcs = nrcsPorMateria.map(item => item.total);
+
+    // Configurar el gráfico de barras
+    new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+            labels: materias,
+            datasets: [{
+                label: "NRCs por Materia",
+                backgroundColor: "#3e95cd",
+                data: nrcs
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'NRCs por Materia'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }]
+            }
+        }
+    });
+
+ 
+
+    /*// Configurar el gráfico de dona
+    new Chart(document.getElementById("doughnut-chart"), {
+        type: 'doughnut',
+        data: {
+            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: [2478, 5267, 734, 784, 433]
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Predicted world population (millions) in 2050'
+            }
+        }
+    });
+	*/
+</script>
 @endsection
