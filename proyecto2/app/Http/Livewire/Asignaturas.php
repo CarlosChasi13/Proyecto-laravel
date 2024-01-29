@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Asignatura;
+use App\Models\Periodoacademico;
+use App\Models\Codigoareaconocimiento;
 
 class Asignaturas extends Component
 {
@@ -16,6 +18,8 @@ class Asignaturas extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+		$periodos=Periodoacademico::all();
+		$codigos=Codigoareaconocimiento::all();
         return view('livewire.asignaturas.view', [
             'asignaturas' => Asignatura::latest()
 						->orWhere('id_periodoacademico', 'LIKE', $keyWord)
@@ -27,6 +31,8 @@ class Asignaturas extends Component
 						->orWhere('horas_laboratorio', 'LIKE', $keyWord)
 						->orWhere('horas_otros', 'LIKE', $keyWord)
 						->paginate(10),
+			'periodos' => $periodos,
+			'codigos' => $codigos,
         ]);
     }
 	
@@ -55,9 +61,10 @@ class Asignaturas extends Component
 		'codigo' => 'required',
 		'nombre' => 'required',
 		'descripcion' => 'required',
-		'horas_teoria' => 'required',
-		'horas_laboratorio' => 'required',
-		'horas_otros' => 'required',
+		'horas_teoria' => 'required|integer|min:0',
+		'horas_laboratorio' => 'required|integer|min:0',
+		'horas_otros' => 'required|integer|min:0',
+
         ]);
 
         Asignatura::create([ 
@@ -73,7 +80,7 @@ class Asignaturas extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Asignatura Successfully created.');
+		session()->flash('message', 'Asignatura creada exitosamente.');
     }
 
     public function edit($id)
@@ -98,9 +105,10 @@ class Asignaturas extends Component
 		'codigo' => 'required',
 		'nombre' => 'required',
 		'descripcion' => 'required',
-		'horas_teoria' => 'required',
-		'horas_laboratorio' => 'required',
-		'horas_otros' => 'required',
+		'horas_teoria' => 'required|integer|min:0',
+		'horas_laboratorio' => 'required|integer|min:0',
+		'horas_otros' => 'required|integer|min:0',
+
         ]);
 
         if ($this->selected_id) {
@@ -118,7 +126,7 @@ class Asignaturas extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Asignatura Successfully updated.');
+			session()->flash('message', 'Asignatura editada exitosamente.');
         }
     }
 

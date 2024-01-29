@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Grados">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Grado">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Agregar Grados
@@ -29,7 +29,7 @@
 							<tr> 
 								<td>#</td> 
 								<th>Nombre</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -41,10 +41,11 @@
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Acciones
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Grado id {{$row->id}}? \nDeleted Grados cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Desea eliminar el Grado {{$row->nombre}}? \n¡Los grados eliminados no pueden ser recuperados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>

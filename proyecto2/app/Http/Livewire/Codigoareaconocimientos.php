@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Codigoareaconocimiento;
+use App\Models\AreaConocimiento;
+use App\Models\Grado;
 
 class Codigoareaconocimientos extends Component
 {
@@ -16,12 +18,16 @@ class Codigoareaconocimientos extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $areas = AreaConocimiento::all();
+        $grados = Grado::all();
         return view('livewire.codigoareaconocimientos.view', [
             'codigoareaconocimientos' => Codigoareaconocimiento::latest()
 						->orWhere('codigo', 'LIKE', $keyWord)
 						->orWhere('id_grado', 'LIKE', $keyWord)
 						->orWhere('id_areaconocimiento', 'LIKE', $keyWord)
 						->paginate(10),
+            'areas' => $areas,
+            'grados' => $grados,
         ]);
     }
 	
@@ -53,7 +59,7 @@ class Codigoareaconocimientos extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Codigoareaconocimiento Successfully created.');
+		session()->flash('message', 'Código creado exitosamente.');
     }
 
     public function edit($id)
@@ -83,7 +89,7 @@ class Codigoareaconocimientos extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Codigoareaconocimiento Successfully updated.');
+			session()->flash('message', 'Código editado exitosamente.');
         }
     }
 

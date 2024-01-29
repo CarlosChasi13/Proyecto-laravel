@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Sedes">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Sede">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Agregar Sede
@@ -33,10 +33,10 @@
 								<th>Email</th>
 								<th>Direccion</th>
 								<th>Ciudad</th>
-								<th>Id Provincia</th>
-								<th>Id Pais</th>
+								<th>Provincia</th>
+								<th>Pais</th>
 								<th>Maps Url</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES	</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,9 +48,9 @@
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->direccion }}</td>
 								<td>{{ $row->ciudad }}</td>
-								<td>{{ $row->id_provincia }}</td>
-								<td>{{ $row->id_pais }}</td>
-								<td>{{ $row->maps_url }}</td>
+								<td>{{ $row->provinciaop->nombre }}</td>
+								<td>{{ $row->paisop->nombre}}</td>
+								<td><a href="{{ $row->maps_url }}" target="_blank">{{ $row->maps_url }}</a></td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,7 +58,7 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Sede id {{$row->id}}? \nDeleted Sedes cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar</a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Desea eliminar la Sede {{$row->nombre}}? \n¡Las sedes eliminadas no pueden ser recuperadas!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>

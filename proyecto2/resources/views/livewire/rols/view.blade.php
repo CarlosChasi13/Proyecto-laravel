@@ -13,10 +13,10 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Rols">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Rol">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Agregar Roles
+						<i class="fa fa-plus"></i>  Añadir Rol
 						</div>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 								<td>#</td> 
 								<th>Nombre</th>
 								<th>Descripcion</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -46,7 +46,7 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Rol id {{$row->id}}? \nDeleted Rols cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Desea elimnar el Rol {{$row->nombre}}? \n¡Los roles elimnados no pueden ser recuperados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>

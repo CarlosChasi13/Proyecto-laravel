@@ -9,57 +9,80 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="cedula"></label>
+                        <label for="cedula">  Cédula:</label>
                         <input wire:model="cedula" type="text" class="form-control" id="cedula" placeholder="Cedula">@error('cedula') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nombre"></label>
+                        <label for="nombre">  Nombre:</label>
                         <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="apellido"></label>
+                        <label for="apellido">  Apellido:</label>
                         <input wire:model="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">@error('apellido') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_personal"></label>
+                        <label for="foto_personal">  Foto personal:</label>
                         <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fecha_nacimiento"></label>
-                        <input wire:model="fecha_nacimiento" type="text" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="fecha_nacimiento">  Fecha de Nacimiento:</label>
+                        <input wire:model="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_genero"></label>
-                        <input wire:model="id_genero" type="text" class="form-control" id="id_genero" placeholder="Id Genero">@error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_genero">  Género:</label>
+                        <select wire:model="id_genero" class="form-control" id="id_genero" placeholder="Seleccione un Género">
+                            <option value="">Seleccione un Género</option>
+                            @foreach($generos as $genero)
+                            <option value="{{ $genero->id }}">{{ $genero->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="telefono"></label>
-                        <input wire:model="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono">@error('telefono') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="telefono">  Teléfono</label>
+                        <input wire:model="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono" oninput="validateTelefono()">@error('telefono') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <script>
+                        function validateTelefono() {
+                        var input = document.getElementById('telefono');
+                        input.value = input.value.replace(/\D/g, ''); // Elimina cualquier caracter no numérico
+                        if (input.value.length > 10) {
+                            input.value = input.value.slice(0, 10); // Limita la longitud a 10 caracteres
+                            }
+                        }
+                    </script>
                     <div class="form-group">
-                        <label for="email"></label>
+                        <label for="email">  Email:</label>
                         <input wire:model="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="direccion"></label>
+                        <label for="direccion">  Dirección</label>
                         <input wire:model="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">@error('direccion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_rol"></label>
-                        <input wire:model="id_rol" type="text" class="form-control" id="id_rol" placeholder="Id Rol">@error('id_rol') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_rol">Rol:</label>
+                        <select wire:model="id_rol" class="form-control" id="id_rol" placeholder="Seleccione un Rol">
+                            <option value="">Seleccione un Rol</option>
+                            @foreach($roles as $rol)
+                            <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_rol') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="acercade"></label>
+                        <label for="acercade">  Acerca de:</label>
                         <input wire:model="acercade" type="text" class="form-control" id="acercade" placeholder="Acercade">@error('acercade') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="observaciones"></label>
+                        <label for="observaciones">  Observaciones:</label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-primary">Guardar</button>
                 <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" wire:click.prevent="store()" class="btn btn-primary">Guardar</button>
             </div>
@@ -79,57 +102,71 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="cedula"></label>
+                        <label for="cedula">  Cédula:</label>
                         <input wire:model="cedula" type="text" class="form-control" id="cedula" placeholder="Cedula">@error('cedula') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nombre"></label>
+                        <label for="nombre">  Nombre:</label>
                         <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="apellido"></label>
+                        <label for="apellido">  Apellido</label>
                         <input wire:model="apellido" type="text" class="form-control" id="apellido" placeholder="Apellido">@error('apellido') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="foto_personal"></label>
+                        <label for="foto_personal">  Foto:</label>
                         <input wire:model="foto_personal" type="text" class="form-control" id="foto_personal" placeholder="Foto Personal">@error('foto_personal') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="fecha_nacimiento"></label>
-                        <input wire:model="fecha_nacimiento" type="text" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="fecha_nacimiento">  Fecha de nacimiento:</label>
+                        <input wire:model="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento" placeholder="Fecha Nacimiento">@error('fecha_nacimiento') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_genero"></label>
-                        <input wire:model="id_genero" type="text" class="form-control" id="id_genero" placeholder="Id Genero">@error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_genero">Género</label>
+                        <select wire:model="id_genero" class="form-control" id="id_genero" placeholder="Seleccione un Género">
+                            <option value="">Seleccione un Género</option>
+                            @foreach($generos as $genero)
+                            <option value="{{ $genero->id }}">{{ $genero->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_genero') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="telefono"></label>
+                        <label for="telefono">  Teléfono</label>
                         <input wire:model="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono">@error('telefono') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="email"></label>
+                        <label for="email">  Email</label>
                         <input wire:model="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="direccion"></label>
+                        <label for="direccion">  Dirección</label>
                         <input wire:model="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">@error('direccion') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_rol"></label>
-                        <input wire:model="id_rol" type="text" class="form-control" id="id_rol" placeholder="Id Rol">@error('id_rol') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_rol">Rol:</label>
+                        <select wire:model="id_rol" class="form-control" id="id_rol" placeholder="Seleccione un Rol">
+                            <option value="">Seleccione un Rol</option>
+                            @foreach($roles as $rol)
+                            <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_rol') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="acercade"></label>
+                        <label for="acercade">  Acerca de:</label>
                         <input wire:model="acercade" type="text" class="form-control" id="acercade" placeholder="Acercade">@error('acercade') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="observaciones"></label>
+                        <label for="observaciones">  Observaciones</label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
                 <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" wire:click.prevent="update()" class="btn btn-primary">Guardar</button>
             </div>

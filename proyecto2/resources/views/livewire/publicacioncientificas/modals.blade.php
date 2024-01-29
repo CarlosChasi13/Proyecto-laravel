@@ -8,24 +8,30 @@
             </div>
            <div class="modal-body">
 				<form>
-                    <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                <div class="form-group">
+                        <label for="id_docente">  Docente:</label>
+                        <select wire:model="id_docente" class="form-control" id="id_docente" placeholder="Seleccione un Docente">
+                            <option value="">Seleccione un Docente</option>
+                                @foreach($docentes as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nombre"></label>
+                        <label for="nombre">  Nombre: </label>
                         <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="año"></label>
+                        <label for="año">  Año:</label>
                         <input wire:model="año" type="text" class="form-control" id="año" placeholder="Año">@error('año') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="ies"></label>
+                        <label for="ies">  IES:</label>
                         <input wire:model="ies" type="text" class="form-control" id="ies" placeholder="Ies">@error('ies') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="observaciones"></label>
+                        <label for="observaciones">  Observaciones:</label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
@@ -44,30 +50,36 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">UActualizar Publicación científica</h5>
+                <h5 class="modal-title" id="updateModalLabel">Editar Publicación científica</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente">  Docente:</label>
+                        <select wire:model="id_docente" class="form-control" id="id_docente" placeholder="Seleccione un Docente">
+                            <option value="">Seleccione un Docente</option>
+                                @foreach($docentes as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="nombre"></label>
+                        <label for="nombre">  Nombre:</label>
                         <input wire:model="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">@error('nombre') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="año"></label>
+                        <label for="año">  Año:</label>
                         <input wire:model="año" type="text" class="form-control" id="año" placeholder="Año">@error('año') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="ies"></label>
+                        <label for="ies">  IES:</label>
                         <input wire:model="ies" type="text" class="form-control" id="ies" placeholder="Ies">@error('ies') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="observaciones"></label>
+                        <label for="observaciones">  Observaciones:</label>
                         <input wire:model="observaciones" type="text" class="form-control" id="observaciones" placeholder="Observaciones">@error('observaciones') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 

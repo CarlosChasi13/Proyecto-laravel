@@ -13,10 +13,10 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Publicacioncientificas">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Publicación">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  AAgregar Publicaciones científicas
+						<i class="fa fa-plus"></i>  Añadir Publicación
 						</div>
 					</div>
 				</div>
@@ -28,19 +28,19 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Docente</th>
+								<th>Docente</th>
 								<th>Nombre</th>
 								<th>Año</th>
 								<th>Ies</th>
 								<th>Observaciones</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($publicacioncientificas as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_docente }}</td>
+								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->año }}</td>
 								<td>{{ $row->ies }}</td>
@@ -52,7 +52,7 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Publicacioncientifica id {{$row->id}}? \nDeleted Publicacioncientificas cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Está seguro de eliminar la publicación {{$row->nombre}}? \n¡Las publicaciones eliminadas no se pueden recuperar!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>

@@ -49,7 +49,7 @@ class Siglas extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Sigla Successfully created.');
+		session()->flash('message', 'Sigla creada exitosamente.');
     }
 
     public function edit($id)
@@ -76,7 +76,7 @@ class Siglas extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Sigla Successfully updated.');
+			session()->flash('message', 'Sigla editada exitosamente.');
         }
     }
 

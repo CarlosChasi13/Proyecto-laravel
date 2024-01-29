@@ -45,7 +45,7 @@ class Grados extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Grado Successfully created.');
+		session()->flash('message', 'Grado creado exitosamente.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class Grados extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Grado Successfully updated.');
+			session()->flash('message', 'Grado editado exitosamente.');
         }
     }
 

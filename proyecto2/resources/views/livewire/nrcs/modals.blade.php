@@ -9,18 +9,35 @@
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="id_sede"></label>
-                        <input wire:model="id_sede" type="text" class="form-control" id="id_sede" placeholder="Id Sede">@error('id_sede') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_sede">Sede</label>
+                        <select wire:model="id_sede" class="form-control" id="id_sede" placeholder="Seleccione una Sede">
+                            <option value="">Seleccione una Sede</option>
+                                @foreach($sedes as $sede)
+                            <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('id_sede') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_asignatura"></label>
-                        <input wire:model="id_asignatura" type="text" class="form-control" id="id_asignatura" placeholder="Id Asignatura">@error('id_asignatura') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_asignatura">Asignatura</label>
+                        <select wire:model="id_asignatura" class="form-control" id="id_asignatura" placeholder="Seleccione una Asignatura">
+                            <option value="">Seleccione una Asignatura</option>
+                                @foreach($asignaturas as $asignatura)
+                            <option value="{{ $asignatura->id }}">{{ $asignatura->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_asignatura') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente">  Docente:</label>
+                        <select wire:model="id_docente" class="form-control" id="id_docente" placeholder="Seleccione un Docente">
+                            <option value="">Seleccione un Docente</option>
+                                @foreach($docentes as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
@@ -43,16 +60,34 @@
                 <form>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
-                        <label for="id_sede"></label>
-                        <input wire:model="id_sede" type="text" class="form-control" id="id_sede" placeholder="Id Sede">@error('id_sede') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_sede">Sede</label>
+                        <select wire:model="id_sede" class="form-control" id="id_sede" placeholder="Seleccione una Sede">
+                            <option value="">Seleccione una Sede</option>
+                                @foreach($sedes as $sede)
+                            <option value="{{ $sede->id }}">{{ $sede->nombre }}</option>
+                                @endforeach
+                            </select>
+                            @error('id_sede') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_asignatura"></label>
-                        <input wire:model="id_asignatura" type="text" class="form-control" id="id_asignatura" placeholder="Id Asignatura">@error('id_asignatura') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_asignatura">Asignatura</label>
+                        <select wire:model="id_asignatura" class="form-control" id="id_asignatura" placeholder="Seleccione una Asignatura">
+                            <option value="">Seleccione una Asignatura</option>
+                                @foreach($asignaturas as $asignatura)
+                            <option value="{{ $asignatura->id }}">{{ $asignatura->nombre }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_asignatura') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="id_docente"></label>
-                        <input wire:model="id_docente" type="text" class="form-control" id="id_docente" placeholder="Id Docente">@error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="id_docente">  Docente:</label>
+                        <select wire:model="id_docente" class="form-control" id="id_docente" placeholder="Seleccione un Docente">
+                            <option value="">Seleccione un Docente</option>
+                                @foreach($docentes as $docente)
+                            <option value="{{ $docente->id }}">{{ $docente->nombre }} {{ $docente->apellido }}</option>
+                                @endforeach
+                        </select>
+                        @error('id_docente') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
                 </form>

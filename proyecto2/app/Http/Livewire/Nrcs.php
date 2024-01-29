@@ -5,6 +5,9 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Nrc;
+use App\Models\Sede;
+use App\Models\Asignatura;
+use App\Models\Docente;
 
 class Nrcs extends Component
 {
@@ -16,12 +19,18 @@ class Nrcs extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $sedes = Sede::all();
+        $asignaturas = Asignatura::all();
+        $docentes = Docente::all();
         return view('livewire.nrcs.view', [
             'nrcs' => Nrc::latest()
 						->orWhere('id_sede', 'LIKE', $keyWord)
 						->orWhere('id_asignatura', 'LIKE', $keyWord)
 						->orWhere('id_docente', 'LIKE', $keyWord)
 						->paginate(10),
+            'sedes' => $sedes,
+            'asignaturas' => $asignaturas,
+            'docentes' => $docentes,
         ]);
     }
 	
@@ -53,7 +62,7 @@ class Nrcs extends Component
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Nrc Successfully created.');
+		session()->flash('message', 'Nrc creado exitosamente.');
     }
 
     public function edit($id)
@@ -83,7 +92,7 @@ class Nrcs extends Component
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Nrc Successfully updated.');
+			session()->flash('message', 'Nrc editado exitosamente.');
         }
     }
 

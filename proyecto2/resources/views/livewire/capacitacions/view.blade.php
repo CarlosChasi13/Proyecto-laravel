@@ -13,10 +13,10 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Capacitacions">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Capacitación">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
-						<i class="fa fa-plus"></i>  Agregar Capacitaciones
+						<i class="fa fa-plus"></i>  Añadir Capacitación al Docente
 						</div>
 					</div>
 				</div>
@@ -28,13 +28,13 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Docente</th>
+								<th>Docente</th>
 								<th>Ies</th>
 								<th>Nombre</th>
 								<th>Fecha</th>
 								<th>Horas</th>
 								<th>Descripcion</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,10 +51,11 @@
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Acciones
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Capacitacion id {{$row->id}}? \nDeleted Capacitacions cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
+											<li><a class="dropdown-item" onclick="confirm('¿Seguro quiere eliminar la capacitación {{$row->nombre}}? \n¡Los elementos eliminados no pueden ser recuperados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
 										</ul>
 									</div>								
 								</td>

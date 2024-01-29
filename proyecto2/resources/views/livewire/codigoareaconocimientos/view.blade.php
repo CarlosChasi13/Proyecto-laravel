@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Codigoareaconocimientos">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Área">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Agregar Códigos áreas de conocimientos
@@ -29,9 +29,9 @@
 							<tr> 
 								<td>#</td> 
 								<th>Codigo</th>
-								<th>Id Grado</th>
-								<th>Id Areaconocimiento</th>
-								<td>ACTIONS</td>
+								<th>Grado</th>
+								<th>Área de conocimiento</th>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,16 +39,17 @@
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->codigo }}</td>
-								<td>{{ $row->id_grado }}</td>
-								<td>{{ $row->id_areaconocimiento }}</td>
+								<td>{{ $row->grado->nombre }}</td>
+								<td>{{ $row->areaconocimiento->nombre }}</td>
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Acciones
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Codigoareaconocimiento id {{$row->id}}? \nDeleted Codigoareaconocimientos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Seguro desea eliminar el área {{$row->codigo}}? \n ¡Los datos eliminados no pueden ser ercuperados!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>

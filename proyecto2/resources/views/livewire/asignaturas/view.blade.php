@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Asignaturas">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Asignatura">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Agregar Materias
@@ -28,23 +28,23 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Periodoacademico</th>
-								<th>Id Codigoareaconocimiento</th>
-								<th>Codigo</th>
+								<th>Periodoacademico</th>
+								<th>Área de Conocimiento</th>
+								<th>Código</th>
 								<th>Nombre</th>
 								<th>Descripcion</th>
 								<th>Horas Teoria</th>
 								<th>Horas Laboratorio</th>
 								<th>Horas Otros</th>
-								<td>ACTIONS</td>
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($asignaturas as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_periodoacademico }}</td>
-								<td>{{ $row->id_codigoareaconocimiento }}</td>
+								<td>{{ $row->periodoacademico->fecha_inicio }} - {{ $row->periodoacademico->fecha_fin }} </td>
+								<td>{{ $row->codigoareaconocimiento->codigo }}</td>
 								<td>{{ $row->codigo }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->descripcion }}</td>
@@ -55,10 +55,11 @@
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 											Acciones
+											Acciones
 										</a>
 										<ul class="dropdown-menu">
-											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Asignatura id {{$row->id}}? \nDeleted Asignaturas cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
+											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Edit </a></li>
+											<li><a class="dropdown-item" onclick="confirm('¿Desea eliminar la materia {{$row->codigo}}? \n Las materias eliminadas no pueden ser recuperadas!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Delete </a></li>  
 										</ul>
 									</div>								
 								</td>

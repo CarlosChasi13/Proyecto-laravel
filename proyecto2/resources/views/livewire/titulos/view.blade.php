@@ -13,7 +13,7 @@
 						<div wire:poll.4s class="btn btn-sm btn-success" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
 						@endif
 						<div>
-							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Titulos">
+							<input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Buscar Título">
 						</div>
 						<div class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#createDataModal">
 						<i class="fa fa-plus"></i>  Agregar Títulos
@@ -28,25 +28,25 @@
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
-								<th>Id Docente</th>
+								<th>Docente</th>
 								<th>Fecha</th>
 								<th>Ies</th>
 								<th>Nombre</th>
 								<th>Observaciones</th>
-								<th>Principal</th>
-								<td>ACTIONS</td>
+								<!--<th>Principal</th>-->
+								<td>ACCIONES</td>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($titulos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->id_docente }}</td>
+								<td>{{ $row->docente->nombre }} {{ $row->docente->apellido }}</td>
 								<td>{{ $row->fecha }}</td>
 								<td>{{ $row->ies }}</td>
 								<td>{{ $row->nombre }}</td>
 								<td>{{ $row->observaciones }}</td>
-								<td>{{ $row->principal }}</td>
+								<!--<td>{{ $row->principal }}</td>-->
 								<td width="90">
 									<div class="dropdown">
 										<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,7 +54,7 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li><a data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$row->id}})"><i class="fa fa-edit"></i> Editar </a></li>
-											<li><a class="dropdown-item" onclick="confirm('Confirm Delete Titulo id {{$row->id}}? \nDeleted Titulos cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar</a></li>  
+											<li><a class="dropdown-item" onclick="confirm('¿Está seguro de eliminar el Título {{$row->nombre}}? \n ¡Los títulos borrados no se pueden recuperar!')||event.stopImmediatePropagation()" wire:click="destroy({{$row->id}})"><i class="fa fa-trash"></i> Eliminar </a></li>  
 										</ul>
 									</div>								
 								</td>
