@@ -5,13 +5,13 @@
 <div class="container">
     <div class="row g-4">
         <div class="col-md-6">
-            <canvas id="bar-chart" class="w-100"></canvas>
+            <canvas id="barChart" class="w-100"></canvas>
         </div>
         <div class="col-md-6">
-            <canvas id="bar-chart-horizontal" class="w-100"></canvas>
+            <canvas id="donutChart" class="w-100"></canvas>
         </div>
         <div class="col-md-12">
-            <canvas id="doughnut-chart" class="w-100"></canvas>
+            <canvas id="pieChart" class="w-100"></canvas>
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
     var nrcs = nrcsPorMateria.map(item => item.total);
 
     // Configurar el gráfico de barras
-    new Chart(document.getElementById("bar-chart"), {
+    new Chart(document.getElementById("barChart"), {
         type: 'bar',
         data: {
             labels: materias,
@@ -56,26 +56,49 @@
         }
     });
 
- 
+    // Datos de docentes por área de conocimiento
+    var docentesPorAreaConocimiento = @json($docenteporarea);
+    var areasConocimiento = docentesPorAreaConocimiento.map(item => item.nombre);
+    var cantidades = docentesPorAreaConocimiento.map(item => item.total);
 
-    /*// Configurar el gráfico de dona
-    new Chart(document.getElementById("doughnut-chart"), {
+    // Configurar el gráfico de dona
+    new Chart(document.getElementById("donutChart"), {
         type: 'doughnut',
         data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            labels: areasConocimiento,
             datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                data: [2478, 5267, 734, 784, 433]
+                label: "Cantidad de Docentes",
+                backgroundColor: ["#FF5733", "#FFBD33", "#33FF57", "#3381FF", "#B833FF"],
+                data: cantidades
             }]
         },
         options: {
             title: {
                 display: true,
-                text: 'Predicted world population (millions) in 2050'
-            }
+                text: 'Docentes por Área de Conocimiento'
+            },
+            aspectRatio: 1
         }
     });
-	*/
+
+    // Datos de asignaturas por área de conocimiento
+    var asignaturasPorAreaConocimiento = @json($asignaturasPorAreaConocimiento);
+    var pieData = {
+        labels: asignaturasPorAreaConocimiento.map(item => item.nombre),
+        datasets: [{
+            data: asignaturasPorAreaConocimiento.map(item => item.total),
+            backgroundColor: ['#FF5733', '#FFBD33', '#33FF57', '#3381FF', '#B833FF'],
+        }]
+    };
+    var pieOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+    };
+    // Crear el gráfico de pastel
+    new Chart(document.getElementById("pieChart").getContext('2d'), {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions
+    });
 </script>
 @endsection
