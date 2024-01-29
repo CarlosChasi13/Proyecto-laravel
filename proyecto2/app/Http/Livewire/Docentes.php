@@ -4,11 +4,13 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 use App\Models\Docente;
 
 class Docentes extends Component
 {
     use WithPagination;
+	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $cedula, $nombre, $apellido, $foto_personal, $fecha_nacimiento, $id_genero, $telefono, $email, $direccion, $id_rol, $acercade, $observaciones;
@@ -69,13 +71,16 @@ class Docentes extends Component
 		'id_rol' => 'required',
 		'acercade' => 'required',
 		'observaciones' => 'required',
+		'foto_personal' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
         ]);
+
+		$rutaFoto = $this->foto_personal->store('fotos', 'public');
 
         Docente::create([ 
 			'cedula' => $this-> cedula,
 			'nombre' => $this-> nombre,
 			'apellido' => $this-> apellido,
-			'foto_personal' => $this-> foto_personal,
+			'foto_personal' => $rutaFoto,
 			'fecha_nacimiento' => $this-> fecha_nacimiento,
 			'id_genero' => $this-> id_genero,
 			'telefono' => $this-> telefono,
@@ -110,43 +115,56 @@ class Docentes extends Component
     }
 
     public function update()
-    {
-        $this->validate([
-		'cedula' => 'required',
-		'nombre' => 'required',
-		'apellido' => 'required',
-		'fecha_nacimiento' => 'required',
-		'id_genero' => 'required',
-		'telefono' => 'required',
-		'email' => 'required',
-		'direccion' => 'required',
-		'id_rol' => 'required',
-		'acercade' => 'required',
-		'observaciones' => 'required',
-        ]);
+{
+    $this->validate([
+        'cedula' => 'required',
+        'nombre' => 'required',
+        'apellido' => 'required',
+        'fecha_nacimiento' => 'required',
+        'id_genero' => 'required',
+        'telefono' => 'required',
+        'email' => 'required',
+        'direccion' => 'required',
+        'id_rol' => 'required',
+        'acercade' => 'required',
+        'observaciones' => 'required',
+    ]);
 
-        if ($this->selected_id) {
-			$record = Docente::find($this->selected_id);
-            $record->update([ 
-			'cedula' => $this-> cedula,
-			'nombre' => $this-> nombre,
-			'apellido' => $this-> apellido,
-			'foto_personal' => $this-> foto_personal,
-			'fecha_nacimiento' => $this-> fecha_nacimiento,
-			'id_genero' => $this-> id_genero,
-			'telefono' => $this-> telefono,
-			'email' => $this-> email,
-			'direccion' => $this-> direccion,
-			'id_rol' => $this-> id_rol,
-			'acercade' => $this-> acercade,
-			'observaciones' => $this-> observaciones
+    if ($this->selected_id) {
+        $record = Docente::find($this->selected_id);
+        
+        $data = [
+            'cedula' => $this->cedula,
+            'nombre' => $this->nombre,
+            'apellido' => $this->apellido,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'id_genero' => $this->id_genero,
+            'telefono' => $this->telefono,
+            'email' => $this->email,
+            'direccion' => $this->direccion,
+            'id_rol' => $this->id_rol,
+            'acercade' => $this->acercade,
+            'observaciones' => $this->observaciones
+        ];
+
+        // Si se proporciona una nueva imagen, actualiza la foto_personal
+        if ($this->foto_personal) {
+            $this->validate([
+                'foto_personal' => 'image|mimes:jpeg,png,jpg,gif|max:1024',
             ]);
 
-            $this->resetInput();
-            $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Docente Successfully updated.');
+            $rutaFoto = $this->foto_personal->store('fotos', 'public');
+            $data['foto_personal'] = $rutaFoto;
         }
+
+        $record->update($data);
+
+        $this->resetInput();
+        $this->dispatchBrowserEvent('closeModal');
+        session()->flash('message', 'Docente Successfully updated.');
     }
+}
+
 
     public function destroy($id)
     {
