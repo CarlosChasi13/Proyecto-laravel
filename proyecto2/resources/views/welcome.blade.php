@@ -77,7 +77,7 @@
         @foreach($docentes as $data)
         <div class="flex w-1/3">
             @if($data['docente']->foto_personal != null)
-                <img src="{{ asset('storage/' . $data['docente']->foto_personal) }}" alt="{{ $data['docente']->nombre }}">
+                <img class="w-1/2 rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="{{ asset('storage/' . $data['docente']->foto_personal) }}" alt="{{ $data['docente']->nombre }}">
             @else
                 <img class="w-1/2 rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="img/logo.png" alt="">
             @endif

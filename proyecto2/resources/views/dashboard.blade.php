@@ -1,18 +1,15 @@
 @extends('adminlte::page')
 @section('title', 'Dashboard')
-
 @section('content')
-<div class="container">
-    <div class="row g-4">
-        <div class="col-md-6">
-            <canvas id="barChart" class="w-100"></canvas>
-        </div>
-        <div class="col-md-6">
-            <canvas id="donutChart" class="w-100"></canvas>
-        </div>
-        <div class="col-md-12">
-            <canvas id="pieChart" class="w-100"></canvas>
-        </div>
+<div class="container row w-full">
+    <div class="col-md-6">
+        <canvas id="barChart" class="w-50%"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas id="donutChart" class="w-50%"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas id="pieChart" class="w-50%"></canvas>
     </div>
 </div>
 

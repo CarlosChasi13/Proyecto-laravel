@@ -313,6 +313,11 @@ return [
         ],
         ['header' => 'Inicio'],
         [
+            'text' => 'Dashboard',
+            'url'  => 'dashboard',
+            'icon'    => 'fas fa-file text-primary',
+        ],
+        [
             'text' => 'Página Principal',
             'url'  => '/',
             'icon'    => 'fas fa-file text-primary',

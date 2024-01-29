@@ -1,4 +1,4 @@
-@extends('adminlte::auth.login')
+@extends('layouts.guest')
 @section('content')
 <div class="container mx-auto my-32">
     <div class="flex justify-center">
