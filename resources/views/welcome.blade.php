@@ -5,7 +5,7 @@
     <img src="https://4.bp.blogspot.com/-ZFyQkIYmGwY/V5V29qwT2AI/AAAAAAAAAFc/A8j6Y-PQVcAgbGMXZntDkDbcBngvQ1j3QCLcB/w1200-h630-p-k-no-nu/edificio.jpg" alt="background" class="absolute inset-0 -z-10 h-full w-full object-none object-left-top lg:object-fill md:object-none" />
     <div class="mx-auto mt-32 max-w-2xl hover:scale-105 duration-500">
         <div class="text-center p-8 bg-gray-500/30 rounded-lg">
-            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ config('app.full_name', 'Laravel') }}</h1>
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Gestor de Docencia Orientada al Conocimiento</h1>
             <p class="mt-6 text-lg leading-8 text-gray-200">Plataforma diseñada para facilitar y optimizar la gestión de la enseñanza, centrada en la transmisión efectiva del conocimiento.</p>
             <div class="mt-10 flex items-center justify-center gap-x-6">
                 <a href="#personaldocente" class="rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
@@ -66,60 +66,6 @@
             </dl>
         </div>
     </div>
-</div>
-<div id="personaldocente" class="flex flex-col items-center">
-    <div class="flex flex-col items-center gap-4">
-        <h1 class="font-bold text-4xl">Personal Docente</h1>
-        <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Conoce a nuestro equipo de trabajo</p>
-    </div>
-    <section class="w-full flex flex-wrap mx-auto justify-center items-center gap-x-6 gap-y-4 p-4 m-12">
-        @if($docentes && $docentes->count() > 0)
-        @foreach($docentes as $data)
-        <div class="flex w-1/3">
-            @if($data['docente']->foto_personal != null)
-                <img class="w-1/2 rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="{{ asset('storage/' . $data['docente']->foto_personal) }}" alt="{{ $data['docente']->nombre }}">
-            @else
-                <img class="w-1/2 rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="img/logo.png" alt="">
-            @endif
-            <div class="w-1/2 border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                <div class="mb-4">
-                    <div class="text-gray-900 font-bold text-2xl mb-2">{{ $data['docente']->nombre }} {{ $data['docente']->apellido }}</div>
-                    <p class="text-sm text-gray-600 flex items-center">
-                        <img class="w-6" src="https://img.icons8.com/sf-regular/48/graduation-cap.png" alt="graduation-cap" />
-                        @if($data['titulo'])
-                        {{ $data['titulo']->nombre }}
-                        @else
-                        No tiene un titulo registrado
-                        @endif
-                    </p>
-                    <div class="py-2">
-                        <h3 class="font-bold">Formacion Academica</h3>
-                        <ul class="m-2">
-                            @if($data['capacitaciones'] && $data['capacitaciones']->count() > 0)
-                            @foreach($data['capacitaciones'] as $capacitacion)
-                            <li>{{ $capacitacion->nombre }}</li>
-                            @endforeach
-                            @else
-                            <li>No tiene capacitaciones registradas</li>
-                            @endif
-                        </ul>
-                    </div>
-                    <div class="py-2">
-                        <h3 class="font-bold">Acerca de mi</h3>
-                        <p class="text-gray-700 text-base">{{ $data['docente']->acercade }}</p>
-                    </div>
-                </div>
-                <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Consigue mi CV</button>
-            </div>
-        </div>
-        @endforeach
-        @else
-        <section class="py-4 md:py-8 flex mx-auto items-center container">
-            <h1>No hay datos</h1>
-        </section>
-        <hr>
-        @endif
-    </section>
 </div>
 <div id="contactanos" class="flex flex-wrap justify-center items-center px-6 py-24 sm:py-16 lg:px-8">
     <div class="mx-8">
@@ -186,15 +132,5 @@
             </div>
         </form>
     </div>
-    @if($campus)
-    <div class="mx-8">
-        <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Visítanos</h2>
-            <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->nombre }}</p>
-            <p class="mt-2 text-lg leading-8 text-gray-600">{{ $campus->provinciaop->nombre }} - {{ $campus->paisop->nombre }}</p>
-        </div>
-        <iframe class="m-4" src="{{ $campus->maps_url }}" width="750" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    @endif
 </div>
 @endsection

@@ -17,7 +17,6 @@ class AsignaturaSeeder extends Seeder
     {
         DB::table('asignatura')->insert([
             'id' => 1,
-            'id_periodoacademico' => 1,
             'id_codigoareaconocimiento' => 13,
             'codigo' => 'A0G09',
             'nombre' => 'Desarrollo Web Avanzado',
@@ -28,7 +27,6 @@ class AsignaturaSeeder extends Seeder
         ]);
         DB::table('asignatura')->insert([
             'id' => 2,
-            'id_periodoacademico' => 1,
             'id_codigoareaconocimiento' => 3,
             'codigo' => 'A0H04',
             'nombre' => 'Sistemas Avanzados de Base de Datos',

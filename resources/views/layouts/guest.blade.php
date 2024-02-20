@@ -15,7 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/apptw.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -95,14 +95,14 @@
         </nav>
     </header>
     <div class="font-sans text-gray-900 antialiased">
-        <img src="img\Logo_ESPE.png" alt="background" class="select-none pointer-events-none fixed inset-0 -z-10 m-auto w-1/2 opacity-5"/>
+        <img src="img\Logo_ESPE.png" alt="background" class="select-none pointer-events-none fixed inset-0 -z-10 m-auto w-1/2 opacity-5" />
         @yield('content')
     </div>
     <footer class="bg-white dark:bg-gray-900">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse pointer-events-none select-none">
-                    <img src="img\logo.png" class="rounded-md bg-blue-500 w-16" alt="Logo"/>
+                    <img src="img\logo.png" class="rounded-md bg-blue-500 w-16" alt="Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.full_name', 'Laravel') }}</span>
                 </div>
                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">

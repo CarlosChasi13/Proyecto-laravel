@@ -21,7 +21,7 @@ class GradoSeeder extends Seeder
         ]);
         DB::table('grado')->insert([
             'id' => 2,
-            'nombre' => 'Tecnologia',
+            'nombre' => 'Tecnología',
         ]);
     }
 }

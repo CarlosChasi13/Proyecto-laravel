@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('asignatura', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_periodoacademico');
-            $table->foreign('id_periodoacademico')->references('id')->on('periodoacademico');
             $table->unsignedBigInteger('id_codigoareaconocimiento');
             $table->foreign('id_codigoareaconocimiento')->references('id')->on('codigoareaconocimiento');
             $table->string('codigo', 20);

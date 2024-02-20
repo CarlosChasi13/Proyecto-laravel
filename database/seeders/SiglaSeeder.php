@@ -18,12 +18,12 @@ class SiglaSeeder extends Seeder
         DB::table('sigla')->insert([
             'id' => 1,
             'nombre' => 'S-I',
-            'descripcion' => 'Primer periodo academico anual',
+            'descripcion' => 'Primer periodo académico',
         ]);
         DB::table('sigla')->insert([
             'id' => 2,
             'nombre' => 'S-II',
-            'descripcion' => 'Segundo periodo academico anual',
+            'descripcion' => 'Segundo periodo académico',
         ]);
     }
 }

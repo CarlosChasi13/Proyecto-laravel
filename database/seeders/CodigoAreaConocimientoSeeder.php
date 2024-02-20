@@ -24,7 +24,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 2,
             'codigo' => 'COMP-L0F',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 1
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -36,7 +36,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 4,
             'codigo' => 'COMP-L0H',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 2
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -48,7 +48,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 6,
             'codigo' => 'COMP-L0I',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 3
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -66,7 +66,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 9,
             'codigo' => 'COMP-L0J',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 5
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -78,7 +78,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 11,
             'codigo' => 'COMP-MAT',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 6
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -96,7 +96,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 14,
             'codigo' => 'COMP-L0G',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 8
         ]);
         DB::table('codigoareaconocimiento')->insert([
@@ -108,7 +108,7 @@ class CodigoAreaConocimientoSeeder extends Seeder
         DB::table('codigoareaconocimiento')->insert([
             'id' => 16,
             'codigo' => 'COMP-L0L',
-            'id_grado' => 1,
+            'id_grado' => 2,
             'id_areaconocimiento' => 9
         ]);
     }
