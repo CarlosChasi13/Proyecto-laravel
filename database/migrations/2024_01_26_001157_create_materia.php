@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('asignatura', function (Blueprint $table) {
+        Schema::create('materia', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_codigoareaconocimiento');
-            $table->foreign('id_codigoareaconocimiento')->references('id')->on('codigoareaconocimiento');
             $table->string('codigo', 20);
+            $table->foreignId('id_codigoareaconocimiento')->constrained('codigoareaconocimiento');
             $table->string('nombre', 100);
             $table->text('descripcion');
             $table->unsignedInteger('horas_teoria');
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asignatura');
+        Schema::dropIfExists('materia');
     }
 };

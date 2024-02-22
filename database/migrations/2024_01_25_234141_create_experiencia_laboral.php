@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('experiencialaboral', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_docente');
-            $table->foreign('id_docente')->references('id')->on('docente');
+            $table->foreignId('id_docente')->constrained('docente');
             $table->string('entidad', 100);
             $table->string('cargo', 20);
             $table->date('fecha_ingreso');

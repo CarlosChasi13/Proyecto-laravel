@@ -13,11 +13,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_docente')
-                ->after('password')
-                ->nullable()
-                ->unique();
-            $table->foreign('id_docente')->references('id')->on('docente');
+            $table->string('last_name')
+            ->nullable()
+            ->after('name');
+
+            $table->foreignId('id_docente')
+            ->constrained('docente')
+            ->after('password');
         });
     }
 
@@ -27,7 +29,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-
+            Schema::dropIfExists('users');
         });
     }
 };

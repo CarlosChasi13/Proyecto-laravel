@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('areainteres', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_docente');
-            $table->foreign('id_docente')->references('id')->on('docente');
-            $table->unsignedBigInteger('id_areaconocimiento');
-            $table->foreign('id_areaconocimiento')->references('id')->on('areaconocimiento');
+            $table->foreignId('id_docente')->constrained('docente');
+            $table->foreignId('id_areaconocimiento')->constrained('areaconocimiento');
             $table->string('tema', 100);
             $table->text('descripcion');
             $table->timestamps();

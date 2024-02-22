@@ -16,10 +16,8 @@ return new class extends Migration
         Schema::create('codigoareaconocimiento', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 20);
-            $table->unsignedBigInteger('id_grado');
-            $table->foreign('id_grado')->references('id')->on('grado');
-            $table->unsignedBigInteger('id_areaconocimiento');
-            $table->foreign('id_areaconocimiento')->references('id')->on('areaconocimiento');
+            $table->foreignId('id_grado')->constrained('grado');
+            $table->foreignId('id_areaconocimiento')->constrained('areaconocimiento');
             $table->timestamps();
         });
     }

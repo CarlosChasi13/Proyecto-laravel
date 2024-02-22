@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('capacitacion', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_docente');
-            $table->foreign('id_docente')->references('id')->on('docente');
+            $table->foreignId('id_docente')->constrained('docente');
             $table->string('ies', 100);
             $table->string('nombre', 100);
             $table->date('fecha');

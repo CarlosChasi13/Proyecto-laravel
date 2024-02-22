@@ -1,6 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
+import preset from './vendor/filament/support/tailwind.config.preset'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,7 +8,10 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        'node_modules/preline/dist/*.js'
+        './node_modules/preline/dist/*.js',
+        './app/Filament/**/*.php',
+        './resources/views/filament/**/*.blade.php',
+        './vendor/filament/**/*.blade.php',
     ],
 
     theme: {
@@ -21,8 +23,6 @@ export default {
     },
 
     plugins: [
-        forms, 
-        typography,
         require('preline/plugin'),
     ],
 };

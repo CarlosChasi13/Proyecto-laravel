@@ -15,7 +15,7 @@ class PaisSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('paisop')->insert([
+        DB::table('pais')->insert([
             'id' => 1,
             'nombre' => 'Ecuador',
         ]);

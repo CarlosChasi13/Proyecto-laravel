@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('paisop', function (Blueprint $table) {
+        Schema::create('pais', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
-            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paisop');
+        Schema::dropIfExists('pais');
     }
 };

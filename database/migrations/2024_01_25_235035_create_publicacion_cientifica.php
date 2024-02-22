@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('publicacioncientifica', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_docente');
-            $table->foreign('id_docente')->references('id')->on('docente');
+            $table->foreignId('id_docente')->constrained('docente');
             $table->string('nombre', 100);
             $table->year('año');
             $table->string('ies', 100);

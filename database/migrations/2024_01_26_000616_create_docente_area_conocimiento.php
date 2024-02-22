@@ -16,9 +16,7 @@ return new class extends Migration
         Schema::create('docenteareaconocimiento', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_docente');
-            $table->foreign('id_docente')->references('id')->on('docente');
-            $table->unsignedBigInteger('id_codigoareaconocimiento');
-            $table->foreign('id_codigoareaconocimiento')->references('id')->on('codigoareaconocimiento');
+            $table->foreignId('id_codigoareaconocimiento')->constrained('codigoareaconocimiento');
             $table->timestamps();
         });
     }

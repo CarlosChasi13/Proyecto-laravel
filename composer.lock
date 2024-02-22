@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25c1777c39a28f9cffea026c72cfc783",
+    "content-hash": "20c413f82bbcca4c76f8e3c15dfef167",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -2373,16 +2373,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.44.0",
+            "version": "v10.45.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1199dbe361787bbe9648131a79f53921b4148cf6"
+                "reference": "8b08d8cd79f8093eb51a8c59e21647bedfbf05f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1199dbe361787bbe9648131a79f53921b4148cf6",
-                "reference": "1199dbe361787bbe9648131a79f53921b4148cf6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8b08d8cd79f8093eb51a8c59e21647bedfbf05f2",
+                "reference": "8b08d8cd79f8093eb51a8c59e21647bedfbf05f2",
                 "shasum": ""
             },
             "require": {
@@ -2575,7 +2575,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-02-13T16:01:16+00:00"
+            "time": "2024-02-20T15:32:48+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -8137,16 +8137,16 @@
     "packages-dev": [
         {
             "name": "brianium/paratest",
-            "version": "v7.4.2",
+            "version": "v7.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paratestphp/paratest.git",
-                "reference": "cf4e141f6e778646384a7044c42ce792f1637e40"
+                "reference": "64fcfd0e28a6b8078a19dbf9127be2ee645b92ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/cf4e141f6e778646384a7044c42ce792f1637e40",
-                "reference": "cf4e141f6e778646384a7044c42ce792f1637e40",
+                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/64fcfd0e28a6b8078a19dbf9127be2ee645b92ec",
+                "reference": "64fcfd0e28a6b8078a19dbf9127be2ee645b92ec",
                 "shasum": ""
             },
             "require": {
@@ -8215,7 +8215,7 @@
             ],
             "support": {
                 "issues": "https://github.com/paratestphp/paratest/issues",
-                "source": "https://github.com/paratestphp/paratest/tree/v7.4.2"
+                "source": "https://github.com/paratestphp/paratest/tree/v7.4.3"
             },
             "funding": [
                 {
@@ -8227,7 +8227,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2024-02-19T15:13:11+00:00"
+            "time": "2024-02-20T07:24:02+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -9970,6 +9970,69 @@
                 }
             ],
             "time": "2024-02-04T09:07:51+00:00"
+        },
+        {
+            "name": "reliese/laravel",
+            "version": "v1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reliese/laravel.git",
+                "reference": "8ff949815af7cd7caba6108eb0be4055d1b80353"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reliese/laravel/zipball/8ff949815af7cd7caba6108eb0be4055d1b80353",
+                "reference": "8ff949815af7cd7caba6108eb0be4055d1b80353",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": ">=2.5",
+                "illuminate/console": ">=5.1",
+                "illuminate/contracts": ">=5.1",
+                "illuminate/database": ">=5.1",
+                "illuminate/filesystem": ">=5.1",
+                "illuminate/support": ">=5.1",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "mockery/mockery": ">=1.4",
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Reliese\\Coders\\CodersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Reliese\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Llanos",
+                    "email": "cristianllanos@outlook.com"
+                }
+            ],
+            "description": "Reliese Components for Laravel Framework code generation.",
+            "homepage": "http://cristianllanos.com",
+            "keywords": [
+                "laravel",
+                "reliese"
+            ],
+            "support": {
+                "issues": "https://github.com/reliese/laravel/issues",
+                "source": "https://github.com/reliese/laravel"
+            },
+            "time": "2023-12-04T13:28:17+00:00"
         },
         {
             "name": "sebastian/cli-parser",

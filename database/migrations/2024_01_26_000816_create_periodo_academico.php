@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('periodoacademico', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_grado');
-            $table->foreign('id_grado')->references('id')->on('grado');
-            $table->unsignedBigInteger('id_sigla');
-            $table->foreign('id_sigla')->references('id')->on('sigla');
+            $table->foreignId('id_grado')->constrained('grado');
+            $table->foreignId('id_sigla')->constrained('sigla');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->timestamps();

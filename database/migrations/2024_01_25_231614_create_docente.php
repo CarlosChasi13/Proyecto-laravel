@@ -15,18 +15,17 @@ return new class extends Migration
     {
         Schema::create('docente', function (Blueprint $table) {
             $table->id();
-            $table->string('cedula', 10);
+            $table->string('codigo', 9)->unique();
+            $table->string('cedula', 10)->unique();
             $table->string('nombre', 50);
             $table->string('apellido', 50);
             $table->string('foto_personal', 1024)->nullable();
             $table->date('fecha_nacimiento');
-            $table->unsignedBigInteger(('id_genero'));
-            $table->foreign('id_genero')->references('id')->on('genero');
+            $table->foreignId('id_genero')->constrained('genero');
             $table->string('telefono', 15);
             $table->string('email', 200);
             $table->text('direccion');
-            $table->unsignedBigInteger('id_rol');
-            $table->foreign('id_rol')->references('id')->on('rol');
+            $table->foreignId('id_rol')->constrained('rol');
             $table->text('acercade');
             $table->text('observaciones');
             $table->timestamps();

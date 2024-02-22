@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PeriodoAcademicoSeeder::class);
         $this->call(AreaConocimientoSeeder::class);
         $this->call(CodigoAreaConocimientoSeeder::class);
-        $this->call(AsignaturaSeeder::class);
+        $this->call(MateriaSeeder::class);
     }
 }

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('areaconocimiento', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->timestamps();
         });
     }
 

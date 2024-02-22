@@ -20,10 +20,8 @@ return new class extends Migration
             $table->string('email', 200);
             $table->text('direccion');
             $table->string('ciudad', 50);
-            $table->unsignedBigInteger('id_provincia');
-            $table->foreign('id_provincia')->references('id')->on('provinciaop');
-            $table->unsignedBigInteger('id_pais');
-            $table->foreign('id_pais')->references('id')->on('paisop');
+            $table->foreignId('id_provincia')->constrained('provincia');
+            $table->foreignId('id_pais')->constrained('pais');
             $table->string('maps_url', 2048);
             $table->timestamps();
         });

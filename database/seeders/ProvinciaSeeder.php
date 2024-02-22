@@ -15,7 +15,7 @@ class ProvinciaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('provinciaop')->insert([
+        DB::table('provincia')->insert([
             'id' => 1,
             'nombre' => 'Cotopaxi',
         ]);
