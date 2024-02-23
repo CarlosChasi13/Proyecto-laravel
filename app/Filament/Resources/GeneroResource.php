@@ -21,9 +21,7 @@ class GeneroResource extends Resource
 
     protected static ?string $navigationLabel = 'Géneros';
 
-    protected static ?string $navigationGroup = 'Configuración';
-    
-        protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

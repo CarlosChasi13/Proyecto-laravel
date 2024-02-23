@@ -25,9 +25,7 @@ class DocenteResource extends Resource
 
     protected static ?string $navigationLabel = 'Docentes';
 
-    protected static ?string $navigationGroup = 'Académico';
-    
-        protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
