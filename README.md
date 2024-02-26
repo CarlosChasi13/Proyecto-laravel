@@ -51,10 +51,21 @@
 -   Filament Components Caching
     `php artisan filament:cache-components`
 
+### Permisos y Policies
+
+-   Sincronizar permisos con los modelos ya creados
+    `php artisan permissions:sync`
+
+-   Limpiar permisos y crear nuevamente
+    `php artisan permissions:sync -C`
+
+*   Crear Policy de cada modelo
+```php artisan permissions:sync -P```
+
 ### API
 
-* Generar controllador establecido para API
-```php artisan make:controller <NombreController> --api```
+-   Generar controllador establecido para API
+    `php artisan make:controller <NombreController> --api`
 
 ### Dependencias de Node
 
@@ -92,3 +103,4 @@
     -   [ ] Visualizar Docentes con su respectiva info
     -   [ ]
 -   [ ] CREAR PDFs
+```

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Docente;
 use Filament\Forms\Form;
@@ -81,9 +82,6 @@ class DocenteResource extends Resource
                 ->autocapitalize('words')
                 ->placeholder('Calle principal y Secundaria')
                 ->required(),
-                Select::make('id_rol')
-                ->relationship('rol', 'nombre')
-                ->required(),
                 TextInput::make('acercade')
                 ->name('Acerca de')
                 ->maxLength(200)
@@ -93,6 +91,10 @@ class DocenteResource extends Resource
                 ->maxLength(200)
                 ->autocapitalize('words')
                 ->required(),
+                Select::make('id_user')
+                ->options(User::all()->pluck('name', 'id'))
+                ->required()
+                ->searchable(),
             ]);
     }
 
@@ -110,16 +112,15 @@ class DocenteResource extends Resource
                 TextColumn::make('telefono'),
                 TextColumn::make('email'),
                 TextColumn::make('direccion'),
-                TextColumn::make('rol.nombre'),
                 TextColumn::make('acercade'),
                 TextColumn::make('observaciones'),
+                TextColumn::make('users.name'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

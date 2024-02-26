@@ -50,7 +50,7 @@ class Nrc extends Model
 		return $this->belongsTo(Docente::class, 'id_docente');
 	}
 
-	public function materium()
+	public function materia()
 	{
 		return $this->belongsTo(Materia::class, 'id_materia');
 	}

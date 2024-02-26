@@ -51,12 +51,12 @@ class Sede extends Model
 		'maps_url'
 	];
 
-	public function pai()
+	public function pais()
 	{
 		return $this->belongsTo(Pais::class, 'id_pais');
 	}
 
-	public function provincium()
+	public function provincia()
 	{
 		return $this->belongsTo(Provincia::class, 'id_provincia');
 	}

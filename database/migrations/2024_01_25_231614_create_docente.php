@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('telefono', 15);
             $table->string('email', 200);
             $table->text('direccion');
-            $table->foreignId('id_rol')->constrained('rol');
             $table->text('acercade');
+            $table->foreignId('id_user')->constrained('users');
             $table->text('observaciones');
             $table->timestamps();
         });
