@@ -49,7 +49,6 @@ class Docente extends Model
 	protected $casts = [
 		'fecha_nacimiento' => 'datetime',
 		'id_genero' => 'int',
-		'id_user' => 'int'
 	];
 
 	protected $fillable = [
@@ -64,18 +63,12 @@ class Docente extends Model
 		'email',
 		'direccion',
 		'acercade',
-		'id_user',
 		'observaciones'
 	];
 
 	public function genero()
 	{
 		return $this->belongsTo(Genero::class, 'id_genero');
-	}
-
-	public function user()
-	{
-		return $this->belongsTo(User::class, 'id_user');
 	}
 
 	public function areainteres()

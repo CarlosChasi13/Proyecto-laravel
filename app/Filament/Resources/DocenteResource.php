@@ -38,7 +38,6 @@ class DocenteResource extends Resource
                 ->length(9)
                 ->required(),
                 TextInput::make('cedula')
-                ->autocapitalize('words')
                 ->length(10)
                 ->placeholder('0604578965')
                 ->required(),
@@ -59,17 +58,16 @@ class DocenteResource extends Resource
                 ->placeholder('DD/MM/YYYY')
                 ->native(false)
                 ->displayFormat('d/m/Y')
-                ->maxDate(now()->subYears(18))
                 ->closeOnDateSelection()
                 ->required(),
                 Select::make('id_genero')
                 ->relationship('genero', 'nombre')
                 ->required(),
                 TextInput::make('telefono')
-                ->numeric()
                 ->length(10)
-                ->tel()
-                ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(9999999999)
                 ->placeholder('0987654321')
                 ->required(),
                 TextInput::make('email')
@@ -91,10 +89,6 @@ class DocenteResource extends Resource
                 ->maxLength(200)
                 ->autocapitalize('words')
                 ->required(),
-                Select::make('id_user')
-                ->options(User::all()->pluck('name', 'id'))
-                ->required()
-                ->searchable(),
             ]);
     }
 
@@ -114,7 +108,6 @@ class DocenteResource extends Resource
                 TextColumn::make('direccion'),
                 TextColumn::make('acercade'),
                 TextColumn::make('observaciones'),
-                TextColumn::make('users.name'),
             ])
             ->filters([
                 //

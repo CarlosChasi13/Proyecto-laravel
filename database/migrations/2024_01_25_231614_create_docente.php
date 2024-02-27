@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('email', 200);
             $table->text('direccion');
             $table->text('acercade');
-            $table->foreignId('id_user')->constrained('users');
             $table->text('observaciones');
             $table->timestamps();
         });

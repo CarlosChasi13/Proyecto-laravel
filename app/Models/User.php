@@ -39,7 +39,7 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
  */
 class User extends Authenticatable implements FilamentUser
 {
-	use HasRoles, HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
+	use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
 
 	protected $table = 'users';
 
@@ -67,12 +67,7 @@ class User extends Authenticatable implements FilamentUser
 		'current_team_id',
 		'profile_photo_path'
 	];
-
-	public function docentes()
-	{
-		return $this->hasMany(Docente::class, 'id_user');
-	}
-
+    
     public function canAccessPanel(Panel $panel): bool
     {
         /* return str_ends_with($this->email, '@gmail.com') && $this->hasVerifiedEmail(); */
