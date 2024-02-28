@@ -17,10 +17,6 @@ class PaisResource extends Resource
 {
     protected static ?string $model = Pais::class;
 
-    protected static ?string $navigationLabel = 'Pais';
-
-    protected static ?string $navigationGroup = 'Configuración';
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

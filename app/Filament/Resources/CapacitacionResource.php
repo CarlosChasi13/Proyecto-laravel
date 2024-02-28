@@ -2,20 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CapacitacionResource\Pages;
-use App\Filament\Resources\CapacitacionResource\RelationManagers;
-use App\Models\Capacitacion;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Docente;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Capacitacion;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CapacitacionResource\Pages;
+use App\Filament\Resources\CapacitacionResource\RelationManagers;
 
 class CapacitacionResource extends Resource
 {
     protected static ?string $model = Capacitacion::class;
+
+    protected static ?string $modelLabel = 'Capacitaciones';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,10 +26,16 @@ class CapacitacionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_docente')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_docente')
+                    ->relationship(
+                        name: 'docente',
+                        modifyQueryUsing: fn (Builder $query) => $query->orderBy('nombre')->orderBy('apellido'),
+                    )
+                    ->getOptionLabelFromRecordUsing(fn (Docente $record) => "{$record->codigo} - {$record->nombre} {$record->apellido}")
+                    ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
+                    ->required(),
                 Forms\Components\TextInput::make('ies')
+                    ->label('Nombre Institución')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\TextInput::make('nombre')
@@ -48,10 +57,12 @@ class CapacitacionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_docente')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('docente.nombre')
+                    ->label('Nombre'),
+                Tables\Columns\TextColumn::make('docente.apellido')
+                    ->label('Apellido'),
                 Tables\Columns\TextColumn::make('ies')
+                    ->label('Nombre Institución')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),

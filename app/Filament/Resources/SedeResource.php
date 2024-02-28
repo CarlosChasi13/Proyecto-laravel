@@ -17,18 +17,20 @@ class SedeResource extends Resource
 {
     protected static ?string $model = Sede::class;
 
+    protected static ?string $modelLabel = 'Sede';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_provincia')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_pais')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_provincia')
+                    ->relationship('provincia', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('id_pais')
+                    ->relationship('pais', 'nombre')
+                    ->required(),
                 Forms\Components\TextInput::make('nombre')
                     ->required()
                     ->maxLength(100),
@@ -48,6 +50,7 @@ class SedeResource extends Resource
                     ->required()
                     ->maxLength(50),
                 Forms\Components\TextInput::make('maps_url')
+                    ->url()
                     ->required()
                     ->maxLength(2048),
             ]);
@@ -57,11 +60,9 @@ class SedeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_provincia')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('provincia.nombre')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_pais')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('pais.nombre')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),
@@ -72,6 +73,7 @@ class SedeResource extends Resource
                 Tables\Columns\TextColumn::make('ciudad')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('maps_url')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

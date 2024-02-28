@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AreainteresResource\Pages;
 use App\Filament\Resources\AreainteresResource\RelationManagers;
 use App\Models\Areainteres;
+use App\Models\Docente;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,18 +18,25 @@ class AreainteresResource extends Resource
 {
     protected static ?string $model = Areainteres::class;
 
+    protected static ?string $modelLabel = 'Área de Interés';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_docente')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_areaconocimiento')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_docente')
+                    ->relationship(
+                        name: 'docente',
+                        modifyQueryUsing: fn (Builder $query) => $query->orderBy('nombre')->orderBy('apellido'),
+                    )
+                    ->getOptionLabelFromRecordUsing(fn (Docente $record) => "{$record->codigo} - {$record->nombre} {$record->apellido}")
+                    ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
+                    ->required(),
+                Forms\Components\Select::make('id_areaconocimiento')
+                    ->relationship('areaconocimiento', 'nombre')
+                    ->required(),
                 Forms\Components\TextInput::make('tema')
                     ->required()
                     ->maxLength(100),
@@ -43,11 +51,12 @@ class AreainteresResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_docente')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('id_areaconocimiento')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('docente.nombre')
+                    ->label('Nombre'),
+                Tables\Columns\TextColumn::make('docente.apellido')
+                    ->label('Apellido'),
+                Tables\Columns\TextColumn::make('areaconocimiento.nombre')
+                    ->label('Área Conocimiento')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tema')
                     ->searchable(),
