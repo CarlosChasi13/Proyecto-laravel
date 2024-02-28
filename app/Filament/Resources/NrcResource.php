@@ -72,6 +72,11 @@ class NrcResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\BulkAction::make('export')
+                    ->label('Exportar PDF')
+                    ->icon('heroicon-o-arrow-down-on-square')
+                    ->url(fn (Nrc $record) => route('generateNrcsPDF', $record->id))
+                    ->openUrlInNewTab(),
                 ]),
             ]);
     }

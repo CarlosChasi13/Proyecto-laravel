@@ -10,6 +10,8 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
 use Filament\Navigation\NavigationGroup;
+use Filament\Resources\UserResource;
+use Filament\Resources\NavigationLink;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
 use Illuminate\Session\Middleware\StartSession;
@@ -37,6 +39,22 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Indigo,
             ])
+            ->sidebarCollapsibleOnDesktop(true)
+            ->font('Poppins')
+            ->brandName('Gestión DCCO')
+           
+            ->navigationGroups([
+                'Reportes',
+            ])
+            ->navigationItems([
+                // Rerporte de Balance General
+                NavigationItem::make('Lista de Profesores')
+                    ->group('Reportes')
+                    ->URL('/generate-docentes-pdf')
+                    ->openUrlInNewTab()
+                    ->sort(2),
+            ])
+
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->pages([
                 Dashboard::class,
@@ -44,6 +62,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
             ])
+            
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
                     NavigationGroup::make()
@@ -62,11 +81,26 @@ class AdminPanelProvider extends PanelProvider
                             ...Resources\UserResource::getNavigationItems(),
                         ]),
                         NavigationGroup::make('Administración')
-                            ->items([
+                        ->items([
                                 ...Resources\UserResource::getNavigationItems(),
-                            ]),
+                        ]),
+                        
+                        NavigationGroup::make('Reportes')
+                        ->items([
+                            NavigationItem::make('Generar PDF de Docentes')
+                            ->url(route('generateDocentesPDF')),
+                            NavigationItem::make('Generar PDF de Nrcs')
+                            ->url(route('generateNrcsPDF')),
+                            NavigationItem::make('Generar PDF de Materias')
+                            ->url(route('generateMateriasPDF')),
+                            NavigationItem::make('Generar PDF de Docentes por Área')
+                            ->url(route('generateAreasPDF')),
+                            NavigationItem::make('Generar PDF de Datos de Docentes')
+                            ->url(route('generateDatosPDF')),
+                        ]),
                 ]);
             })
+            
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

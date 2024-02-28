@@ -17,6 +17,10 @@ class GeneroResource extends Resource
 {
     protected static ?string $model = Genero::class;
 
+    protected static ?int $navigationSort = 99;
+
+    protected static ?string $navigationLabel = 'Géneros';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

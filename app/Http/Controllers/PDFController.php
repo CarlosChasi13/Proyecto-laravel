@@ -2,104 +2,103 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Expense;
-use App\Models\LeagueTable;
-use App\Models\Player;
-use App\Models\Revenue;
+
 use Illuminate\Http\Request;
-use App\Models\Team;
+use App\Models\Docente;
+use App\Models\Periodoacademico;
+use App\Models\Nrc;
+use App\Models\Materia;
+use App\Models\Titulo;
+use App\Models\AreaInteres;
+use App\Models\Capacitacion;
+use App\Models\Experiencialaboral;
+use App\Models\Publicacioncientifica;
+use App\Models\Docenteareaconocimiento;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PDFController extends Controller
 {
-    public function generateTeamsPDF()
+    public function generateDocentesPDF()
     {
-        $teams = Team::get();
+        $docentes = Docente::get();
         $data = [
-            'title' => 'Equipos participantes',
+            'title' => 'Lista de docentes',
             'date' => date('m/d/Y'),
             // Total de equipos
-            'totalTeams' => count($teams),
-            // Equipos
-            'teams' => $teams,
-            // Total de equipos habilitados
-            'totalTeamsEnabled' => count($teams->where('status', 1)),
-            // Total de equipos deshabilitados
-            'totalTeamsDisabled' => count($teams->where('status', 0)),
+            'totalDocentes' => count($docentes),
+            // Docentes
+            'docentes' => $docentes,
+            
         ];
-        $pdf = Pdf::loadView('teamsPdf', $data);
+        $pdf = Pdf::loadView('docentesPdf', $data)->setPaper('a4', 'landscape');
         return $pdf->stream('invoice.pdf');
     }
 
-    // Generar PDF de jugadores
-    public function generatePlayersPDF()
+    public function generateNrcsPDF()
     {
-        $players = Player::get();
+        $nrcs = Nrc::get();
         $data = [
-            'title' => 'Jugadores registrados',
+            'title' => 'Lista Nrc por Período',
             'date' => date('m/d/Y'),
-            // Total de jugadores
-            'totalPlayers' => count($players),
-            // Jugadores
-            'players' => $players,
+
+            'totalNrcs' => count($nrcs),
+        
+            'nrcs' => $nrcs,
         ];
-        $pdf = Pdf::loadView('playersPdf', $data);
+        $pdf = Pdf::loadView('nrcsPdf', $data);
         return $pdf->stream('invoice.pdf');
     }
 
-    // Generar PDF de tabla de posiciones
-    public function generatePositionsPDF()
+    public function generateMateriasPDF()
     {
-        // Ordenar tabla de posiciones por puntos
-        $league_tables = LeagueTable::orderBy('points', 'desc')->get();
+        $materias = Materia::get();
         $data = [
-            'title' => 'Tabla de posiciones',
+            'title' => 'Lista Materias',
             'date' => date('m/d/Y'),
-            // Equipos ordenados por puntos
-            'league_tables' => $league_tables,
+
+            'totalMaterias' => count($materias),
+        
+            'materias' => $materias,
         ];
-        $pdf = Pdf::loadView('positionsPdf', $data)->setPaper('a4', 'landscape');
+        $pdf = Pdf::loadView('materiasPdf', $data);
         return $pdf->stream('invoice.pdf');
     }
 
-    // Generar PDF de ingresos
-    public function generateIncomePDF()
+    public function generateAreasPDF()
     {
-        $revenues = Revenue::get();
-        $expenses = Expense::get();
+        $areas = Docenteareaconocimiento::get();
         $data = [
-            'titleRevenue' => 'Ingresos',
-            'titleExpense' => 'Gastos',
+            'title' => 'Lista Docentes por Áreas',
             'date' => date('m/d/Y'),
-            // Total de ingresos
-            'totalRevenues' => Revenue::sum('value'),
-            // Total de gastos
-            'totalExpenses' => Expense::sum('value'),
-            // Balance de ingresos y gastos
-            'balance' => Revenue::sum('value') - Expense::sum('value'),
-            // Ingresos
-            'revenues' => $revenues,
-            'expenses' => $expenses,
+
+            'totalareas' => count($areas),
+        
+            'areas' => $areas,
         ];
-        $pdf = Pdf::loadView('incomePdf', $data);
+        $pdf = Pdf::loadView('areasPdf', $data);
         return $pdf->stream('invoice.pdf');
     }
 
-    // Generar PDF de gastos
-    public function generateExpensesPDF()
+    public function generateDatosPDF()
     {
-        $expenses = Expense::get();
+        $titulos = Titulo::get();
+        $capacitaciones= Capacitacion::get();
+        $experiencias=Experiencialaboral::get();
+        $areasinteres=Areainteres::get();
+        $publicaciones=Publicacioncientifica::get();
         $data = [
-            'title' => 'Gastos',
+            'title' => 'Lista Datos Docente',
             'date' => date('m/d/Y'),
-            // Total de gastos
-            'totalExpenses' => Expense::sum('value'),
-            // Balance de ingresos y gastos
-            'balance' => Revenue::sum('value') - Expense::sum('value'),
-            // Gastos
-            'expenses' => $expenses,
+
+            'totaltitulos' => count($titulos),
+        
+            'titulos' => $titulos,
+            'capacitaciones'=>$capacitaciones,
+            'experiencias'=>$experiencias,
+            'areasinteres'=>$areasinteres,
+            'publicaciones'=>$publicaciones,
         ];
-        $pdf = Pdf::loadView('expensesPdf', $data);
+        $pdf = Pdf::loadView('datosPdf', $data);
         return $pdf->stream('invoice.pdf');
     }
 }

@@ -58,8 +58,7 @@ class DocenteResource extends Resource
                 ->placeholder('DD/MM/YYYY')
                 ->native(false)
                 ->displayFormat('d/m/Y')
-                ->maxDate(now()->subYears(18))
-                ->closeOnDateSelection()
+                ->date()
                 ->required(),
                 Select::make('id_genero')
                 ->relationship('genero', 'nombre')
@@ -124,6 +123,11 @@ class DocenteResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\BulkAction::make('export')
+                    ->label('Exportar PDF')
+                    ->icon('heroicon-o-arrow-down-on-square')
+                    ->url(fn (Docente $record) => route('generateDocentesPDF', $record->id))
+                    ->openUrlInNewTab(),
                 ]),
             ]);
     }
