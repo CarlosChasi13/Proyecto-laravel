@@ -29,6 +29,9 @@ class NrcResource extends Resource
                 Forms\Components\TextInput::make('id_periodoacademico')
                     ->required()
                     ->numeric(),
+                Forms\Components\TextInput::make('codigo')
+                    ->required()
+                    ->numeric(),
                 Forms\Components\TextInput::make('id_materia')
                     ->required()
                     ->numeric(),
@@ -49,6 +52,9 @@ class NrcResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('id_materia')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('codigo')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('id_docente')

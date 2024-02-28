@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Docente;
 use Filament\Forms\Form;
@@ -37,7 +38,6 @@ class DocenteResource extends Resource
                 ->length(9)
                 ->required(),
                 TextInput::make('cedula')
-                ->autocapitalize('words')
                 ->length(10)
                 ->placeholder('0604578965')
                 ->required(),
@@ -53,19 +53,20 @@ class DocenteResource extends Resource
                 ->required(),
                 FileUpload::make('foto_personal')
                 ->image()
+                ->imageEditor()
+                ->directory('images')
+                ->preserveFilenames()
                 ->previewable(true),
                 DatePicker::make('fecha_nacimiento')
                 ->placeholder('DD/MM/YYYY')
                 ->native(false)
                 ->displayFormat('d/m/Y')
-                ->maxDate(now()->subYears(18))
                 ->closeOnDateSelection()
                 ->required(),
                 Select::make('id_genero')
                 ->relationship('genero', 'nombre')
                 ->required(),
                 TextInput::make('telefono')
-                ->numeric()
                 ->length(10)
                 ->tel()
                 ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
@@ -81,18 +82,15 @@ class DocenteResource extends Resource
                 ->autocapitalize('words')
                 ->placeholder('Calle principal y Secundaria')
                 ->required(),
-                Select::make('id_rol')
-                ->relationship('rol', 'nombre')
-                ->required(),
                 TextInput::make('acercade')
                 ->name('Acerca de')
                 ->maxLength(200)
                 ->autocapitalize('words')
-                ->required(),
+                ->default('N/A'),
                 TextInput::make('observaciones')
                 ->maxLength(200)
                 ->autocapitalize('words')
-                ->required(),
+                ->default('N/A'),
             ]);
     }
 
@@ -104,13 +102,16 @@ class DocenteResource extends Resource
                 TextColumn::make('cedula'),
                 TextColumn::make('nombre'),
                 TextColumn::make('apellido'),
-                /* ImageColumn::make('foto_personal'), */
-                TextColumn::make('fecha_nacimiento'),
+                ImageColumn::make('foto_personal')
+                ->circular()
+                ->visibility('private')
+                ->defaultImageUrl(url('/img/user.png')),
+                TextColumn::make('fecha_nacimiento')
+                ->date(),
                 TextColumn::make('genero.nombre'),
                 TextColumn::make('telefono'),
                 TextColumn::make('email'),
                 TextColumn::make('direccion'),
-                TextColumn::make('rol.nombre'),
                 TextColumn::make('acercade'),
                 TextColumn::make('observaciones'),
             ])
@@ -119,7 +120,6 @@ class DocenteResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -11,11 +10,10 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\SelectColumn;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\UserResource\RelationManagers;
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -36,19 +34,23 @@ class UserResource extends Resource
                 ->maxLength(50)
                 ->placeholder('Juan')
                 ->required(),
-                TextInput::make('last_name')
-                ->autocapitalize('words')
-                ->maxLength(50)
-                ->placeholder('Perez')
-                ->required(),
-                Select::make('id_docente')
-                ->relationship('docente', 'nombre'),
                 TextInput::make('email')
-                ->email(),
+                ->email()
+                ->required(),
                 TextInput::make('password')
                 ->password()
+                ->visibleOn('create')
+                ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                ->required(),
+                Select::make('roles')
+                ->relationship('roles', 'name')
+                ->required(),
+                DatePicker::make('email_verified_at')
                 ->readonly(true)
-                ->visibleOn('create'),
+                ->visibleOn('edit'),
+                DatePicker::make('created_at')
+                ->readonly(true)
+                ->visibleOn('edit'),
             ]);
     }
 
@@ -57,17 +59,32 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('last_name'),
                 TextColumn::make('email'),
-                TextColumn::make('docente.nombre'),
+                TextColumn::make('roles.name'),
+                TextColumn::make('email_verified_at')
+                    ->placeholder('Desactivado'),
                 TextColumn::make('created_at'),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('Activos')
+                 ->query(fn (Builder $query):Builder => $query->whereNotNull('email_verified_at'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('Activar')
+                ->icon('heroicon-m-check-badge')
+                ->color('success')
+                ->action(function (User $user){
+                    $user->email_verified_at = Date('Y-m-d H:i:s');
+                    $user->save();
+                }),
+                Tables\Actions\Action::make('Desactivar')
+                ->icon('heroicon-m-x-circle')
+                ->color('danger')
+                ->action(function (User $user){
+                    $user->email_verified_at = null;
+                    $user->save();
+                }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

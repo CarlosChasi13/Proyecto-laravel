@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(GeneroSeeder::class);
         $this->call(RolSeeder::class);
+        $this->call(PermisosSeeder::class);
         $this->call(ProvinciaSeeder::class);
         $this->call(PaisSeeder::class);
         $this->call(SedeSeeder::class);
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaConocimientoSeeder::class);
         $this->call(CodigoAreaConocimientoSeeder::class);
         $this->call(MateriaSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
