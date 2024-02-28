@@ -53,6 +53,9 @@ class DocenteResource extends Resource
                 ->required(),
                 FileUpload::make('foto_personal')
                 ->image()
+                ->imageEditor()
+                ->directory('images')
+                ->preserveFilenames()
                 ->previewable(true),
                 DatePicker::make('fecha_nacimiento')
                 ->placeholder('DD/MM/YYYY')
@@ -65,9 +68,8 @@ class DocenteResource extends Resource
                 ->required(),
                 TextInput::make('telefono')
                 ->length(10)
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(9999999999)
+                ->tel()
+                ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
                 ->placeholder('0987654321')
                 ->required(),
                 TextInput::make('email')
@@ -84,11 +86,11 @@ class DocenteResource extends Resource
                 ->name('Acerca de')
                 ->maxLength(200)
                 ->autocapitalize('words')
-                ->required(),
+                ->default('N/A'),
                 TextInput::make('observaciones')
                 ->maxLength(200)
                 ->autocapitalize('words')
-                ->required(),
+                ->default('N/A'),
             ]);
     }
 
@@ -100,8 +102,12 @@ class DocenteResource extends Resource
                 TextColumn::make('cedula'),
                 TextColumn::make('nombre'),
                 TextColumn::make('apellido'),
-                /* ImageColumn::make('foto_personal'), */
-                TextColumn::make('fecha_nacimiento'),
+                ImageColumn::make('foto_personal')
+                ->circular()
+                ->visibility('private')
+                ->defaultImageUrl(url('/img/user.png')),
+                TextColumn::make('fecha_nacimiento')
+                ->date(),
                 TextColumn::make('genero.nombre'),
                 TextColumn::make('telefono'),
                 TextColumn::make('email'),
