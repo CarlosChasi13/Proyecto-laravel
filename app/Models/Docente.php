@@ -25,13 +25,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $direccion
  * @property string $acercade
- * @property int $id_user
  * @property string $observaciones
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
  * @property Genero $genero
- * @property User $user
  * @property Collection|Areaintere[] $areainteres
  * @property Collection|Capacitacion[] $capacitacions
  * @property Collection|Docenteareaconocimiento[] $docenteareaconocimientos
@@ -48,7 +46,7 @@ class Docente extends Model
 
 	protected $casts = [
 		'fecha_nacimiento' => 'datetime',
-		'id_genero' => 'int',
+		'id_genero' => 'int'
 	];
 
 	protected $fillable = [
@@ -76,7 +74,7 @@ class Docente extends Model
 		return $this->hasMany(Areainteres::class, 'id_docente');
 	}
 
-	public function capacitacions()
+	public function capacitaciones()
 	{
 		return $this->hasMany(Capacitacion::class, 'id_docente');
 	}
@@ -86,7 +84,7 @@ class Docente extends Model
 		return $this->hasMany(Docenteareaconocimiento::class, 'id_docente');
 	}
 
-	public function experiencialaborals()
+	public function experiencialaborales()
 	{
 		return $this->hasMany(Experiencialaboral::class, 'id_docente');
 	}

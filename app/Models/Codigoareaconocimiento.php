@@ -57,7 +57,7 @@ class Codigoareaconocimiento extends Model
 		return $this->hasMany(Docenteareaconocimiento::class, 'id_codigoareaconocimiento');
 	}
 
-	public function materia()
+	public function materias()
 	{
 		return $this->hasMany(Materia::class, 'id_codigoareaconocimiento');
 	}

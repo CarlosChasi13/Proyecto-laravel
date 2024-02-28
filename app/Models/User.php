@@ -4,17 +4,16 @@
  * Created by Reliese Model.
  */
 
-namespace App\Models;
-use Filament\Panel;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
-use Filament\Models\Contracts\FilamentUser;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
-
+ namespace App\Models;
+ use Filament\Panel;
+ use Laravel\Sanctum\HasApiTokens;
+ use Spatie\Permission\Traits\HasRoles;
+ use Illuminate\Database\Eloquent\Model;
+ use Illuminate\Notifications\Notifiable;
+ use Filament\Models\Contracts\FilamentUser;
+ use Illuminate\Database\Eloquent\Factories\HasFactory;
+ use Illuminate\Foundation\Auth\User as Authenticatable;
+ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 /**
  * Class User
@@ -32,8 +31,6 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
  * @property string|null $profile_photo_path
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- *
- * @property Collection|Docente[] $docentes
  *
  * @package App\Models
  */
@@ -72,5 +69,4 @@ class User extends Authenticatable implements FilamentUser
     {
         return str_ends_with($this->email, '@gmail.com') && $this->hasVerifiedEmail();
     }
-
 }

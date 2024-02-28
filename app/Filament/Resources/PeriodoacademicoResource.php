@@ -17,18 +17,22 @@ class PeriodoacademicoResource extends Resource
 {
     protected static ?string $model = Periodoacademico::class;
 
+    protected static ?string $modelLabel = 'Periodo Académico';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_grado')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_sigla')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_grado')
+                    ->label('Grado')
+                    ->relationship('grado', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('id_sigla')
+                    ->label('Sigla')
+                    ->relationship('sigla', 'nombre')
+                    ->required(),
                 Forms\Components\DatePicker::make('fecha_inicio')
                     ->required(),
                 Forms\Components\DatePicker::make('fecha_fin')
@@ -40,17 +44,7 @@ class PeriodoacademicoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_grado')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('id_sigla')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('fecha_inicio')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('fecha_fin')
-                    ->date()
+                Tables\Columns\TextColumn::make('periodo_completo')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

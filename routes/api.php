@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DocenteController;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,14 @@ use App\Http\Controllers\DocenteController;
 });
  */
 
- Route::apiResource('docentes', DocenteController::class);
+Route::prefix('docentes')->group(function() {
+    Route::apiResource('view', Controllers\DocenteController::class);
+    Route::apiResource('info', Controllers\DocenteInfoController::class);
+    Route::apiResource('area_conocimiento', Controllers\DocenteAreaConocimientoController::class);
+});
+Route::prefix('nrc')->group(function() {
+    Route::apiResource('periodo', Controllers\NrcPeriodoController::class);
+});
+Route::prefix('materias')->group(function() {
+    Route::apiResource('view', Controllers\MateriasController::class);
+});
