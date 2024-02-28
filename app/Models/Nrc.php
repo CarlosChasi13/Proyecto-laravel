@@ -41,6 +41,7 @@ class Nrc extends Model
 	protected $fillable = [
 		'id_sede',
 		'id_periodoacademico',
+		'codigo',
 		'id_materia',
 		'id_docente'
 	];

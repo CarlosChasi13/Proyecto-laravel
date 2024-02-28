@@ -67,11 +67,10 @@ class User extends Authenticatable implements FilamentUser
 		'current_team_id',
 		'profile_photo_path'
 	];
-    
+
     public function canAccessPanel(Panel $panel): bool
     {
-        /* return str_ends_with($this->email, '@gmail.com') && $this->hasVerifiedEmail(); */
-        return str_ends_with($this->email, '@gmail.com');
+        return str_ends_with($this->email, '@gmail.com') && $this->hasVerifiedEmail();
     }
 
 }
