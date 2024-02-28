@@ -47,16 +47,16 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->widgets([
-                Widgets\DocentePorAreaChart::class,
+                /* Widgets\DocentePorAreaChart::class, */
 
                 /* TODO Corregir relacion en modelo */
                 /* Widgets\AsignaturaAreaChart::class, */
 
-                Widgets\DocenteDepartamentoChart::class,
+                /* Widgets\DocenteDepartamentoChart::class, */
 
                 /* TODO Corregir relacion en modelo */
                 /* Widgets\NrcAreaChart::class, */
-                
+
                 Widgets\NrcMateriaChart::class,
 
                 /* TODO Corregir relacion en modelo */
