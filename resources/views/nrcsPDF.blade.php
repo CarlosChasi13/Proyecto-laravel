@@ -24,7 +24,7 @@
             font-size: 40px;
             font-weight: bold;
         }
-    
+
         /* Estilos para la tabla */
         table {
             width: 100%;
@@ -76,9 +76,9 @@
         <hr>
 
         <h1 class="text-center">{{ $title }}</h1>
-        
+
         <br>
-        <p class="">Total de NRCS: {{ $totalNrcs }}</p>
+        <p class="">Total de NRCs: {{ $totalNrcs }}</p>
         <br>
         <table class="table table-bordered">
     <thead>
@@ -97,7 +97,7 @@
     </tbody>
 </table>
 
-        
+
     </div>
 
     <footer class="fixed-bottom">

@@ -24,7 +24,7 @@
             font-size: 40px;
             font-weight: bold;
         }
-    
+
         /* Estilos para la tabla */
         table {
             width: 100%;
@@ -76,7 +76,7 @@
         <hr>
 
         <h1 class="text-center">{{ $title }}</h1>
-        
+
         <br>
         <p class="">Total de Materias: {{ $totalMaterias }}</p>
         <br>
@@ -88,7 +88,7 @@
             <th scope="col">Área de Conocimiento</th>
             <th scope="col">Horas Teoría</th>
             <th scope="col">Horas Laboratorio</th>
-            <th scope="col">Horas OTros</th>
+            <th scope="col">Horas Otros</th>
         </tr>
     </thead>
     <tbody>
@@ -105,7 +105,7 @@
     </tbody>
 </table>
 
-        
+
     </div>
 
     <footer class="fixed-bottom">

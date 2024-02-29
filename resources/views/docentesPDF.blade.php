@@ -24,7 +24,7 @@
             font-size: 40px;
             font-weight: bold;
         }
-    
+
         /* Estilos para la tabla */
         table {
             width: 100%;
@@ -62,13 +62,13 @@
 <body>
     <div >
 
-        <div class="text-center p-3 container">
+        <div class="container p-3 text-center">
             <!-- Logo de la ESPE -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_ESPEOk.png/250px-Logo_ESPEOk.png"
-                alt="Logo ESPE" class="mb-3 img-espe rounded float-left">
+                alt="Logo ESPE" class="float-left mb-3 rounded img-espe">
             <!-- Logo del proyecto -->
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-WeYvDLfMleMomRRM96IhTnLKyaHVpdlgbxIFAMFkQHXlo7dS72-Phikg4XuEKx3u2w&usqp=CAU"
-                alt="Logo Proyecto" class="mb-3 img-proyecto rounded float-right">
+                alt="Logo Proyecto" class="float-right mb-3 rounded img-proyecto">
         </div>
         <br>
         <br>
@@ -84,8 +84,8 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Cedula</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Teléfono</th>
                     <th scope="col">Email</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Género</th>
@@ -99,7 +99,7 @@
                         <td>{{ $docente->telefono }}</td>
                         <td>{{ $docente->email }}</td>
                         <td>{{ $docente->direccion }}</td>
-                        <td>{{ $docente->genero->nombre }}</td> 
+                        <td>{{ $docente->genero->nombre }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -108,7 +108,7 @@
 
     <footer class="fixed-bottom">
         <div class="container">
-            <p class="text-center font-light small">Fecha de impresión: {{ $date }}</p>
+            <p class="font-light text-center small">Fecha de impresión: {{ $date }}</p>
         </div>
     </footer>
 </body>

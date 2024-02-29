@@ -10,8 +10,6 @@ use App\Filament\Widgets;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
 use Filament\Navigation\NavigationGroup;
-use Filament\Resources\UserResource;
-use Filament\Resources\NavigationLink;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
 use Illuminate\Session\Middleware\StartSession;
@@ -47,19 +45,6 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop(true)
             ->font('Poppins')
             ->brandName('Gestión DCCO')
-           
-            ->navigationGroups([
-                'Reportes',
-            ])
-            ->navigationItems([
-                // Rerporte de Balance General
-                NavigationItem::make('Lista de Profesores')
-                    ->group('Reportes')
-                    ->URL('/generate-docentes-pdf')
-                    ->openUrlInNewTab()
-                    ->sort(2),
-            ])
-
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->pages([
                 Dashboard::class,
@@ -80,7 +65,6 @@ class AdminPanelProvider extends PanelProvider
                 /* TODO Corregir relacion en modelo */
                 /* Widgets\DocenteMateriaChart::class, */
             ])
-            
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
                     NavigationGroup::make()
@@ -92,6 +76,17 @@ class AdminPanelProvider extends PanelProvider
                                 ->icon('heroicon-o-presentation-chart-line')
                                 ->isActiveWhen(fn (): bool => request()->routeIs('filament.admin.pages.dashboard'))
                                 ->url(fn (): string => Dashboard::getUrl()),
+                        ]),
+                        NavigationGroup::make('Académico')
+                        ->items([
+                            NavigationItem::make('Materias')
+                                ->icon('heroicon-o-inbox')
+                                ->url(fn ():string => Resources\MateriaResource::getUrl())
+                                ->visible(fn(): bool => auth()->user()->can('view Materia')),
+                            NavigationItem::make('NRCs')
+                                ->icon('heroicon-o-inbox-stack')
+                                ->url(fn ():string => Resources\NrcResource::getUrl())
+                                ->visible(fn(): bool => auth()->user()->can('view Nrc')),
                         ]),
                         NavigationGroup::make('Docencia')
                         ->items([
@@ -124,30 +119,20 @@ class AdminPanelProvider extends PanelProvider
                                 ->url(fn ():string => Resources\AreainteresResource::getUrl())
                                 ->visible(fn(): bool => auth()->user()->can('view Areainteres')),
                         ]),
-                        NavigationGroup::make('Académico')
+                        NavigationGroup::make('Reportes PDF')
                         ->items([
+                            NavigationItem::make('Docentes')
+                            ->url(route('generateDocentesPDF'), shouldOpenInNewTab: true),
+                            NavigationItem::make('Datos de Docentes')
+                            ->url(route('generateDatosPDF'), shouldOpenInNewTab: true),
+                            NavigationItem::make('Docentes por Área')
+                            ->url(route('generateAreasPDF'), shouldOpenInNewTab: true),
+                            NavigationItem::make('Nrcs')
+                            ->url(route('generateNrcsPDF'), shouldOpenInNewTab: true),
                             NavigationItem::make('Materias')
-                                ->icon('heroicon-o-inbox')
-                                ->url(fn ():string => Resources\MateriaResource::getUrl())
-                                ->visible(fn(): bool => auth()->user()->can('view Materia')),
-                            NavigationItem::make('NRCs')
-                                ->icon('heroicon-o-inbox-stack')
-                                ->url(fn ():string => Resources\NrcResource::getUrl())
-                                ->visible(fn(): bool => auth()->user()->can('view Nrc')),
-                        ]),
-                        NavigationGroup::make('Reportes')
-                        ->items([
-                            NavigationItem::make('Generar PDF de Docentes')
-                            ->url(route('generateDocentesPDF')),
-                            NavigationItem::make('Generar PDF de Nrcs')
-                            ->url(route('generateNrcsPDF')),
-                            NavigationItem::make('Generar PDF de Materias')
-                            ->url(route('generateMateriasPDF')),
-                            NavigationItem::make('Generar PDF de Docentes por Área')
-                            ->url(route('generateAreasPDF')),
-                            NavigationItem::make('Generar PDF de Datos de Docentes')
-                            ->url(route('generateDatosPDF')),
-                        ]),
+                            ->url(route('generateMateriasPDF'), shouldOpenInNewTab: true),
+                        ])
+                        ->collapsed(),
                         NavigationGroup::make('Configuración Académica')
                             ->items([
                                 NavigationItem::make('Áreas de Conocimiento')
@@ -217,7 +202,6 @@ class AdminPanelProvider extends PanelProvider
                         ->collapsible(false),
                 ]);
             })
-            ->sidebarCollapsibleOnDesktop()
             ->authGuard('web')
             ->plugins([
                 BreezyCore::make()
@@ -225,18 +209,7 @@ class AdminPanelProvider extends PanelProvider
                     slug: 'perfil'
                 )
                 ->enableTwoFactorAuthentication(
-                    force: false,
-                ),
-                FilamentSpatieRolesPermissionsPlugin::make()
-            ])
-            ->authGuard('web')
-            ->plugins([
-                BreezyCore::make()
-                ->myProfile(
-                    slug: 'perfil'
-                )
-                ->enableTwoFactorAuthentication(
-                    force: false,
+                    force: true,
                 ),
                 FilamentSpatieRolesPermissionsPlugin::make()
             ])
