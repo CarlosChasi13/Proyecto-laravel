@@ -124,6 +124,11 @@ class DocenteResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\BulkAction::make('export')
+                    ->label('Exportar PDF')
+                    ->icon('heroicon-o-arrow-down-on-square')
+                    ->url(fn (Docente $record) => route('generateDocentesPDF', $record->id))
+                    ->openUrlInNewTab(),
                 ]),
             ]);
     }
