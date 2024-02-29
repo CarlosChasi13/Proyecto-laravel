@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $id_sede
  * @property int $id_periodoacademico
+ * @property int $codigo
  * @property int $id_materia
  * @property int $id_docente
  * @property Carbon|null $created_at
@@ -34,6 +35,7 @@ class Nrc extends Model
 	protected $casts = [
 		'id_sede' => 'int',
 		'id_periodoacademico' => 'int',
+		'codigo' => 'int',
 		'id_materia' => 'int',
 		'id_docente' => 'int'
 	];
@@ -41,6 +43,7 @@ class Nrc extends Model
 	protected $fillable = [
 		'id_sede',
 		'id_periodoacademico',
+		'codigo',
 		'id_materia',
 		'id_docente'
 	];
@@ -50,7 +53,7 @@ class Nrc extends Model
 		return $this->belongsTo(Docente::class, 'id_docente');
 	}
 
-	public function materium()
+	public function materia()
 	{
 		return $this->belongsTo(Materia::class, 'id_materia');
 	}

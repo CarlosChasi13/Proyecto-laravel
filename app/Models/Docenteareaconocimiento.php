@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $updated_at
  * 
  * @property Codigoareaconocimiento $codigoareaconocimiento
+ * @property Docente $docente
  *
  * @package App\Models
  */
@@ -39,5 +40,10 @@ class Docenteareaconocimiento extends Model
 	public function codigoareaconocimiento()
 	{
 		return $this->belongsTo(Codigoareaconocimiento::class, 'id_codigoareaconocimiento');
+	}
+
+	public function docente()
+	{
+		return $this->belongsTo(Docente::class, 'id_docente');
 	}
 }

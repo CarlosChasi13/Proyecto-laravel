@@ -12,10 +12,13 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Codigoareaconocimiento;
 
 class MateriaResource extends Resource
 {
     protected static ?string $model = Materia::class;
+
+    protected static ?string $modelLabel = 'Materia';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,9 +26,15 @@ class MateriaResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_codigoareaconocimiento')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_codigoareaconocimiento')
+                    ->label('Área de Conocimiento')
+                    ->relationship(
+                        name: 'codigoareaconocimiento',
+                        modifyQueryUsing: fn (Builder $query) => $query->orderBy('codigo'),
+                    )
+                    ->getOptionLabelFromRecordUsing(fn (Codigoareaconocimiento $record) => "{$record->grado->nombre} - {$record->codigo} - {$record->areaconocimiento->nombre}")
+                    ->searchable(['codigo'])
+                    ->required(),
                 Forms\Components\TextInput::make('codigo')
                     ->required()
                     ->maxLength(20),
@@ -52,14 +61,16 @@ class MateriaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_codigoareaconocimiento')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('codigo')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('codigo')
+                    ->label('Código')
+                    ->searchable(),
+                    Tables\Columns\TextColumn::make('codigoareaconocimiento.areaconocimiento.nombre')
+                    ->label('Área de Conocimiento')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('horas_teoria')
+                    ->label('Horas Teoría')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('horas_laboratorio')

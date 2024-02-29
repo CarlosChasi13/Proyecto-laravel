@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Periodoacademico
- * 
+ *
  * @property int $id
  * @property int $id_grado
  * @property int $id_sigla
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $fecha_fin
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * 
+ *
  * @property Grado $grado
  * @property Sigla $sigla
  * @property Collection|Nrc[] $nrcs
@@ -59,4 +59,9 @@ class Periodoacademico extends Model
 	{
 		return $this->hasMany(Nrc::class, 'id_periodoacademico');
 	}
+
+    public function getPeriodoCompletoAttribute()
+    {
+        return $this->grado->nombre . ' ' . $this->sigla->nombre . ' ' . $this->fecha_inicio->format('M-Y') . ' ' . $this->fecha_fin->format('M-Y');
+    }
 }

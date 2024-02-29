@@ -15,20 +15,20 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rol')->insert([
+        DB::table('roles')->insert([
             'id' => 1,
-            'nombre' => 'Administrador',
-            'descripcion' => 'Rol que otorga privilegios y accesos administrativos completos en el sistema, permitiendo la gestión integral de usuarios, configuraciones y recursos',
+            'name' => 'Administrador',
+            'guard_name' => 'web',
         ]);
-        DB::table('rol')->insert([
+        DB::table('roles')->insert([
             'id' => 2,
-            'nombre' => 'Planificador',
-            'descripcion' => 'Rol designado para la planificación y organización de actividades y recursos en el sistema, facilitando la gestión estratégica y la asignación eficiente de tareas',
+            'name' => 'Planificador',
+            'guard_name' => 'web',
         ]);
-        DB::table('rol')->insert([
+        DB::table('roles')->insert([
             'id' => 3,
-            'nombre' => 'Coordinador',
-            'descripcion' => 'Rol con responsabilidades de coordinación, encargado de supervisar y gestionar procesos específicos, fomentando la colaboración y la eficacia en las operaciones del sistema',
+            'name' => 'Coordinador',
+            'guard_name' => 'web',
         ]);
     }
 }

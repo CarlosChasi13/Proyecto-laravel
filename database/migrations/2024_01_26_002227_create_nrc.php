@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_sede')->constrained('sede');
             $table->foreignId('id_periodoacademico')->constrained('periodoacademico');
+            $table->integer('codigo');
             $table->foreignId('id_materia')->constrained('materia');
             $table->foreignId('id_docente')->constrained('docente');
             $table->timestamps();

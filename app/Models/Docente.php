@@ -24,21 +24,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $telefono
  * @property string $email
  * @property string $direccion
- * @property int $id_rol
  * @property string $acercade
  * @property string $observaciones
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
  * @property Genero $genero
- * @property Rol $rol
  * @property Collection|Areaintere[] $areainteres
  * @property Collection|Capacitacion[] $capacitacions
+ * @property Collection|Docenteareaconocimiento[] $docenteareaconocimientos
  * @property Collection|Experiencialaboral[] $experiencialaborals
  * @property Collection|Nrc[] $nrcs
  * @property Collection|Publicacioncientifica[] $publicacioncientificas
  * @property Collection|Titulo[] $titulos
- * @property Collection|User[] $users
  *
  * @package App\Models
  */
@@ -48,8 +46,7 @@ class Docente extends Model
 
 	protected $casts = [
 		'fecha_nacimiento' => 'datetime',
-		'id_genero' => 'int',
-		'id_rol' => 'int'
+		'id_genero' => 'int'
 	];
 
 	protected $fillable = [
@@ -63,7 +60,6 @@ class Docente extends Model
 		'telefono',
 		'email',
 		'direccion',
-		'id_rol',
 		'acercade',
 		'observaciones'
 	];
@@ -73,22 +69,22 @@ class Docente extends Model
 		return $this->belongsTo(Genero::class, 'id_genero');
 	}
 
-	public function rol()
-	{
-		return $this->belongsTo(Rol::class, 'id_rol');
-	}
-
 	public function areainteres()
 	{
 		return $this->hasMany(Areainteres::class, 'id_docente');
 	}
 
-	public function capacitacions()
+	public function capacitaciones()
 	{
 		return $this->hasMany(Capacitacion::class, 'id_docente');
 	}
 
-	public function experiencialaborals()
+	public function docenteareaconocimientos()
+	{
+		return $this->hasMany(Docenteareaconocimiento::class, 'id_docente');
+	}
+
+	public function experiencialaborales()
 	{
 		return $this->hasMany(Experiencialaboral::class, 'id_docente');
 	}
@@ -106,10 +102,5 @@ class Docente extends Model
 	public function titulos()
 	{
 		return $this->hasMany(Titulo::class, 'id_docente');
-	}
-
-	public function users()
-	{
-		return $this->hasMany(User::class, 'id_docente');
 	}
 }

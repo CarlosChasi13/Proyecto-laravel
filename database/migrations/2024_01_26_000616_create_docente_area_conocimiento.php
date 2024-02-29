@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('docenteareaconocimiento', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_docente');
+            $table->foreignId('id_docente')->constrained('docente');
             $table->foreignId('id_codigoareaconocimiento')->constrained('codigoareaconocimiento');
             $table->timestamps();
         });

@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\NrcResource\Pages;
-use App\Filament\Resources\NrcResource\RelationManagers;
 use App\Models\Nrc;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Docente;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\NrcResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\NrcResource\RelationManagers;
 
 class NrcResource extends Resource
 {
@@ -23,16 +24,24 @@ class NrcResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_sede')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_periodoacademico')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_materia')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_docente')
+                Forms\Components\Select::make('id_sede')
+                    ->relationship('sede', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('id_periodoacademico')
+                    ->relationship('periodoacademico', 'id')
+                    ->required(),
+                Forms\Components\Select::make('id_materia')
+                    ->relationship('materia', 'nombre')
+                    ->required(),
+                Forms\Components\Select::make('id_docente')
+                    ->relationship(
+                        name: 'docente',
+                        modifyQueryUsing: fn (Builder $query) => $query->orderBy('nombre')->orderBy('apellido'),
+                    )
+                    ->getOptionLabelFromRecordUsing(fn (Docente $record) => "{$record->codigo} - {$record->nombre} {$record->apellido}")
+                    ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
+                    ->required(),
+                Forms\Components\TextInput::make('codigo')
                     ->required()
                     ->numeric(),
             ]);
@@ -42,16 +51,18 @@ class NrcResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_sede')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('sede.nombre')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('materia.nombre')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_periodoacademico')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('periodoacademico.periodo_completo')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_materia')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('docente.nombre')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_docente')
+                Tables\Columns\TextColumn::make('docente.apellido')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('codigo')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

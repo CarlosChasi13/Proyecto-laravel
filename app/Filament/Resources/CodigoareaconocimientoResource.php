@@ -17,19 +17,24 @@ class CodigoareaconocimientoResource extends Resource
 {
     protected static ?string $model = Codigoareaconocimiento::class;
 
+    protected static ?string $modelLabel = 'Codigo Área de Conocimiento';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id_grado')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_areaconocimiento')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('id_grado')
+                    ->relationship('grado', 'nombre')
+                    ->label('Grado')
+                    ->required(),
+                Forms\Components\Select::make('id_areaconocimiento')
+                    ->relationship('areaconocimiento', 'nombre')
+                    ->label('Área de Conocimiento')
+                    ->required(),
                 Forms\Components\TextInput::make('codigo')
+                    ->label('Código')
                     ->required()
                     ->maxLength(20),
             ]);
@@ -39,11 +44,9 @@ class CodigoareaconocimientoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_grado')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('grado.nombre')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_areaconocimiento')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('areaconocimiento.nombre')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('codigo')
                     ->searchable(),
