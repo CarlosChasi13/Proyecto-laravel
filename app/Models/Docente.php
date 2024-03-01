@@ -103,4 +103,9 @@ class Docente extends Model
 	{
 		return $this->hasMany(Titulo::class, 'id_docente');
 	}
+
+
+	
+
+
 }

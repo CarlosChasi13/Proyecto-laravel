@@ -50,20 +50,13 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->widgets([
-                /* Widgets\DocentePorAreaChart::class, */
 
-                /* TODO Corregir relacion en modelo */
-                /* Widgets\AsignaturaAreaChart::class, */
+                Widgets\DocentePorAreaChart::class, //si
+                Widgets\NrcPorPeriodoAcademicoLineChart::class,
+                Widgets\MateriasPorAreaPolarChart::class, //si 
+                Widgets\DocentesPorExperienciaChart::class, //si
+                Widgets\NrcMateriaChart::class, //si
 
-                /* Widgets\DocenteDepartamentoChart::class, */
-
-                /* TODO Corregir relacion en modelo */
-                /* Widgets\NrcAreaChart::class, */
-
-                Widgets\NrcMateriaChart::class,
-
-                /* TODO Corregir relacion en modelo */
-                /* Widgets\DocenteMateriaChart::class, */
             ])
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
