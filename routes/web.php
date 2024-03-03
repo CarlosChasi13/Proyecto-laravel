@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [PageController::class, 'getData']);
 
 
 Route::get('generate-docentes-pdf', [App\Http\Controllers\PDFController::class, 'generateDocentesPDF'])->name('generateDocentesPDF');
