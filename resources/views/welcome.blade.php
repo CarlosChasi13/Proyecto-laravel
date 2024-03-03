@@ -109,7 +109,13 @@
                         <p class="text-gray-700 text-base">{{ $data['docente']->acercade }}</p>
                     </div>
                 </div>
-                <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">Consigue mi CV</button>
+                <a href="{{ route('generateCVsPDF', ['profesorId' => $data['docente']->id]) }}" 
+   target="_blank" 
+   class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+   Consigue mi CV
+</a>
+
+
             </div>
         </div>
         @endforeach
@@ -121,6 +127,7 @@
         @endif
     </section>
 </div>
+
 <div id="contactanos" class="flex flex-wrap justify-center items-center px-6 py-24 sm:py-16 lg:px-8">
     <div class="mx-8">
         <div class="mx-auto max-w-2xl text-center">

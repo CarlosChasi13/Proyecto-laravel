@@ -81,6 +81,7 @@ class PDFController extends Controller
 
     public function generateDatosPDF()
     {
+
         $titulos = Titulo::get();
         $capacitaciones= Capacitacion::get();
         $experiencias=Experiencialaboral::get();
@@ -101,4 +102,52 @@ class PDFController extends Controller
         $pdf = Pdf::loadView('datosPdf', $data);
         return $pdf->stream('invoice.pdf');
     }
+
+    public function generateCVsPDF($profesorId)
+{
+    $titulos = Titulo::where('id_docente', $profesorId)->where('principal', 1)->get();
+    $capacitaciones = Capacitacion::where('id_docente', $profesorId)->get();
+    $experiencias = Experiencialaboral::where('id_docente', $profesorId)->get();
+    $areasinteres = Areainteres::where('id_docente', $profesorId)->get();
+    $publicaciones = Publicacioncientifica::where('id_docente', $profesorId)->get();
+
+    // Mensajes de alerta por cada dato
+    $alertMessages = [];
+
+    if ($titulos->isEmpty()) {
+        $alertMessages[] = 'No hay títulos registrados para el docente con ID ' . $profesorId;
+    }
+
+    if ($capacitaciones->isEmpty()) {
+        $alertMessages[] = 'No hay capacitaciones registradas para el docente con ID ' . $profesorId;
+    }
+
+    if ($experiencias->isEmpty()) {
+        $alertMessages[] = 'No hay experiencias laborales registradas para el docente con ID ' . $profesorId;
+    }
+
+    if ($areasinteres->isEmpty()) {
+        $alertMessages[] = 'No hay áreas de interés registradas para el docente con ID ' . $profesorId;
+    }
+
+    if ($publicaciones->isEmpty()) {
+        $alertMessages[] = 'No hay publicaciones científicas registradas para el docente con ID ' . $profesorId;
+    }
+
+    $data = [
+        'title' => 'Currículum Vitae',
+        'date' => date('m/d/Y'),
+        'totaltitulos' => count($titulos),
+        'titulos' => $titulos,
+        'capacitaciones' => $capacitaciones,
+        'experiencias' => $experiencias,
+        'areasinteres' => $areasinteres,
+        'publicaciones' => $publicaciones,
+        'alertMessages' => $alertMessages, // Pasar los mensajes de alerta a la vista
+    ];
+
+    $pdf = Pdf::loadView('CVsPdf', $data);
+    return $pdf->stream('invoice.pdf');
+}
+
 }

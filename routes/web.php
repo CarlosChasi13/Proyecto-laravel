@@ -30,3 +30,5 @@ Route::get('generate-materias-pdf', [App\Http\Controllers\PDFController::class, 
 Route::get('generate-area-pdf', [App\Http\Controllers\PDFController::class, 'generateAreasPDF'])->name('generateAreasPDF');
 
 Route::get('generate-datos-pdf', [App\Http\Controllers\PDFController::class, 'generateDatosPDF'])->name('generateDatosPDF');
+
+Route::get('generate-Curriculums-pdf/{profesorId}', [App\Http\Controllers\PDFController::class, 'generateCVsPDF'])->name('generateCVsPDF');
