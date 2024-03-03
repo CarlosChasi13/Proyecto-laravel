@@ -87,6 +87,14 @@ class AdminPanelProvider extends PanelProvider
                                 ->icon('heroicon-o-inbox-stack')
                                 ->url(fn ():string => Resources\NrcResource::getUrl())
                                 ->visible(fn(): bool => auth()->user()->can('view Nrc')),
+                            NavigationItem::make('Materias y Profesores')
+                                ->icon('heroicon-o-inbox-stack')
+                                ->url(fn ():string => Resources\CoordinadorResource::getUrl())
+                                ->visible(fn(): bool => auth()->user()->can('view Nrc')),
+                            NavigationItem::make('NrcS y profesores')
+                                ->icon('heroicon-o-inbox-stack')
+                                ->url(fn ():string => Resources\PlanificadorResource::getUrl())
+                                ->visible(fn(): bool => auth()->user()->can('view Nrc')),
                         ]),
                         NavigationGroup::make('Docencia')
                         ->items([
