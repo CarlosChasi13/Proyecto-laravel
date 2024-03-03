@@ -9,4 +9,5 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePublicacioncientifica extends CreateRecord
 {
     protected static string $resource = PublicacioncientificaResource::class;
+
 }

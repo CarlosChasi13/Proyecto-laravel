@@ -20,7 +20,7 @@ class DocenteareaconocimientoResource extends Resource
 {
     protected static ?string $model = Docenteareaconocimiento::class;
 
-    protected static ?string $modelLabel = 'Área de Conocimiento';
+    protected static ?string $modelLabel = 'Áreas de Conocimiento';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -37,6 +37,7 @@ class DocenteareaconocimientoResource extends Resource
                     ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
                     ->required(),
                 Forms\Components\Select::make('id_codigoareaconocimiento')
+                    ->label('Categorización área de conocimiento')
                     ->relationship(
                         name: 'codigoareaconocimiento',
                         modifyQueryUsing: fn (Builder $query) => $query->orderBy('codigo'),
@@ -56,10 +57,13 @@ class DocenteareaconocimientoResource extends Resource
                 Tables\Columns\TextColumn::make('docente.apellido')
                     ->label('Apellido'),
                 Tables\Columns\TextColumn::make('codigoareaconocimiento.codigo')
+                    ->label('Código')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('codigoareaconocimiento.grado.nombre')
+                    ->label('Nivel')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('codigoareaconocimiento.areaconocimiento.nombre')
+                    ->label('Área de Conocimiento')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

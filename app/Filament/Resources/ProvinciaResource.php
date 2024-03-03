@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ProvinciaResource extends Resource
 {
     protected static ?string $model = Provincia::class;
+    protected static ?string $modelLabel = 'Provincia';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

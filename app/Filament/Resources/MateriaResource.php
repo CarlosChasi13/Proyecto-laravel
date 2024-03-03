@@ -36,16 +36,19 @@ class MateriaResource extends Resource
                     ->searchable(['codigo'])
                     ->required(),
                 Forms\Components\TextInput::make('codigo')
+                    ->label('Código')
                     ->required()
                     ->maxLength(20),
                 Forms\Components\TextInput::make('nombre')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\Textarea::make('descripcion')
+                    ->label('Descripción')
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('horas_teoria')
+                    ->label('Horas teoría')
                     ->required()
                     ->numeric(),
                 Forms\Components\TextInput::make('horas_laboratorio')

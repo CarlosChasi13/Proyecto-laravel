@@ -26,7 +26,7 @@ class PeriodoacademicoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('id_grado')
-                    ->label('Grado')
+                    ->label('Nivel')
                     ->relationship('grado', 'nombre')
                     ->required(),
                 Forms\Components\Select::make('id_sigla')

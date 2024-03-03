@@ -17,7 +17,7 @@ class SedeResource extends Resource
 {
     protected static ?string $model = Sede::class;
 
-    protected static ?string $modelLabel = 'Sede';
+    protected static ?string $modelLabel = 'Sedes';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -30,12 +30,14 @@ class SedeResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('id_pais')
                     ->relationship('pais', 'nombre')
+                    ->label('País')
                     ->required(),
                 Forms\Components\TextInput::make('nombre')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\TextInput::make('telefono')
                     ->tel()
+                    ->label('Teléfono')
                     ->required()
                     ->maxLength(15),
                 Forms\Components\TextInput::make('email')
@@ -44,6 +46,7 @@ class SedeResource extends Resource
                     ->maxLength(200),
                 Forms\Components\Textarea::make('direccion')
                     ->required()
+                    ->label('Dirección')
                     ->maxLength(65535)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('ciudad')
@@ -51,6 +54,7 @@ class SedeResource extends Resource
                     ->maxLength(50),
                 Forms\Components\TextInput::make('maps_url')
                     ->url()
+                    ->label('Mapa url')
                     ->required()
                     ->maxLength(2048),
             ]);
@@ -63,10 +67,12 @@ class SedeResource extends Resource
                 Tables\Columns\TextColumn::make('provincia.nombre')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('pais.nombre')
+                ->label('País')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('telefono')
+                ->label('Teléfono')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
@@ -74,6 +80,7 @@ class SedeResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('maps_url')
                     ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Mapa url')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

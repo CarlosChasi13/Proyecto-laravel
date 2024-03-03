@@ -132,7 +132,7 @@ class AdminPanelProvider extends PanelProvider
                                     ->icon('heroicon-o-academic-cap')
                                     ->url(fn (): string => Resources\AreaconocimientoResource::getUrl())
                                     ->visible(fn (): bool => auth()->user()->can('view Areaconocimiento')),
-                                NavigationItem::make('Categorizacion de Áreas de Conocimiento')
+                                NavigationItem::make('Categorización de Áreas de Conocimiento')
                                     ->icon('heroicon-o-puzzle-piece')
                                     ->url(fn (): string => Resources\CodigoareaconocimientoResource::getUrl())
                                     ->visible(fn (): bool => auth()->user()->can('view Codigoareaconocimiento')),
@@ -164,7 +164,7 @@ class AdminPanelProvider extends PanelProvider
                                 ->icon('heroicon-o-map')
                                 ->url(fn ():string => Resources\ProvinciaResource::getUrl())
                                 ->visible(fn (): bool => auth()->user()->can('view Provincia')),
-                            NavigationItem::make('Pais')
+                            NavigationItem::make('País')
                                 ->icon('heroicon-o-globe-americas')
                                 ->url(fn ():string => Resources\PaisResource::getUrl())
                                 ->visible(fn (): bool => auth()->user()->can('view Pais')),

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SiglaResource extends Resource
 {
     protected static ?string $model = Sigla::class;
+    protected static ?string $modelLabel = 'Siglas del Semestre';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,6 +29,7 @@ class SiglaResource extends Resource
                     ->maxLength(5),
                 Forms\Components\Textarea::make('descripcion')
                     ->required()
+                    ->label('Descripción')
                     ->maxLength(65535)
                     ->columnSpanFull(),
             ]);

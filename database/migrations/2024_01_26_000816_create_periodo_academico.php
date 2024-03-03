@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        
         Schema::create('periodoacademico', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_grado')->constrained('grado');
