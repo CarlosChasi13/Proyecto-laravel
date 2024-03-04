@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'id' => 1,
             'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@espe.edu.ec',
             'email_verified_at' => Date('Y-m-d H:i:s'),
             'password' => Hash::make('123'),
         ]);
