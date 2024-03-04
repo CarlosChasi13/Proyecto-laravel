@@ -76,7 +76,7 @@
         <hr>
 
         <h1 class="text-center">{{ $title }}</h1>
-        <!-- Total de jugadores -->
+        
         <br>
         <p class="">Total de Docentes: {{ $totalDocentes }}</p>
         <br>
