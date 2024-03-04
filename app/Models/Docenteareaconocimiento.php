@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Docenteareaconocimiento
- * 
+ *
  * @property int $id
  * @property int $id_docente
  * @property int $id_codigoareaconocimiento
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * 
+ *
  * @property Codigoareaconocimiento $codigoareaconocimiento
  * @property Docente $docente
  *
@@ -46,4 +46,9 @@ class Docenteareaconocimiento extends Model
 	{
 		return $this->belongsTo(Docente::class, 'id_docente');
 	}
+
+    public function getAreaNamesAttribute()
+    {
+        return $this->codigoareaconocimiento;
+    }
 }
