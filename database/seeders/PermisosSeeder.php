@@ -30,6 +30,5 @@ class PermisosSeeder extends Seeder
                 ]);
             }
         }
-
     }
 }

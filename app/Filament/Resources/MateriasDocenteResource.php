@@ -30,14 +30,14 @@ class MateriasDocenteResource extends Resource
     {
         return $form
         ->schema([
+            Forms\Components\Select::make('id_codigoareaconocimiento')
+                ->label('Materia')
+                ->relationship('codigoareaconocimiento.materia', 'nombre')
+                ->required(),
             Forms\Components\Select::make('id_docente')
                 ->label('Docente')
                 ->options(Docente::all()->pluck('full_name', 'id'))
                 ->multiple()
-                ->required(),
-            Forms\Components\Select::make('id_codigoareaconocimiento')
-                ->label('Materia')
-                ->relationship('codigoareaconocimiento.materia', 'nombre')
                 ->required(),
         ]);
     }
