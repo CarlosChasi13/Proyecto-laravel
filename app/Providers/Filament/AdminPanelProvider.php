@@ -80,6 +80,10 @@ class AdminPanelProvider extends PanelProvider
                                 ->icon('heroicon-o-inbox-stack')
                                 ->url(fn ():string => Resources\NrcResource::getUrl())
                                 ->visible(fn(): bool => auth()->user()->can('view Nrc')),
+                            NavigationItem::make('Asignacion Docentes')
+                                ->icon('heroicon-o-star')
+                                ->url(fn ():string => Resources\MateriasDocenteResource::getUrl())
+                                ->visible(fn(): bool => auth()->user()->can('view Docenteareaconocimiento')),
                         ]),
                         NavigationGroup::make('Docencia')
                         ->items([
@@ -202,7 +206,7 @@ class AdminPanelProvider extends PanelProvider
                     slug: 'perfil'
                 )
                 ->enableTwoFactorAuthentication(
-                    force: true,
+                    force: false,
                 ),
                 FilamentSpatieRolesPermissionsPlugin::make()
             ])

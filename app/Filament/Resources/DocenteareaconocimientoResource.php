@@ -29,12 +29,9 @@ class DocenteareaconocimientoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('id_docente')
-                    ->relationship(
-                        name: 'docente',
-                        modifyQueryUsing: fn (Builder $query) => $query->orderBy('nombre')->orderBy('apellido'),
-                    )
-                    ->getOptionLabelFromRecordUsing(fn (Docente $record) => "{$record->codigo} - {$record->nombre} {$record->apellido}")
-                    ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
+                    ->label('Docente')
+                    ->options(Docente::all()->pluck('full_name', 'id'))
+                    ->multiple()
                     ->required(),
                 Forms\Components\Select::make('id_codigoareaconocimiento')
                     ->label('Categorización área de conocimiento')
@@ -44,6 +41,11 @@ class DocenteareaconocimientoResource extends Resource
                     )
                     ->getOptionLabelFromRecordUsing(fn (Codigoareaconocimiento $record) => "{$record->grado->nombre} - {$record->codigo} - {$record->areaconocimiento->nombre}")
                     ->searchable(['codigo'])
+                    ->required(),
+                Forms\Components\Select::make('id_docente')
+                    ->label('Docente')
+                    ->options(Docente::all()->pluck('area_names', 'id'))
+                    ->multiple()
                     ->required(),
             ]);
     }
