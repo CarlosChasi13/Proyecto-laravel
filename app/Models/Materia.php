@@ -59,4 +59,10 @@ class Materia extends Model
 	{
 		return $this->hasMany(Nrc::class, 'id_materia');
 	}
+//
+	public function materia(): BelongsTo
+	{
+		return $this->belongsTo(Codigoareaconocimiento::class, 'id_codigoareaconocimiento');
+	}
+
 }

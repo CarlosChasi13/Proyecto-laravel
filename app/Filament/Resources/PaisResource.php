@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PaisResource extends Resource
 {
     protected static ?string $model = Pais::class;
+    protected static ?string $modelLabel = 'País';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

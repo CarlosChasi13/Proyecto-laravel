@@ -17,6 +17,8 @@ use App\Filament\Resources\PublicacioncientificaResource\RelationManagers;
 class PublicacioncientificaResource extends Resource
 {
     protected static ?string $model = Publicacioncientifica::class;
+    protected static ?string $modelLabel = 'Publicaciones Científicas ';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

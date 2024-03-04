@@ -104,8 +104,8 @@ class Docente extends Model
 		return $this->hasMany(Titulo::class, 'id_docente');
 	}
 
-    public function getFullNameAttribute()
-    {
-        return $this->nombre . ' ' . $this->apellido;
-    }
+  public function getFullNameAttribute()
+  {
+      return $this->nombre . ' ' . $this->apellido;
+  }
 }

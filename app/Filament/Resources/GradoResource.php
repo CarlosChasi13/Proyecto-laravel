@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class GradoResource extends Resource
 {
     protected static ?string $model = Grado::class;
+    protected static ?string $modelLabel = 'Niveles Académicos';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -24,6 +25,7 @@ class GradoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nombre')
+                ->label('Nombre del nivel')
                     ->required()
                     ->maxLength(100),
             ]);

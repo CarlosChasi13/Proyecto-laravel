@@ -8,7 +8,7 @@ use Filament\Widgets\ChartWidget;
 class NrcMateriaChart extends ChartWidget
 {
     protected static ?string $heading = 'NRC por Materia';
-    protected static ?int $sort = 5;
+    protected static ?int $sort = 4;
 
     protected function getData(): array
     {

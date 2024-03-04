@@ -18,7 +18,7 @@ class TituloResource extends Resource
 {
     protected static ?string $model = Titulo::class;
 
-    protected static ?string $modelLabel = 'Título';
+    protected static ?string $modelLabel = 'Títulos';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -37,11 +37,12 @@ class TituloResource extends Resource
                 Forms\Components\DatePicker::make('fecha')
                     ->required(),
                 Forms\Components\TextInput::make('ies')
-                    ->label('Nombre Institución')
+                    ->label('Institución')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\TextInput::make('nombre')
                     ->required()
+                    ->label('Nombre del título')
                     ->maxLength(100),
                 Forms\Components\Textarea::make('observaciones')
                     ->required()
@@ -64,9 +65,10 @@ class TituloResource extends Resource
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('ies')
-                    ->label('Nombre Institución')
+                    ->label('Institución')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nombre')
+                ->label('Nombre del título')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('principal')
                     ->boolean(),

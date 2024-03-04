@@ -35,7 +35,6 @@ class CapacitacionResource extends Resource
                     ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
                     ->required(),
                 Forms\Components\TextInput::make('ies')
-                    ->label('Nombre Institución')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\TextInput::make('nombre')
@@ -47,6 +46,7 @@ class CapacitacionResource extends Resource
                     ->required()
                     ->numeric(),
                 Forms\Components\Textarea::make('descripcion')
+                    ->label('Descripción')
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -62,7 +62,7 @@ class CapacitacionResource extends Resource
                 Tables\Columns\TextColumn::make('docente.apellido')
                     ->label('Apellido'),
                 Tables\Columns\TextColumn::make('ies')
-                    ->label('Nombre Institución')
+                    ->label('Institución')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nombre')
                     ->searchable(),

@@ -35,12 +35,14 @@ class AreainteresResource extends Resource
                     ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
                     ->required(),
                 Forms\Components\Select::make('id_areaconocimiento')
+                    ->label('Área de conocimiento')
                     ->relationship('areaconocimiento', 'nombre')
                     ->required(),
                 Forms\Components\TextInput::make('tema')
                     ->required()
                     ->maxLength(100),
                 Forms\Components\Textarea::make('descripcion')
+                     ->label('Descripción')
                     ->required()
                     ->maxLength(65535)
                     ->columnSpanFull(),
@@ -56,7 +58,7 @@ class AreainteresResource extends Resource
                 Tables\Columns\TextColumn::make('docente.apellido')
                     ->label('Apellido'),
                 Tables\Columns\TextColumn::make('areaconocimiento.nombre')
-                    ->label('Área Conocimiento')
+                    ->label('Área de Conocimiento')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tema')
                     ->searchable(),

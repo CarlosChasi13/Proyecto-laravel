@@ -33,11 +33,13 @@ class DocenteResource extends Resource
         return $form
             ->schema([
                 TextInput::make('codigo')
+                ->label('Código')
                 ->autocapitalize('words')
                 ->placeholder('L00123456')
                 ->length(9)
                 ->required(),
                 TextInput::make('cedula')
+                ->label('Cédula')
                 ->length(10)
                 ->placeholder('0604578965')
                 ->required(),
@@ -58,15 +60,18 @@ class DocenteResource extends Resource
                 ->preserveFilenames()
                 ->previewable(true),
                 DatePicker::make('fecha_nacimiento')
+                ->label('Fecha de nacimiento')
                 ->placeholder('DD/MM/YYYY')
                 ->native(false)
                 ->displayFormat('d/m/Y')
                 ->closeOnDateSelection()
                 ->required(),
                 Select::make('id_genero')
+                ->label('Género')
                 ->relationship('genero', 'nombre')
                 ->required(),
                 TextInput::make('telefono')
+                ->label('Teléfono')
                 ->length(10)
                 ->tel()
                 ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/')
@@ -78,11 +83,13 @@ class DocenteResource extends Resource
                 ->placeholder('email@espe.edu.ec')
                 ->required(),
                 TextInput::make('direccion')
+                ->label('Dirección')
                 ->maxLength(200)
                 ->autocapitalize('words')
                 ->placeholder('Calle principal y Secundaria')
                 ->required(),
                 TextInput::make('acercade')
+                ->label('Acerca de')
                 ->name('Acerca de')
                 ->maxLength(200)
                 ->autocapitalize('words')
@@ -98,8 +105,10 @@ class DocenteResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('codigo'),
-                TextColumn::make('cedula'),
+                TextColumn::make('codigo')
+                ->label('Código'),
+                TextColumn::make('cedula')
+                ->label('Cédula'),
                 TextColumn::make('nombre'),
                 TextColumn::make('apellido'),
                 ImageColumn::make('foto_personal')
@@ -107,12 +116,18 @@ class DocenteResource extends Resource
                 ->visibility('private')
                 ->defaultImageUrl(url('/img/user.png')),
                 TextColumn::make('fecha_nacimiento')
+                ->label('Fecha de nacimiento')
                 ->date(),
-                TextColumn::make('genero.nombre'),
-                TextColumn::make('telefono'),
-                TextColumn::make('email'),
-                TextColumn::make('direccion'),
-                TextColumn::make('acercade'),
+                TextColumn::make('genero.nombre')
+                ->label('Género'),
+                TextColumn::make('telefono')
+                ->label('Teléfono'),
+                TextColumn::make('email')
+                ->label('Correo'),
+                TextColumn::make('direccion')
+                ->label('Dorección'),
+                TextColumn::make('acercade')
+                ->label('Acerca de'),
                 TextColumn::make('observaciones'),
             ])
             ->filters([

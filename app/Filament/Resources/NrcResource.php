@@ -17,6 +17,7 @@ use App\Filament\Resources\NrcResource\RelationManagers;
 class NrcResource extends Resource
 {
     protected static ?string $model = Nrc::class;
+    protected static ?string $modelLabel = 'NRCs';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -29,6 +30,7 @@ class NrcResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('id_periodoacademico')
                     ->relationship('periodoacademico', 'id')
+                    ->label('Periodo académico')
                     ->required(),
                 Forms\Components\Select::make('id_materia')
                     ->relationship('materia', 'nombre')
@@ -42,6 +44,7 @@ class NrcResource extends Resource
                     ->searchable(['cedula', 'codigo', 'nombre', 'apellido'])
                     ->required(),
                 Forms\Components\TextInput::make('codigo')
+                    ->label('Código')
                     ->required()
                     ->numeric(),
             ]);
@@ -52,17 +55,23 @@ class NrcResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('sede.nombre')
+                ->label('Sede')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('materia.nombre')
+                    ->label('Materia')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('periodoacademico.periodo_completo')
+                ->label('Periodo académico')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('docente.nombre')
+                ->label('Nombre')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('docente.apellido')
+                ->label('Apellido')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('codigo')
+                ->label('Código')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

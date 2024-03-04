@@ -17,7 +17,7 @@ class CodigoareaconocimientoResource extends Resource
 {
     protected static ?string $model = Codigoareaconocimiento::class;
 
-    protected static ?string $modelLabel = 'Codigo Área de Conocimiento';
+    protected static ?string $modelLabel = 'Categorización Áreas de Conocimiento';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,12 +26,12 @@ class CodigoareaconocimientoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('id_grado')
+                    ->label('Nivel')
                     ->relationship('grado', 'nombre')
-                    ->label('Grado')
                     ->required(),
                 Forms\Components\Select::make('id_areaconocimiento')
+                    ->label('Área de conocimiento')
                     ->relationship('areaconocimiento', 'nombre')
-                    ->label('Área de Conocimiento')
                     ->required(),
                 Forms\Components\TextInput::make('codigo')
                     ->label('Código')
@@ -45,10 +45,13 @@ class CodigoareaconocimientoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('grado.nombre')
+                ->label('Nivel')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('areaconocimiento.nombre')
+                ->label('Área de Conocimiento')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('codigo')
+                ->label('Código')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

@@ -19,7 +19,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $modelLabel = 'usuario';
+    protected static ?string $modelLabel = 'Usuario';
 
     protected static ?string $navigationLabel = 'Usuarios';
 
@@ -31,6 +31,7 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')
                 ->autocapitalize('words')
+                ->label('Nombre')
                 ->maxLength(50)
                 ->placeholder('Juan')
                 ->required(),
@@ -46,9 +47,11 @@ class UserResource extends Resource
                 ->relationship('roles', 'name')
                 ->required(),
                 DatePicker::make('email_verified_at')
+                ->label('Verificación del correo')
                 ->readonly(true)
                 ->visibleOn('edit'),
                 DatePicker::make('created_at')
+                ->label('Creación del correo')
                 ->readonly(true)
                 ->visibleOn('edit'),
             ]);
@@ -62,12 +65,15 @@ class UserResource extends Resource
                 TextColumn::make('email'),
                 TextColumn::make('roles.name'),
                 TextColumn::make('email_verified_at')
+                    ->label('Verificación del correo')
                     ->placeholder('Desactivado'),
-                TextColumn::make('created_at'),
+                TextColumn::make('created_at')
+                ->label('Creación del correo'),
             ])
             ->filters([
                 Tables\Filters\Filter::make('Activos')
                  ->query(fn (Builder $query):Builder => $query->whereNotNull('email_verified_at'))
+                 
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
