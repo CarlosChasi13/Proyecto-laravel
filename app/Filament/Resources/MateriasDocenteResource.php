@@ -37,7 +37,6 @@ class MateriasDocenteResource extends Resource
             Forms\Components\Select::make('id_docente')
                 ->label('Docente')
                 ->options(Docente::all()->pluck('full_name', 'id'))
-                ->multiple()
                 ->required(),
         ]);
     }

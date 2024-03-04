@@ -17,7 +17,12 @@ class DocenteAreaConocimientoController extends Controller
             return response()->json(['message' => 'No hay datos disponibles.'], 200);
         }
         return response()->json([
-            'area_conocimiento' => $docenteAreaConcomiento->codigoareaconocimiento->areaconocimiento->nombre
+            $docenteAreaConcomiento->map(function($docente) {
+                return [
+                    'docente' => $docente,
+                    'area_conocimiento' => $docente->codigoareaconocimiento->areaconocimiento->nombre
+                ];
+            })
         ]);
     }
 

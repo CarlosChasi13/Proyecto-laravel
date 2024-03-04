@@ -62,13 +62,13 @@
 <body>
     <div >
 
-        <div class="text-center p-3 container">
+        <div class="container p-3 text-center">
             <!-- Logo de la ESPE -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_ESPEOk.png/250px-Logo_ESPEOk.png"
-                alt="Logo ESPE" class="mb-3 img-espe rounded float-left">
+                alt="Logo ESPE" class="float-left mb-3 rounded img-espe">
             <!-- Logo del proyecto -->
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-WeYvDLfMleMomRRM96IhTnLKyaHVpdlgbxIFAMFkQHXlo7dS72-Phikg4XuEKx3u2w&usqp=CAU"
-                alt="Logo Proyecto" class="mb-3 img-proyecto rounded float-right">
+                alt="Logo Proyecto" class="float-right mb-3 rounded img-proyecto">
         </div>
         <br>
         <br>
@@ -81,20 +81,24 @@
         <p class="">Total de NRCs: {{ $totalNrcs }}</p>
         <br>
         <table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Periodo Académico</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($nrcs as $nrc)
-            <tr>
-                <td>{{ $nrc->id }}</td>
-                <td>{{ date('Y-m-d', strtotime($nrc->periodoacademico->fecha_inicio)) . ' - ' . date('Y-m-d', strtotime($nrc->periodoacademico->fecha_fin)) }}</td>
-            </tr>
-        @endforeach
-    </tbody>
+            <thead>
+                <tr>
+                    <th scope="col">NRC</th>
+                    <th scope="col">Materia</th>
+                    <th scope="col">Docente</th>
+                    <th scope="col">Periodo Académico</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($nrcs as $nrc)
+                    <tr>
+                        <td>{{ $nrc->codigo }}</td>
+                        <td>{{ $nrc->materia->nombre }}</td>
+                        <td>{{ $nrc->docente->full_name }}</td>
+                        <td>{{ $nrc->periodoacademico->periodo_completo }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
 </table>
 
 
@@ -102,7 +106,7 @@
 
     <footer class="fixed-bottom">
         <div class="container">
-            <p class="text-center font-light small">Fecha de impresión: {{ $date }}</p>
+            <p class="font-light text-center small">Fecha de impresión: {{ $date }}</p>
         </div>
     </footer>
 </body>
