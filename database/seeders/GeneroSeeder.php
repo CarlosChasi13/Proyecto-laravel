@@ -15,11 +15,11 @@ class GeneroSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('genero')->insert([
+        DB::table('genero')->updateOrinsert([
             'id' => 1,
             'nombre' => 'Femenino',
         ]);
-        DB::table('genero')->insert([
+        DB::table('genero')->updateOrinsert([
             'id' => 2,
             'nombre' => 'Masculino',
         ]);
